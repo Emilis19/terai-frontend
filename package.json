@@ -15,6 +15,7 @@
     "@angular/animations": "~9.0.1",
     "@angular/common": "~9.0.1",
     "@angular/compiler": "~9.0.1",
+    "@angular/compiler-cli": "~9.0.1",
     "@angular/core": "~9.0.1",
     "@angular/forms": "~9.0.1",
     "@angular/platform-browser": "~9.0.1",
