@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-home-page',
@@ -6,10 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-
+  @ViewChild('nextElement', {static: false}) searchElement: ElementRef;
   constructor() { }
+  
+  showOne: boolean = false;
+  showBlock: boolean = false;
+  ngOnInit() { }
 
-  ngOnInit(): void {
+   scroll() {
+      this.showOne = true;
+      this.showBlock = true;
+      this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
+  ngAfterViewChecked() {
+    if(this.showBlock){
+      this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      this.showBlock = false;
+    } 
+  }
 }
