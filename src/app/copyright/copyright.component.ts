@@ -8,16 +8,15 @@ import {Copyright} from '../copyright';
 })
 export class CopyrightComponent implements OnInit {
 
-  
+
   constructor() { }
+
+    @Input() copyright: Copyright;
 
   ngOnInit(): void {
   }
 
-    @Input() copyright: Copyright;
-   
-  
-   
+
 
 
 }

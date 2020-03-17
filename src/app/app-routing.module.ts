@@ -6,8 +6,9 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
-  { path: "registration", component: RegistrationFormComponent},
-  { path: "", redirectTo: "/home", pathMatch: "full" }
+  { path: 'registration', component: RegistrationFormComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home'}
 ];
 
 @NgModule({

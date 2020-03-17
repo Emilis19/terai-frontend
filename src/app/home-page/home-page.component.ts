@@ -1,8 +1,7 @@
 
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import {Copyright} from '../copyright';
-import {copyrigthList} from './listOfItems'
+import {copyrigthList} from './listOfItems';
 
 
 @Component({
@@ -10,7 +9,7 @@ import {copyrigthList} from './listOfItems'
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('nextElement', {static: false}) searchElement: ElementRef;
 
@@ -18,29 +17,29 @@ export class HomePageComponent implements OnInit {
 
 
   constructor() { }
-  
-  showOne: boolean = false;
-  showBlock: boolean = false;
-  ngOnInit() { }
+
+  showOne = false;
+  showBlock = false;
+  copyrightLimit = 1;
+
+  ngOnInit() { this.copyrightList = copyrigthList; }
 
 
    scroll() {
+    if(!this.showOne){
       this.showOne = true;
       this.showBlock = true;
+      this.copyrightLimit = 2;
       this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   ngAfterViewChecked() {
     if(this.showBlock){
       this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      this.showBlock = false;
-    } 
+      this.showBlock = true;
+    }
   }
 
-  ngOnInit(): void {
-    console.log("asd");
-    this.copyrightList = copyrigthList;
-  }
-
-  
 }

@@ -13,7 +13,7 @@ import { CopyrightComponent } from './copyright/copyright.component';
   declarations: [
     AppComponent,
     HomePageComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
     CopyrightComponent
   ],
   imports: [

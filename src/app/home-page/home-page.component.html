@@ -26,7 +26,7 @@
         <button type="button" class="btn btn-primary btn-lg" [routerLink]="'/registration'">Registruokis čia</button>
     </div>
     <div class="col text-center pb-2">
-        <a href="#" class="btn btn-dark btn-lg" (click)="scroll()"> 
+        <a class="btn btn-dark btn-lg text-white" (click)="scroll()"> 
             <i class="fas fa-angle-double-down"></i>
              Daugiau informacijos
         </a>
@@ -34,14 +34,11 @@
     
 </div>
   
-<div class="bg-img2 container-fluid justify-content-center" *ngIf="showOne" #nextElement>
+<div class="bg-img2 container-fluid justify-content-center" [hidden]="!showOne" #nextElement>
 
 </div>
 
-<p>home-page works!</p>
-<a class="btn btn-primary" href="#" role="button">Link</a>
-
-<app-copyright *ngFor="let copyright of copyrightList"
+<app-copyright *ngFor="let copyright of copyrightList | slice:0:copyrightLimit;"
       [copyright]="copyright">
     </app-copyright>
 
