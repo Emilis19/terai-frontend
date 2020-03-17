@@ -1,4 +1,5 @@
 
+
 <div class="bg-img1 container-fluid">
     <div class="col-md text-center p-3">
         <h2 class="d-none d-sm-block w-50 ml-auto mr-auto text-white" id="title">Nori startuoti IT srityje?</h2>
@@ -36,3 +37,12 @@
 <div class="bg-img2 container-fluid justify-content-center" *ngIf="showOne" #nextElement>
 
 </div>
+
+<p>home-page works!</p>
+<a class="btn btn-primary" href="#" role="button">Link</a>
+
+<app-copyright *ngFor="let copyright of copyrightList"
+      [copyright]="copyright">
+    </app-copyright>
+
+
