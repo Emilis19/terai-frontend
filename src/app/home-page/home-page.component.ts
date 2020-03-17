@@ -16,7 +16,7 @@ export class HomePageComponent implements OnInit {
   }
 
   copyRight: Copyright = {
-    year: 2018, author : "Shridhar Gupta", activeLink: "https://unsplash.com/photos/dZxQn4VEv2M", platform : "Unsplash"
+    type: "photo", year: 2018, author : "Shridhar Gupta", activeLink: "https://unsplash.com/photos/dZxQn4VEv2M", platform : "Unsplash"
   };
 
 
