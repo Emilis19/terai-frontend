@@ -1,5 +1,4 @@
 export interface Copyright {
-
 type: string;
 year : number;
 activeLink : string;
