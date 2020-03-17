@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import {Copyright} from '../copyright';
+import {copyrigthList} from './listOfItems'
 
 @Component({
   selector: 'app-home-page',
@@ -9,15 +10,16 @@ import {Copyright} from '../copyright';
 })
 export class HomePageComponent implements OnInit {
 
+  copyrightList: Copyright[];
+
   constructor() { }
 
   ngOnInit(): void {
     console.log("asd");
+    this.copyrightList = copyrigthList;
   }
 
-  copyRight: Copyright = {
-    type: "photo", year: 2018, author : "Shridhar Gupta", activeLink: "https://unsplash.com/photos/dZxQn4VEv2M", platform : "Unsplash"
-  };
+  
 
 
 }
