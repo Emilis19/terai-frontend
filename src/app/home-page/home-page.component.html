@@ -1,3 +1,7 @@
 <p>home-page works!</p>
 <a class="btn btn-primary" href="#" role="button">Link</a>
-<app-copyright [copyright]="copyRight"></app-copyright>
+
+<app-copyright *ngFor="let copyright of copyrightList"
+      [copyright]="copyright">
+    </app-copyright>
+
