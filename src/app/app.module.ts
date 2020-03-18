@@ -7,7 +7,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { CopyrightComponent } from './copyright/copyright.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,7 @@ import { CopyrightComponent } from './copyright/copyright.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
