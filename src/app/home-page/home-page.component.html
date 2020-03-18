@@ -34,12 +34,12 @@
     
 </div>
   
-<div class="bg-img2 container-fluid justify-content-center" [hidden]="!showOne" #nextElement>
+<div class="bg-img2 container-fluid justify-content-center mb-6" [hidden]="!showOne" #nextElement>
     <div class="container-fluid">
         <div class="container">
         <div class="row text-white d-flex justify-content-center">
           <div class="col text-center" id="home-page-text-box">
-              <div class="center-text">
+              <div class="center-text p-2">
             <h2>D.U.K – dažniausiai užduodami klausimai</h2>
             <h6> IT Akademija – mokymosi programa ir stažuotė skirta tiems, kurie sieja savo ateitį su IT sritimi ir nori pakylėti savo techninius gebėjimus į naują lygį.</h6>
 
@@ -60,13 +60,15 @@
         
            
            <h5 class="font-weight-bold">Kodėl verta prisijungti?</h5>
-           <p> &#9642; Dalyvausi įgyvendinant IT projektus, ugdysi IT kompetencijas, išmoksi Agile metodikos principų.</p>
-           <p> &#9642; Pamatysi organizaciją be kaklaraiščio, kuriame dirbame ir švenčiame kartu. </p>
-           <p> &#9642; Susipažinsi su „IT Akademija“ alumnais, kurie jau dirba pas mus.</p>
-           <p> &#9642; Mokysiesi ne iš vadovėlių, bet iš IT profesionalų.</p>
-           <p> &#9642; Gausi kokybišką grįžtamąjį ryšį, kuris tau padės tobulėti dar greičiau.</p>
-           <p> &#9642; Turėsi galimybę išbandyti ir atrasti save skirtingose IT srityse. </p>
-           <p> &#9642; Jei tau puikiai seksis ir norėsi tęsti karjerą IT, praktikos pabaigoje galėsi pasirinkti norimą stažuotės kryptį. </p>
+           <ul>
+               <li>Dalyvausi įgyvendinant IT projektus, ugdysi IT kompetencijas, išmoksi Agile metodikos principų.</li>
+               <li>Pamatysi organizaciją be kaklaraiščio, kuriame dirbame ir švenčiame kartu.</li>
+               <li>Susipažinsi su „IT Akademija“ alumnais, kurie jau dirba pas mus.</li>
+               <li>Mokysiesi ne iš vadovėlių, bet iš IT profesionalų.</li>
+               <li>Gausi kokybišką grįžtamąjį ryšį, kuris tau padės tobulėti dar greičiau.</li>
+               <li>Turėsi galimybę išbandyti ir atrasti save skirtingose IT srityse.</li>
+               <li>Jei tau puikiai seksis ir norėsi tęsti karjerą IT, praktikos pabaigoje galėsi pasirinkti norimą stažuotės kryptį.</li>
+           </ul>
           </div>
           <div class="col-lg-6 col-sm-12">
             <h5 class="font-weight-bold">Kokias technologijas naudojate?</h5>
@@ -110,7 +112,10 @@
           </div>
         
 
-</div> <app-copyright *ngFor="let copyright of copyrightList | slice:0:copyrightLimit;"
+</div> 
+</div>
+<footer class="col-lg-12 container d-flex justify-content-center light">
+<app-copyright *ngFor="let copyright of copyrightList | slice:0:copyrightLimit;"
       [copyright]="copyright">
     </app-copyright>
-</div>
+</footer>
