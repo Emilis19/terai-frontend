@@ -18,11 +18,16 @@
 }
 #title{
   background: rgba(105,105,105, 0.85);
+  padding: 20px;
 }
 
   #home-page-text-box{
     background: rgba(105,105,105, 0.85);
     font-size: 120%;
+  }
+  #registration-page-text-box{
+    background: rgba(105,105,105, 0.80);
+    font-size: 80%;
   }
 
   .btn.btn-primary{
@@ -31,4 +36,8 @@
 
   .btn.btn-dark{
     background: rgba(15, 21, 27, 0.85);
+  }
+
+  #registration{
+    background: rgba(105,105,105, 0.85);
   }

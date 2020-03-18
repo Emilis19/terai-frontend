@@ -1,5 +1,5 @@
 
-
+<div class="container-fluid">
 <div class="bg-img1 container-fluid">
     <div class="col-md text-center p-3">
         <h2 class="d-none d-sm-block w-50 ml-auto mr-auto text-white" id="title">Nori startuoti IT srityje?</h2>
@@ -26,7 +26,7 @@
         <button type="button" class="btn btn-primary btn-lg" [routerLink]="'/registration'">Registruokis čia</button>
     </div>
     <div class="col text-center pb-2">
-        <a class="btn btn-dark btn-lg text-white" (click)="scroll()"> 
+        <a class="btn btn-dark btn-lg text-white" (click)="scroll()"  id="registration"> 
             <i class="fas fa-angle-double-down"></i>
              Daugiau informacijos
         </a>
@@ -35,11 +35,83 @@
 </div>
   
 <div class="bg-img2 container-fluid justify-content-center" [hidden]="!showOne" #nextElement>
+    <div class="container-fluid mx-auto">
+        <div class="row text-white">
+          <div class="col text-center" id="home-page-text-box">
+              <div class="center-text">
+            <h2>D.U.K – dažniausiai užduodami klausimai</h2>
+            <h6> IT Akademija – mokymosi programa ir stažuotė skirta tiems, kurie sieja savo ateitį su IT sritimi ir nori pakylėti savo techninius gebėjimus į naują lygį.</h6>
+            <div class="col pb-2">
+             <button type="button" class="btn btn-primary" [routerLink]="'/registration'">
+                 Registruokis čia
+             </button>
+         </div>
+        </div>
+          </div>
+        </div>
+        <div class="container-fluid" id="registration-page-text-box">
+        <div class="row text-white" >
+            <div class="col">
+           <h5 class="font-weight-bold">Kokie reikalavimai norint dalyvauti?</h5>
+           <p> &#9642; Sieki su IT susijusio išsilavinimo ar mėgini praktiškai atrasti save šioje srityje. </p>
+           <p> &#9642; Degi noru tobulėti, rodai iniciatyvą ir jau turi bazinius gebėjimus – savo malonumui programuoji, kuri puslapius ar programėles, padedi draugams spręsti technines problemas.</p>
+           <p> &#9642; Esi pasiryžusi/-ęs bent pusę dienos laiko skirti teorinėms ir praktinėms užduotims. Praktikai numatytas laikas yra darbo dienomis (14-18 val.). </p>
+           <p> &#9642; Puikiai kalbi ir rašai angliškai. </p>
+        
+           <h5 class="font-weight-bold" >Kada prasideda ir kiek trunka programa?</h5>
+           <p> IT Akademija vyksta vasario-birželio mėnesiais ir skyla į dvi dalis: </p>
+           <p> &nbsp; &nbsp;&#9642;3 mėnesius vyksta praktika. Geriausiai praktikos metu pasirodę studentai atrenkami stažuotei. </p>
+           <p> &nbsp; &nbsp;&#9642;2 mėnesius vyksta stažuotė, kurios laikotarpiu dalyviui mokama stipendija. Geriausieji įdarbinami! </p>
+          
+          <div class= "col-lg-12">
+           <h5 class="font-weight-bold">Kodėl verta prisijungti?</h5>
+           <p> &#9642; Dalyvausi įgyvendinant IT projektus, ugdysi IT kompetencijas, išmoksi Agile metodikos principų.</p>
+           <p> &#9642; Pamatysi organizaciją be kaklaraiščio, kuriame dirbame ir švenčiame kartu. </p>
+           <p> &#9642; Susipažinsi su „IT Akademija“ alumnais, kurie jau dirba pas mus.</p>
+           <p> &#9642; Mokysiesi ne iš vadovėlių, bet iš IT profesionalų.</p>
+           <p> &#9642; Gausi kokybišką grįžtamąjį ryšį, kuris tau padės tobulėti dar greičiau.</p>
+           <p> &#9642; Turėsi galimybę išbandyti ir atrasti save skirtingose IT srityse. </p>
+           <p> &#9642; Jei tau puikiai seksis ir norėsi tęsti karjerą IT, praktikos pabaigoje galėsi pasirinkti norimą stažuotės kryptį. </p>
+          </div>
+          </div>
+          <div class="col">
+            <h5 class="font-weight-bold">Kokias technologijas naudojate?</h5>
+            <img src ="https://trello-attachments.s3.amazonaws.com/5e60e6ff0813097e6a43c2eb/5e665cf1c77fc43e2685713f/00fce2663fae7b9dae8ff623d5988160/technologies.jpg" class="img-thumbnail" >
+              <h5 class="font-weight-bold">Turiu kitų klausimų, su kuo susisiekti?</h5>
+                 <p> Rašyk į <a href=" info@itakademija.lt"> info@itakademija.lt </a> , atsakysime per 1-2 d.d. </p>
 
+                <h5 class="font-weight-bold">Kokiose srityse dirbame??</h5>
+               <p>Informacinių sistemų valdymas (Application management) <br>
+                  Įvairių verslui kritinių informacinių sistemų palaikymas ir vystymas.<br>
+                &#9642;	E.kanalai – organizacijos išorinės ir vidinės klientų aptarnavimo ir paslaugų pardavimo platformos.<br>
+                &#9642;	Organizacijos produktai –branduolio, vietinių ir tarptautinių mokėjimų, draudimo, mokėjimo kortelių, paskolų, vertybinių popierių ir kt. informacinės sistemos. <br>
+                &#9642; Palaikančios sistemos (supporting systems) – organizaciją palaikančios informacinės sistemos – e. pašto, apsikeitimo duomenimis, audio ir video pokalbių, dokumentų valdymo ir kt. </p>
+               <p> 
+                Infrastruktūra ir operacijos (I&O arba Infrastructure and Operations) <br>
+                Informacinių sistemų veiklai reikalingos techninės įrangos ir ją palaikančių sistemų valdymas bei kūrimas.<br>
+                &#9642;	Duomenų centrų infrastruktūra<br>
+                &#9642;	Serveriai ir jų operacinės sistemos<br>
+                &#9642;Duomenų masyvai<br>
+                &#9642;	Duomenų bazės<br>
+                &#9642;	Tarpinė programinė įranga (Middleware)<br>
+                &#9642;	Kompiuteriniai tinklai</p>
+                
+                <p >Programinės įrangos kūrimas (Software development)<br>
+                &#9642;	Projektų valdymas<br>
+                &#9642;	Darbas pagal Agile metodiką<br>
+                &#9642;	Reikalavimų analizė ir projektavimas<br>
+                &#9642;	Programavimas<br>
+                &#9642;	Testavimas ir testavimo valdymas<br>
+                &#9642;	Integravimas ir testų automatizavimas<br>
+              </p>
+            </div>
+          </div>
+          </div>
+        
+
+</div> 
 </div>
-
 <app-copyright *ngFor="let copyright of copyrightList | slice:0:copyrightLimit;"
       [copyright]="copyright">
     </app-copyright>
-
-
+</div>
