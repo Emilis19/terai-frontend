@@ -1,33 +1,127 @@
-<div class="container align-items-center" class="row mx-md-n5 pb-5">
-    <div class="container">
-        <div class="col text-center p-3 m-3">
-        <h2 class="d-none d-sm-block">Nori startuoti IT srityje?</h2>
-        </div>
-    </div>
-    
-    <div class="container">
-        <img src="https://trello-attachments.s3.amazonaws.com/5e60e6ff0813097e6a43c2eb/5e6640a37e0871840c099784/854030b76a2c938c2f8f51a28bfd5550/shridhar-gupta-dZxQn4VEv2M-unsplash.jpg" alt="Snow" style="width:100%;">
 
-    <div class="container pt-5">
-        <div class="row mx-md-n5">
-            <div class="col-lg-12 text-center centered">
-                <div class="container col-lg-6 text-white" id="home-page-text-box">
-                <h5> 2021 m. „IT Akademija“ siūlo:</h5>
-                    <p> &#9642; No-bullshit mokymosi programą, kurią dėsto tose srityse patyrę darbuotojai </p>
-                    <p> &#9642; Mėnesio trukmės IT projektą Agile/Scrum komandoje</p>
-                    <p> &#9642; Apmokamą 2 mėnesių stažuotę bei tolimesnes karjeros galimybes </p>
-                </div> 
-                <div class="col pb-2">
-                    <button type="button" class="btn btn-primary" [routerLink]="'/registration'">Registruokis čia</button>
-                </div>
-                <div class="col">
-                    <a href="#" class="btn btn-dark">Daugiau informacijos</a>
-                </div>
-                
-            </div> 
+
+<div class="bg-img1 container-fluid">
+    <div class="col-md text-center p-3">
+        <h2 class="d-none d-sm-block w-50 ml-auto mr-auto text-white" id="title">Nori startuoti IT srityje?</h2>
         </div>
+    
+        <div class="container pt-5">
+            <div id="box"> 
+                <div class="row mx-md-n5">
+                            <div class="col-lg-12 text-left">
+                                <div class="container col-lg-6 text-white pb-2 pt-2" id="home-page-text-box">
+                                <h3> 2021 m. „IT Akademija“ siūlo:</h3>
+                                <ul>
+                                    <li>No-bullshit mokymosi programą, kurią dėsto tose srityse patyrę darbuotojai</li>
+                                    <li>Mėnesio trukmės IT projektą Agile/Scrum komandoje</li>
+                                    <li>Apmokamą 2 mėnesių stažuotę bei tolimesnes karjeros galimybes</li>
+                                </ul>
+                                </div> 
+                                
+                            </div> 
+                    </div>
+            </div>
+        </div>
+    <div class="col text-center mt-5 mb-5 pb-2">
+        <button type="button" class="btn btn-primary btn-lg" [routerLink]="'/registration'">Registruokis čia</button>
     </div>
-        
+    <div class="col text-center pb-2">
+        <a class="btn btn-dark btn-lg text-white" (click)="scroll()"  id="registration"> 
+            <i class="fas fa-angle-double-down"></i>
+             Daugiau informacijos
+        </a>
+    </div>
     
 </div>
+  
+<div class="bg-img2 container-fluid justify-content-center mb-6" [hidden]="!showOne" #nextElement>
+    <div class="container-fluid">
+        <div class="container">
+        <div class="row text-white d-flex justify-content-center">
+          <div class="col text-center" id="home-page-text-box" style="margin-top: 50px;">
+              <div class="center-text p-2">
+            <h2>D.U.K – dažniausiai užduodami klausimai</h2>
+            <h6> IT Akademija – mokymosi programa ir stažuotė skirta tiems, kurie sieja savo ateitį su IT sritimi ir nori pakylėti savo techninius gebėjimus į naują lygį.</h6>
+
+        </div>
+          </div>
+        </div>
+    </div>
+        <div class="container-fluid p-2" id="registration-page-text-box" style="margin-top: 50px;">
+        <div class="row text-white" >
+            <div class="col-lg-3 col-sm-12">
+           <h5 class="font-weight-bold">Kokie reikalavimai norint dalyvauti?</h5>
+           <ul>
+               <li>Sieki su IT susijusio išsilavinimo ar mėgini praktiškai atrasti save šioje srityje.</li>
+               <li>Degi noru tobulėti, rodai iniciatyvą ir jau turi bazinius gebėjimus – savo malonumui programuoji, kuri puslapius ar programėles, padedi draugams spręsti technines problemas.</li>
+               <li>Esi pasiryžusi/-ęs bent pusę dienos laiko skirti teorinėms ir praktinėms užduotims. Praktikai numatytas laikas yra darbo dienomis (14-18 val.).</li>
+               <li>Puikiai kalbi ir rašai angliškai.</li>
+           </ul>
+        
+           
+           <h5 class="font-weight-bold">Kodėl verta prisijungti?</h5>
+           <ul>
+               <li>Dalyvausi įgyvendinant IT projektus, ugdysi IT kompetencijas, išmoksi Agile metodikos principų.</li>
+               <li>Pamatysi organizaciją be kaklaraiščio, kuriame dirbame ir švenčiame kartu.</li>
+               <li>Susipažinsi su „IT Akademija“ alumnais, kurie jau dirba pas mus.</li>
+               <li>Mokysiesi ne iš vadovėlių, bet iš IT profesionalų.</li>
+               <li>Gausi kokybišką grįžtamąjį ryšį, kuris tau padės tobulėti dar greičiau.</li>
+               <li>Turėsi galimybę išbandyti ir atrasti save skirtingose IT srityse.</li>
+               <li>Jei tau puikiai seksis ir norėsi tęsti karjerą IT, praktikos pabaigoje galėsi pasirinkti norimą stažuotės kryptį.</li>
+           </ul>
+          </div>
+          <div class="col-lg-6 col-sm-12">
+            <h5 class="font-weight-bold">Kokias technologijas naudojate?</h5>
+            
+            <img src ="https://trello-attachments.s3.amazonaws.com/5e60e6ff0813097e6a43c2eb/5e665cf1c77fc43e2685713f/00fce2663fae7b9dae8ff623d5988160/technologies.jpg" class="img-thumbnail" >
+              <h5 class="font-weight-bold">Turiu kitų klausimų, su kuo susisiekti?</h5>
+                 <p> Rašyk į <a href=" info@itakademija.lt"> info@itakademija.lt </a> , atsakysime per 1-2 d.d. </p>
+        <h5 class="font-weight-bold" >Kada prasideda ir kiek trunka programa?</h5>
+            <ul>
+                <li>IT Akademija vyksta vasario-birželio mėnesiais ir skyla į dvi dalis: </li>
+                <li>3 mėnesius vyksta praktika. Geriausiai praktikos metu pasirodę studentai atrenkami stažuotei. </li>
+                <li>2 mėnesius vyksta stažuotė, kurios laikotarpiu dalyviui mokama stipendija. Geriausieji įdarbinami! </li>
+            </ul>
+               
+                
+          </div>
+          <div class="col-lg-3 col-sm-12">
+                <h5 class="font-weight-bold">Kokiose srityse dirbame??</h5>
+                   <p> Informacinių sistemų valdymas (Application management) 
+                  Įvairių verslui kritinių informacinių sistemų palaikymas ir vystymas.</p>
+            <ul>
+                <li>E.kanalai – organizacijos išorinės ir vidinės klientų aptarnavimo ir paslaugų pardavimo platformos.</li>
+                <li>	Organizacijos produktai –branduolio, vietinių ir tarptautinių mokėjimų, draudimo, mokėjimo kortelių, paskolų, vertybinių popierių ir kt. informacinės sistemos. </li>
+                <li> Palaikančios sistemos (supporting systems) – organizaciją palaikančios informacinės sistemos – e. pašto, apsikeitimo duomenimis, audio ir video pokalbių, dokumentų valdymo ir kt. </li>
+            </ul>
+                <p> Infrastruktūra ir operacijos (I&O arba Infrastructure and Operations) <br>
+                Informacinių sistemų veiklai reikalingos techninės įrangos ir ją palaikančių sistemų valdymas bei kūrimas.<br>
+             <ul> 
+                <li>	Duomenų centrų infrastruktūra</li>
+                <li>Serveriai ir jų operacinės sistemos</li>	
+                <li>Duomenų masyvai</li>
+                <li>	Duomenų bazės</li> 
+                <li>Tarpinė programinė įranga (Middleware)</li>
+                <li>	Kompiuteriniai tinklai </li>
+            </ul>
+                <p >Programinės įrangos kūrimas (Software development)<br>
+            <ul>
+                <li>Projektų valdymas</li>
+                <li>Darbas pagal Agile metodiką</li>	
+                <li>Reikalavimų analizė ir projektavimas</li>	
+                <li>Programavimas</li>   
+                <li>Testavimas ir testavimo valdymas</li>   
+                <li>Integravimas ir testų automatizavimas</li>	
+            </ul>
+            </div>
+          </div>
+          </div>
+        
+
+</div> 
 </div>
+<footer class="col-lg-12 container d-flex justify-content-center light">
+<app-copyright *ngFor="let copyright of copyrightList | slice:0:copyrightLimit;"
+      [copyright]="copyright">
+    </app-copyright>
+</footer>

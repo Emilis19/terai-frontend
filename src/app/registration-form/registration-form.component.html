@@ -1,1 +1,41 @@
-<p>registration-form works!</p>
+<div class="bg-img1 container-fluid">
+<div class="container">
+    <div class="d-inline-flex p-2 title-box offset-sm-5">
+        <h2>Registracija!</h2>
+    </div>
+    <div class="row ">
+  
+      <div class="col-sm-8 offset-sm-2 form-box">
+  
+        <div>
+          <form>
+            <div class="form-group">
+              <label for="firstName">Vardas</label>
+              <input [(ngModel)]="application.firstName" type="text" name="firstName" class="form-control" id="firstName" aria-describedby="fnameHelp" placeholder="Vardas">
+              <small id="fnameHelp" class="form-text text-muted">Įveskite savo vardą</small>
+  
+              <label for="lastName">Pavardė</label>
+              <input [(ngModel)]="application.lastName" type="text" name="lastName" class="form-control" id="lastName" aria-describedby="lnameHelp" placeholder="Pavardė">
+              <small id="lnameHelp" class="form-text text-muted">Įveskite savo pavardę</small>
+  
+              <label for="email">El. paštas</label>
+              <input [(ngModel)]="application.email" type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+                placeholder="Įveskite savo el. paštą">
+              <small id="emailHelp" class="form-text text-muted">Įveskite savo el. paštą</small>
+  
+              <label for="description">Tel. numeris</label>
+              <input [(ngModel)]="application.mobileNumber" name="phone" class="form-control" id="phone" aria-describedby="phone" placeholder="Tel. numeris">
+              <small id="descHelp" class="form-text text-muted">Įveskite savo telefono numerį</small>
+  
+            </div>
+          </form>
+          <button class="btn btn-primary" (click)="createContact()">Registruotis</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-copyright *ngFor="let copyright of copyrightList"
+      [copyright]="copyright">
+</app-copyright>

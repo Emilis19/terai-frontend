@@ -1,12 +1,33 @@
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.bg-img1{
+    background-image:url('https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    z-index: -1;
+    min-height: 100vh;
+    //position: absolute;
+}
+.bg-img2{
+  background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center;
+  z-index: -1;
+  min-height: 100vh;
+  //position: absolute;
+}
+#title{
+  background: rgba(105,105,105, 0.85);
+  padding: 20px;
+}
 
   #home-page-text-box{
     background: rgba(105,105,105, 0.85);
+    font-size: 120%;
+  }
+  #registration-page-text-box{
+    background: rgba(105,105,105, 0.80);
+    font-size: 80%;
   }
 
   .btn.btn-primary{
@@ -16,3 +37,16 @@
   .btn.btn-dark{
     background: rgba(15, 21, 27, 0.85);
   }
+
+  #registration{
+    background: rgba(105,105,105, 0.85);
+  }
+
+  .light {
+    background: rgb(255, 255, 255);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 50%;
+    align-content: center;
+}
