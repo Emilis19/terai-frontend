@@ -20,7 +20,7 @@
           <span *ngIf="!isCollapsed1"><i class="fas fa-arrow-up"></i></span> </h5>
       </button>
      
-      <div id="collapse1" [collapse]="isCollapsed1">
+      <div id="collapse1" [collapse]="isCollapsed1" [isAnimated]="true">
         <div class="well well-lg card card-block card-header">
           <ul>
             <li>Sieki su IT susijusio išsilavinimo ar mėgini praktiškai atrasti save šioje srityje. </li>
@@ -38,12 +38,12 @@
     <div class="col-lg-12">
   
       <button type="button" class="btn btn btn-secondary" (click)="isCollapsed2 = !isCollapsed2"
-        [attr.aria-expanded]="!isCollapsed2" aria-controls="collapse2">
+        [attr.aria-expanded]="!isCollapsed2" aria-controls="collapse2" >
         <h5 >Kada prasideda ir kiek trunka programa? <span *ngIf="isCollapsed2"><i class="fas fa-arrow-down"></i></span>
           <span *ngIf="!isCollapsed2"><i class="fas fa-arrow-up"></i></span></h5>
       </button>
       
-      <div id="collapse2" [collapse]="isCollapsed2">
+      <div id="collapse2" [collapse]="isCollapsed2" [isAnimated]="true">
         <div class="well well-lg card card-block card-header">
           <ul>
             <p> IT Akademija vyksta vasario-birželio mėnesiais ir skyla į dvi dalis: </p>
@@ -63,12 +63,12 @@
     <div class="col-lg-12">
   
       <button type="button" class="btn btn btn-secondary" (click)="isCollapsed3 = !isCollapsed3"
-        [attr.aria-expanded]="!isCollapsed3" aria-controls="collapse3">
+        [attr.aria-expanded]="!isCollapsed3" aria-controls="collapse3" >
         <h5 >Kodėl verta prisijungti? <span *ngIf="isCollapsed3"><i class="fas fa-arrow-down"></i></span>
           <span *ngIf="!isCollapsed3"><i class="fas fa-arrow-up"></i></span></h5>
       </button>
       
-      <div id="collapse3" [collapse]="isCollapsed3">
+      <div id="collapse3" [collapse]="isCollapsed3" [isAnimated]="true">
         <div class="well well-lg card card-block card-header">
           <ul>
   
@@ -96,7 +96,7 @@
           <span *ngIf="!isCollapsed4"><i class="fas fa-arrow-up"></i></span></h5>
       </button>
      
-      <div id="collapse4" [collapse]="isCollapsed4">
+      <div id="collapse4" [collapse]="isCollapsed4" [isAnimated]="true">
         <div class="well well-lg card card-block card-header">
           <img src="assets/img/technologies.jpg" class="img-thumbnail">
         </div>
@@ -111,8 +111,8 @@
           <span *ngIf="!isCollapsed5"><i class="fas fa-arrow-up"></i></span></h5>
       </button>
       
-      <div id="collapse5" [collapse]="isCollapsed5">
-        <div class="well well-lg card card-block card-header">
+      <div id="collapse5" [collapse]="isCollapsed5" [isAnimated]="true">
+        <div class="well well-lg card card-block card-header" >
           <p> Rašyk į <a href=" info@itakademija.lt"> info@itakademija.lt </a> , atsakysime per 1-2 d.d. </p>
         </div>
       </div>
@@ -122,12 +122,12 @@
     <div class="col-lg-12">
   
       <button type="button" class="btn btn btn-secondary" (click)="isCollapsed6 = !isCollapsed6"
-        [attr.aria-expanded]="!isCollapsed6" aria-controls="collapse6">
-        <h5 >Kokiose srityse dirbame?? <span *ngIf="isCollapsed6"><i class="fas fa-arrow-down"></i></span>
+        [attr.aria-expanded]="!isCollapsed6" aria-controls="collapse6" data-toggle="collapse" data-target="#collapse6" >
+        <h5 >Kokiose srityse dirbame? <span *ngIf="isCollapsed6"><i class="fas fa-arrow-down"></i></span>
           <span *ngIf="!isCollapsed6"><i class="fas fa-arrow-up"></i></span></h5>
       </button>
      
-      <div id="collapse6" [collapse]="isCollapsed6">
+      <div class="collapse" id="collapse6" [collapse]="isCollapsed6" [isAnimated]="true">
         <div class="well well-lg card card-block card-header">
           <p>Informacinių sistemų valdymas (Application management) <br>
             Įvairių verslui kritinių informacinių sistemų palaikymas ir vystymas.<br>
