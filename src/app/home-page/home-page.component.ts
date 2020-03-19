@@ -30,14 +30,14 @@ export class HomePageComponent implements OnInit, AfterViewChecked {
       this.showOne = true;
       this.showBlock = true;
       this.copyrightLimit = 2;
-      this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   ngAfterViewChecked() {
     if(this.showBlock){
-      this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       this.showBlock = true;
     }
   }
