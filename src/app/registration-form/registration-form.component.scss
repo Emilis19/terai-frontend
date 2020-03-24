@@ -2,9 +2,8 @@
     background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position:center;
     z-index: -1;
-    height: 100vh;
+    box-sizing: border-box;
     //position: fixed;
 }
 .form-box{
@@ -15,5 +14,16 @@
   }
   .title-box{
     background: rgba(238, 237, 237, 0.85);
-    margin-top: 50px;
+
   }
+
+  .moreImportant {
+    font-size: 20px;
+  }
+
+  .inputText {
+    font-weight: bolder;
+  }
+
+  
+
