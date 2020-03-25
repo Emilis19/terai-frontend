@@ -71,6 +71,11 @@
     font-size: 80%;
   }
 
+  @media only screen and (max-width: 600px) {
+    #moreinfo{
+      margin-bottom: 0px !important;
+    }
+  }
   .btn.btn-primary{
     background: rgba(64, 153, 255, 0.85);
   }
