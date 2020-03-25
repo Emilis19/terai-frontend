@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class TestComponent implements OnInit {
 
   constructor() { }
-  isCollapsed = true;
+ isCollapsed = true;
   isCollapsed1 = true;
   isCollapsed2 = true;
   isCollapsed3 = true;
