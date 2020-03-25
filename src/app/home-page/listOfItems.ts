@@ -12,8 +12,8 @@ export const copyrigthList: Copyright[] = [
     {
         type: 'photo',
         year: 2018,
-        author : 'aaa aaa',
-        activeLink: 'https://unsplash.com/photos/dZxQn4VEv2M',
+        author : 'Priscilla Du Preez',
+        activeLink: 'https://unsplash.com/photos/XkKCui44iM0',
         platform : 'Unsplash'
     }
 ];

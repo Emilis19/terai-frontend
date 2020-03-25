@@ -22,6 +22,14 @@ export class HomePageComponent implements OnInit, AfterViewChecked {
   showBlock = false;
   copyrightLimit = 1;
 
+  isCollapsed = true;
+  isCollapsed1 = true;
+  isCollapsed2 = true;
+  isCollapsed3 = true;
+  isCollapsed4 = true;
+  isCollapsed5 = true;
+  isCollapsed6 = true;
+
   ngOnInit() { this.copyrightList = copyrigthList; }
 
 
