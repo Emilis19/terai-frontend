@@ -105,10 +105,10 @@
                 [hidden]="(applicationForm.controls.contractReason.valid || contractReason.pristine) && likedTechnologies.untouched"
                 class="alert p-0">
                 <div class="text-danger" *ngIf="contractReason.errors?.required">
-                  Pakomentuok, kodėl negali sudaryti sutarties.
+                  Pakomentuok, kodėl negali sudaryti sutarties
                 </div>
                 <div class="text-danger" *ngIf="contractReason.errors?.minlength">
-                  Pakomentuok plačiau, kodėl negali sudaryti sutarties.
+                  Pakomentuok plačiau, kodėl negali sudaryti sutarties
                 </div>
               </div>
               </div>
@@ -122,13 +122,13 @@
                 [hidden]="(applicationForm.controls.likedTechnologies.valid || likedTechnologies.pristine) && reasonForApplying.untouched"
                 class="alert p-0">
                 <div class="text-danger" *ngIf="likedTechnologies.errors?.required">
-                  Nurodyk, kurios technologijos tau labiausiai patinka.
+                  Nurodyk, kurios technologijos tau labiausiai patinka
                 </div>
                 <div class="text-danger" *ngIf="likedTechnologies.errors?.minlength">
-                  Turi būti bent 10 simbolių.
+                  Turi būti bent 10 simbolių
                 </div>
                 <div class="text-danger" *ngIf="likedTechnologies.errors?.maxlength">
-                  Turi būti nedaugiau kaip 300 simbolių.
+                  Turi būti nedaugiau kaip 300 simbolių
                 </div>
               </div>
             </div>
@@ -141,13 +141,13 @@
                 [hidden]="(applicationForm.controls.reasonForApplying.valid || reasonForApplying.pristine) && school.untouched"
                 class="alert p-0">
                 <div class="text-danger"  *ngIf="reasonForApplying.errors?.required">
-                  Nurodyk savo lūkesčius.
+                  Nurodyk savo lūkesčius
                 </div>
                 <div class="text-danger" *ngIf="reasonForApplying.errors?.minlength">
-                  Turi būti bent 10 simbolių.
+                  Turi būti bent 10 simbolių
                 </div>
                 <div class="text-danger"  *ngIf="reasonForApplying.errors?.maxlength">
-                  Turi būti nedaugiau kaip 300 simbolių.
+                  Turi būti nedaugiau kaip 300 simbolių
                 </div>
               </div>
             </div>

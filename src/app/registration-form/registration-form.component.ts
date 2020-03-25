@@ -88,7 +88,7 @@ export class RegistrationFormComponent implements OnInit {
     ]],
 
     linkedinUrl:['', [
-      Validators.pattern("https?://.+"),
+     // Validators.pattern("https?://.+"),
      // this.urlDomainValidator
     ]],
   });
@@ -136,7 +136,8 @@ export class RegistrationFormComponent implements OnInit {
       this.application = new Application('', '', '', '', '','','','','','','','','','');
       this.serverErrorMessage = '';
     },
-      error => this.serverErrorMessage = error
+     // error => this.serverErrorMessage = error
+      error => this.serverErrorMessage = "Registracija negalima. Tu jau esi registruotas !"
     );
   }
 
