@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 })
 export class RegistrationService {
 
-  apiUrl = 'http://localhost:8080';
+  apiUrl = 'https://terai-backend-staging.herokuapp.com/';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

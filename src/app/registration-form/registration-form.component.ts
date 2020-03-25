@@ -22,6 +22,7 @@ export class RegistrationFormComponent implements OnInit {
   copyrightList: Copyright[];
   serverErrorMessage: string;
   numericNumberReg= '[\+[0-9]{0,11}]+';
+  confirmationMessage='';
 
 
   applicationForm = this.fb.group({
@@ -73,6 +74,7 @@ export class RegistrationFormComponent implements OnInit {
     mobileNumber: ['', [
   //Validators.pattern(this.numericNumberReg),
   //  Validators.pattern('[\+[0-9]{0,11}]+'),
+  // Validators.pattern('[0-9]{1,8}')
     ]],
 
     photo: ['', [
@@ -132,13 +134,13 @@ export class RegistrationFormComponent implements OnInit {
     
   onSubmit() {
     this.application = this.applicationForm.value;
-    this.registrationService.addRegistration(this.application).subscribe(() => {
-      this.application = new Application('', '', '', '', '','','','','','','','','','');
-      this.serverErrorMessage = '';
+  this.registrationService.addRegistration(this.application).subscribe(() => {
+    this.application = new Application('', '', '', '', '','','','','','','','','','');
+     this.serverErrorMessage = '';
     },
-     // error => this.serverErrorMessage = error
-      error => this.serverErrorMessage = "Registracija negalima. Tu jau esi registruotas !"
-    );
+    // error => this.serverErrorMessage = error
+    error => this.serverErrorMessage = "Registracija negalima. Tu jau esi registruotas !"
+   );
   }
 
   get firstName() { return this.applicationForm.get('firstName'); }

@@ -226,6 +226,11 @@
           <div class="alert alert-danger" role="alert" *ngIf="serverErrorMessage">
             {{ serverErrorMessage }}
           </div> 
+          <div class="alert alert-success" role="alert" *ngIf="confirmationMessage">
+            {{confirmationMessage}}
+          </div>
+
+
 
           <div class="container d-flex flex-row-reverse">
             <div class="m-2">
