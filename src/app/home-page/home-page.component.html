@@ -95,6 +95,7 @@
             type="button"
             class="btn btn btn-secondary"
             (click)="isCollapsed1 = !isCollapsed1"
+            (click)="scrollQuestion(target1)"
             [attr.aria-expanded]="!isCollapsed1"
             aria-controls="collapse1"
             data-target="collapse1"
@@ -106,7 +107,7 @@
             </h5>
           </button>
     
-          <div id="collapse1" [collapse]="isCollapsed1" [isAnimated]="true">
+          <div id="collapse1" [collapse]="isCollapsed1" [isAnimated]="true"  #target1>
             <div class="well well-lg card card-block card-header">
               <ul>
                 <li>
@@ -136,6 +137,7 @@
             (click)="isCollapsed2 = !isCollapsed2"
             [attr.aria-expanded]="!isCollapsed2"
             aria-controls="collapse2"
+            (click)="scrollQuestion(target2)"
           >
             <h5>
               Kada prasideda ir kiek trunka programa?
@@ -144,7 +146,7 @@
             </h5>
           </button>
     
-          <div id="collapse2" [collapse]="isCollapsed2" [isAnimated]="true">
+          <div id="collapse2" [collapse]="isCollapsed2" [isAnimated]="true" #target2>
             <div class="well well-lg card card-block card-header">
               <ul>
                 <p>
@@ -172,15 +174,16 @@
             (click)="isCollapsed3 = !isCollapsed3"
             [attr.aria-expanded]="!isCollapsed3"
             aria-controls="collapse3"
+            (click)="scrollQuestion(target3)"
           >
-            <h5>
+            <h5 >
               Kodėl verta prisijungti?
               <span *ngIf="isCollapsed3"><i class="fas fa-angle-down"></i></span>
               <span *ngIf="!isCollapsed3"><i class="fas fa-angle-up"></i></span>
             </h5>
           </button>
     
-          <div id="collapse3" [collapse]="isCollapsed3" [isAnimated]="true">
+          <div id="collapse3" [collapse]="isCollapsed3" [isAnimated]="true" #target3>
             <div class="well well-lg card card-block card-header">
               <ul>
                 <li>
@@ -218,15 +221,16 @@
             (click)="isCollapsed4 = !isCollapsed4"
             [attr.aria-expanded]="!isCollapsed4"
             aria-controls="collapse4"
+            (click)="scrollQuestion(target4)"
           >
-            <h5>
+            <h5 >
               Kokias technologijas naudojate?
               <span *ngIf="isCollapsed4"><i class="fas fa-angle-down"></i></span>
               <span *ngIf="!isCollapsed4"><i class="fas fa-angle-up"></i></span>
             </h5>
           </button>
     
-          <div id="collapse4" [collapse]="isCollapsed4" [isAnimated]="true">
+          <div id="collapse4" [collapse]="isCollapsed4" [isAnimated]="true" #target4>
             <div class="well well-lg card card-block card-header">
               <img src="assets/img/technologies.jpg" class="img-thumbnail" />
             </div>
@@ -240,8 +244,9 @@
             (click)="isCollapsed5 = !isCollapsed5"
             [attr.aria-expanded]="!isCollapsed5"
             aria-controls="collapse5"
+            (click)="scrollQuestion(target5)"
           >
-            <h5>
+            <h5 #target5>
               Turiu kitų klausimų, su kuo susisiekti?
               <span *ngIf="isCollapsed5"><i class="fas fa-angle-down"></i></span>
               <span *ngIf="!isCollapsed5"><i class="fas fa-angle-up"></i></span>
@@ -267,8 +272,9 @@
             aria-controls="collapse6"
             data-toggle="collapse"
             data-target="#collapse6"
+            (click)="scrollQuestion(target6)"
           >
-            <h5>
+            <h5 >
               Kokiose srityse dirbame?
               <span *ngIf="isCollapsed6"><i class="fas fa-angle-down"></i></span>
               <span *ngIf="!isCollapsed6"><i class="fas fa-angle-up"></i></span>
@@ -279,7 +285,7 @@
             class="collapse"
             id="collapse6"
             [collapse]="isCollapsed6"
-            [isAnimated]="true"
+            [isAnimated]="true" #target6
           >
             <div class="well well-lg card card-block card-header">
               <p>

@@ -9,7 +9,7 @@ import {copyrigthList} from './listOfItems';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit, AfterViewChecked {
+export class HomePageComponent implements OnInit{
 
   @ViewChild('nextElement', {static: false}) searchElement: ElementRef;
 
@@ -42,12 +42,14 @@ export class HomePageComponent implements OnInit, AfterViewChecked {
     }
     this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-
-  ngAfterViewChecked() {
-    if(this.showBlock){
-      this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      this.showBlock = true;
-    }
+  public scrollQuestion(element: any) {
+    element.scrollIntoView({ behavior: 'smooth' });
   }
+  // ngAfterViewChecked() {
+  //   if(this.showBlock){
+  //     this.searchElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //     this.showBlock = true;
+  //   }
+  // }
 
 }
