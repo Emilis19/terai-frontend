@@ -134,13 +134,13 @@ export class RegistrationFormComponent implements OnInit {
     
   onSubmit() {
     this.application = this.applicationForm.value;
- // this.registrationService.addRegistration(this.application).subscribe(() => {
+  this.registrationService.addRegistration(this.application).subscribe(() => {
     this.application = new Application('', '', '', '', '','','','','','','','','','');
-  //   this.serverErrorMessage = '';
- //   },
-    // error => this.serverErrorMessage = error
+    this.serverErrorMessage = '';
+    },
+     error => this.serverErrorMessage = error
   //  error => this.serverErrorMessage = "Registracija negalima. Tu jau esi registruotas !"
-  // );
+   );
   }
 
   get firstName() { return this.applicationForm.get('firstName'); }
