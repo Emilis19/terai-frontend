@@ -1,6 +1,0 @@
-{
-    "/api": {
-      "target": "https://terai-backend-staging.herokuapp.com/",
-      "secure": false
-    }
-  }
