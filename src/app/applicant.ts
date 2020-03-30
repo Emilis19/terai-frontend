@@ -2,7 +2,7 @@ export interface Applicant {
     id:string;
     firstName: string;
     dateCreated: string;
-   // status: string;
+    status: object;
    
     }
     
