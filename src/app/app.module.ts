@@ -12,20 +12,24 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ApplicantTableComponent } from './applicant-table/applicant-table.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     RegistrationFormComponent,
     CopyrightComponent,
-    ApplicantTableComponent
+    ApplicantTableComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
