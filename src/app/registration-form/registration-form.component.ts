@@ -45,6 +45,10 @@ export class RegistrationFormComponent implements OnInit {
     [Validators.required
     ]],
 
+    timeReason: [" ", [
+      Validators.required
+    ]],
+
     contractAgreement: ['',
     [Validators.required
     ]],
@@ -97,6 +101,16 @@ export class RegistrationFormComponent implements OnInit {
 
   constructor(private registrationService: RegistrationService, private fb: FormBuilder) { }
  
+  additional=false;
+  onchange2(args){
+    this.additional = true;
+    return this.additional;
+  }
+
+  onchange3(args){
+    this.additional = false;
+    return this.additional;
+  }
  
   
     answer=false;
@@ -112,7 +126,7 @@ export class RegistrationFormComponent implements OnInit {
 
   ngOnInit() {
     this.copyrightList = copyrigthList;
-    this.application = new Application('', '', '','', '', '', '', '', '', '', '', '', '', '', '');
+    this.application = new Application('', '', '','', '', '', '', '', '', '', '', '', '', '', '', '');
   
   }
 
@@ -134,13 +148,13 @@ export class RegistrationFormComponent implements OnInit {
     
   onSubmit() {
     this.application = this.applicationForm.value;
- // this.registrationService.addRegistration(this.application).subscribe(() => {
-    this.application = new Application('', '', '', '', '','','','','','','','','','');
-  //   this.serverErrorMessage = '';
- //   },
-    // error => this.serverErrorMessage = error
-  //  error => this.serverErrorMessage = "Registracija negalima. Tu jau esi registruotas !"
-  // );
+  this.registrationService.addRegistration(this.application).subscribe(() => {
+    this.application = new Application('', '', '', '', '','','','','','','','','','', '');
+   this.serverErrorMessage = '';
+   },
+   error => this.serverErrorMessage = error
+   //error => this.serverErrorMessage = "Registracija negalima. Tu jau esi registruotas !"
+  );
   }
 
   get firstName() { return this.applicationForm.get('firstName'); }
@@ -157,6 +171,7 @@ export class RegistrationFormComponent implements OnInit {
   get hobbies() {return this.applicationForm.get('hobbies'); }
   get referenceToIt() {return this.applicationForm.get('referenceToIt'); }
   get linkedinUrl() {return this.applicationForm.get('linkedinUrl'); }
+  get timeReason() {return this.applicationForm.get('timeReason');}
 
 
 }

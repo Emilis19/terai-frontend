@@ -17,6 +17,7 @@ export class Application {
     hobbies?: string,
     referenceToIt?: string,
     id?: string,
+    timeReason?: string
     )  {
 
     }

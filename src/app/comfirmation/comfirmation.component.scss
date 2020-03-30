@@ -4,33 +4,14 @@
     background-size: cover;
     z-index: -1;
     box-sizing: border-box;
-    //position: fixed;
+  //  position: fixed;
+  min-height: 100vh;
+
 }
+
 .form-box{
     background: rgba(238, 237, 237, 0.85);
     margin-top: 25px;
     padding-bottom: 50px;
     padding-top: 50px;
   }
-  .title-box{
-    background: rgba(238, 237, 237, 0.85);
-
-  }
-
-  .moreImportant {
-    font-size: 20px;
-  }
-
-  .inputText {
-    font-weight: bolder;
-  }
-
-  .inputTextAdditional {
-    font-style: italic;
-    font-size: small;
-  }
-
-  
-
-  
-

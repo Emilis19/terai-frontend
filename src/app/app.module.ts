@@ -12,7 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { TestComponent } from './test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MyInterceptor } from './shared/interceptor/my.interceptor';
+import {RedirectInterceptor} from './shared/interceptor/redirect.interceptor';
+import { ComfirmationComponent } from './comfirmation/comfirmation.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomePageComponent,
     RegistrationFormComponent,
     CopyrightComponent,
-    TestComponent
+    TestComponent,
+    ComfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     CollapseModule.forRoot()
   ],
-  providers: [],
+  providers: [// {provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: RedirectInterceptor, multi: true}],
+    
   bootstrap: [AppComponent]
 })
 export class AppModule { }
