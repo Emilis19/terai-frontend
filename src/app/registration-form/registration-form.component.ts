@@ -152,7 +152,7 @@ export class RegistrationFormComponent implements OnInit {
    this.serverErrorMessage = '';
    },
    error => this.serverErrorMessage = error
-   //error => this.serverErrorMessage = "Registracija negalima. Tu jau esi registruotas !"
+
   );
   }
 

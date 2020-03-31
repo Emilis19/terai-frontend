@@ -109,11 +109,8 @@
 
 
            <div *ngIf="answer" class="form-group"> 
-            <!-- <div [hidden] = "!edited" class="form-group">--> 
-            
               <label class ="inputText" for="contractReason">Komentaras dėl sutarties</label>
               <input type="text" name="contractReason" class="form-control" id="contractReason" placeholder="Parašyk komentarą" formControlName="contractReason"/>
-              <!-- <input *ngIf="application.contractAgreement===false" [(ngModel)]="application.contractReason" type="text" name="contractReason" class="form-control" id="contractReason" placeholder="Komentaras"> -->
                 <div
                 [hidden]="(applicationForm.controls.contractReason.valid || contractReason.pristine) && likedTechnologies.untouched"
                 class="alert p-0">
@@ -235,16 +232,11 @@
           <div class ="pb-3, inputTextAdditional"><strong> * PILDYTI NĖRA PRIVALOMA</strong></div>
 
       
-      
-         <!-- Is form valid? {{ applicationForm.valid }} <br /> -->
+    
      <div class="alert alert-danger p-4 m-2" role="alert" *ngIf="serverErrorMessage">
             {{ serverErrorMessage }}
           </div> 
-          <div class="alert alert-success" role="alert" *ngIf="confirmationMessage">
-            {{confirmationMessage}}
-          </div> 
-
-
+      
 <div class ="container d-flex flex-row p-3">
 <div class="ml-auto m-2">
   <button type="button" class="btn-lg btn btn-light" [routerLink]="'/home'" > Grįžti </button> 
