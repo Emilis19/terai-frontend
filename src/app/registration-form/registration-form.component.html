@@ -96,7 +96,7 @@
            
             <div class = "form-group" > 
              <label class ="inputText" for="contractAgreement">Ar bus galimybė pasirašyti trišalę praktikos sutartį? Jei ne - pakomentuok plačiau</label><br>
-             <input  name="contractAgreement" ng-control="options" type="radio" [value]="true" value="true" formControlName="contractAgreement" (change)="onchange1($event)" > Taip <br>
+             <input  name="contractAgreement" ng-control="options" type="radio" [value]="true" value="true" formControlName="contractAgreement" (change)=onchange1($event) > Taip <br>
              <input name="contractAgreement" ng-control="options" type="radio" [value]="false" value="false" formControlName="contractAgreement" (change)=onchange($event)> Ne <br>
              <div
              [hidden]="applicationForm.controls.contractAgreement.pristine && likedTechnologies.untouched"
@@ -237,7 +237,7 @@
       
       
          <!-- Is form valid? {{ applicationForm.valid }} <br /> -->
-     <div class="alert alert-danger" role="alert" *ngIf="serverErrorMessage">
+     <div class="alert alert-danger p-4 m-2" role="alert" *ngIf="serverErrorMessage">
             {{ serverErrorMessage }}
           </div> 
           <div class="alert alert-success" role="alert" *ngIf="confirmationMessage">
@@ -262,7 +262,7 @@
               </button>
             </div>
             <div class="m-2">
-              <button type="reset" class="btn btn-light btn-lg">Išvalyti<br></button>
+              <button type="reset" class="btn btn-light btn-lg" (click)="refreshPage()">Išvalyti<br></button>
             </div>
 
             

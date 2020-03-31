@@ -10,12 +10,13 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 import { CopyrightComponent } from './copyright/copyright.component';
 import { FormsModule } from '@angular/forms';
 import { TestComponent } from './test/test.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyInterceptor } from './shared/interceptor/my.interceptor';
 import {RedirectInterceptor} from './shared/interceptor/redirect.interceptor';
 import { ComfirmationComponent } from './comfirmation/comfirmation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ComfirmationComponent } from './comfirmation/comfirmation.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
     CollapseModule.forRoot()
   ],
   providers: [// {provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true},

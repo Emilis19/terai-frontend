@@ -15,7 +15,6 @@ export class RegistrationService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-     // 'Authorization-bearer': localStorage.getItem('TOKEN')
     })
   }
   constructor(private http: HttpClient) { }
@@ -70,16 +69,17 @@ export class RegistrationService {
  }
 
 
- // errorHandler(error) {
-   // let errorMessage = '';
-  //  if (error.error instanceof ErrorEvent) {
-  //    errorMessage = 'Error: ${error.massage}';
-  //  }
+// errorHandler(error) {
+ //  let errorMessage = '';
+ //  if (error.error instanceof ErrorEvent) {
+ //   errorMessage = 'Error: ${error.error.massage}';
+ // }
 //else {
  // errorMessage = 'Error Code: ${error.status}\nMessage: ${error.message}';
 //}
 //return throwError (errorMessage);
-//  }
+// }
+
 
 }
 
