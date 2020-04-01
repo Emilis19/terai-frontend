@@ -1,19 +1,24 @@
-export interface Application {
-    id?: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    academyTime: boolean;
-    contractAgreement: boolean;
-    contractReason: string;
-    likedTechnologies: string;
-    reasonForApplying: string;
-    school?: string;
-    degree?: string;
-    mobileNumber?: string;
-    linkedinUrl?: string;
-    photo?: string;
-    hobbies?: string;
-    referenceToIt?: string;
-    status: object;
+export class Application {
+
+    constructor (
+    firstName: string,
+    lastName: string,
+    email: string,
+    academyTime: string,
+    contractAgreement: string,
+    contractReason: string,
+    likedTechnologies: string,
+    reasonForApplying: string,
+    school?: string,
+    degree?: string,
+    mobileNumber?: string,
+    linkedinUrl?: string,
+    photo?: string,
+    hobbies?: string,
+    referenceToIt?: string,
+    id?: string,
+    timeReason?: string
+    )  {
+
     }
+}
