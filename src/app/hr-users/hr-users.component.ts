@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../table-service/user.service';
+import { AccountService } from '../shared/services/account.service';
 
 @Component({
   selector: 'app-hr-users',
@@ -9,7 +9,7 @@ import { UserService } from '../table-service/user.service';
 export class HrUsersComponent implements OnInit {
 
   public users=[ ];
-  constructor(private userService: UserService) { }
+  constructor(private userService: AccountService) { }
 
   ngOnInit(): void {
     this. userService. getUsers()

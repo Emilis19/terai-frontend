@@ -15,15 +15,16 @@ import {ForgotPasswordComponent} from "./forgot-password/forgot-password.compone
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
   { path: 'registration', component: RegistrationFormComponent},
-  {path: 'hr-dashboard', component:  ApplicantTableComponent},
+  {path: 'hr', component:  ApplicantTableComponent},
   {path: 'applicant/:id', component: ProfilePageComponent},
-  {path: 'admin-dashboard', component: HrUsersComponent},
+  {path: 'admin', component: HrUsersComponent},
   {path: 'confirmation', component: ComfirmationComponent},
 
-  {path:'application/review', component: ApplicationReviewComponent},
+  {path:'application', component: ApplicationReviewComponent},
   {path: 'login', component: LoginComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+
   { path: '**', redirectTo: '/home'}
 ];
 

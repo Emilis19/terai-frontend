@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {from, Observable} from 'rxjs';
-import {Application} from '../shared/request/application';
+import {ApplicationFullResponse, ApplicationRequest, ApplicationStatusRequest} from '../shared/models/application';
 import {ActivatedRoute} from '@angular/router';
-import {ApplicantService} from '../table-service/applicant.service';
+import {ApplicationService} from '../shared/services/application.service';
 import {switchMap, tap} from "rxjs/operators";
 import {FormGroup, FormBuilder} from "@angular/forms";
 
@@ -14,13 +14,14 @@ import {FormGroup, FormBuilder} from "@angular/forms";
 export class ProfilePageComponent implements OnInit {
 
   serverErrorMessage: string;
-  public application: Application;
+  public application: ApplicationFullResponse;
+  private statusRequest: ApplicationStatusRequest;
   public applicationContent: string[];
   private id: string;
 
   constructor(
     private route: ActivatedRoute,
-    private applicantService: ApplicantService,
+    private applicantService: ApplicationService,
     private fb: FormBuilder
   ) {
   }
@@ -34,6 +35,8 @@ export class ProfilePageComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get("id");
     this.applicantService.getApplication(this.id).subscribe(data =>this.application=data);
   }
+  //get f() { return this.applicationForm.controls; }
+
 
   // onSubmit() {
   //   this.application = this.applicationForm.value;
@@ -46,6 +49,8 @@ export class ProfilePageComponent implements OnInit {
   // );
 
   onSubmit() {
-    this.applicantService.updateApplication(this.application)
+    //this.statusRequest = { id: this.id, status: this.applicationForm.value};
+    //console.log(this.applicationForm.value);
+    //this.applicantService.updateStatus(this.statusRequest)
   }
 }

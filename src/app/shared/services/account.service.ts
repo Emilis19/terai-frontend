@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../user';
+import { Account } from '../models/account';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class AccountService {
 
-  private Appurl= 'http://localhost:8080';
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
      // 'Authorization-bearer': localStorage.getItem('TOKEN')
-    })}
+    })};
   constructor(private httpClient: HttpClient) { }
 
-  getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(`${this.Appurl}/accounts`).pipe();
+  getUsers(): Observable<Account[]> {
+    return this.httpClient.get<Account[]>(`${environment.apiUrl}/accounts`).pipe();
   }
 }

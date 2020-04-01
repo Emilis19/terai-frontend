@@ -18,15 +18,15 @@ import { HrUsersComponent } from './hr-users/hr-users.component';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MyInterceptor } from './shared/interceptor/my.interceptor';
-import {RedirectInterceptor} from './shared/interceptor/redirect.interceptor';
+import { MyInterceptor } from './shared/interceptors/my.interceptor';
+import {RedirectInterceptor} from './shared/interceptors/redirect.interceptor';
 import { ComfirmationComponent } from './comfirmation/comfirmation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ApplicationReviewComponent } from './application-review/application-review.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import {JwtInterceptor} from "./shared/interceptor/jwt.interceptor";
+import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
 
 
 @NgModule({

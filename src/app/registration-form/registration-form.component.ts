@@ -1,10 +1,10 @@
 
 
 import { Component, OnInit} from '@angular/core';
-import { Application } from '../shared/request/application';
+import { ApplicationRequest } from '../shared/models/application';
 import { Copyright } from '../copyright';
 import { copyrigthList } from './listOfItems';
-import { RegistrationService } from '../service/registration.service';
+import { RegistrationService } from '../shared/services/registration.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 
@@ -18,7 +18,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 
 export class RegistrationFormComponent implements OnInit {
 
-  application: Application;
+  application: ApplicationRequest;
   copyrightList: Copyright[];
   serverErrorMessage: string;
   numericNumberReg= '[\+[0-9]{0,11}]+';

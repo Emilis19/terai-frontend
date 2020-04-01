@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplicantService } from '../table-service/applicant.service';
+import { ApplicationService } from '../shared/services/application.service';
 
 @Component({
   selector: 'app-applicant-table',
@@ -9,7 +9,7 @@ import { ApplicantService } from '../table-service/applicant.service';
 export class ApplicantTableComponent implements OnInit {
 
   public applicants=[ ];
-  constructor(private applicantService: ApplicantService) { }
+  constructor(private applicantService: ApplicationService) { }
 
   ngOnInit(): void {
    this.applicantService.getApplicants()
