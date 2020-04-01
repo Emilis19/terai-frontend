@@ -25,12 +25,25 @@ export class ApplicantService {
     return this.httpClient.get<Applicant[]>(`${this.Appurl}/applications`).pipe();
   }
 
-  getApplication({ id }):Observable<Application>{
+  getApplication(id : string): Observable<Application> {
     return this.httpClient.get<Application>(`${this.Appurl}/applications/${id}`);
   }
 
-  updateApplication(id: String, application: Application): Observable<Application> {
-    return this.httpClient.put<Application>(`${this.Appurl}/application/${id}`, application, this.httpOptions).pipe(
-     );
+//   updateApplication(id: String, application: Application): Observable<Application> {
+//     return this.httpClient.put<Application>(`${this.Appurl}/application/${id}`, application, this.httpOptions).pipe(
+//      );
 
+// }
+
+updateApplication(application: Application): Observable<Application> {
+  return this.httpClient.put<Application>(`${this.Appurl}/application/${application.id}`, application, this.httpOptions).pipe(
+  );
+
+    // getApplication(id : string): Observable<Application> {
+    //   return this.httpClient.get<Application>(`${this.Appurl}/applications/${id}`);
+    // }
+
+
+
+}
 }

@@ -11,9 +11,9 @@ import { HrUsersComponent } from './hr-users/hr-users.component';
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
   { path: 'registration', component: RegistrationFormComponent},
-  {path: 'applicants', component:  ApplicantTableComponent},
+  {path: '/hr-dashboard', component:  ApplicantTableComponent},
   {path: 'applicant/:id', component: ProfilePageComponent},
-  {path: 'users', component: HrUsersComponent},
+  {path: 'admin-dashboard', component: HrUsersComponent},
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home'}
