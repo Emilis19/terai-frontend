@@ -18,6 +18,6 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(`${this.Appurl}/accounts/all`).pipe();
+    return this.httpClient.get<User[]>(`${this.Appurl}/accounts`).pipe();
   }
 }
