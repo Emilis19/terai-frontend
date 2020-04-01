@@ -15,4 +15,5 @@ export interface Application {
     photo?: string;
     hobbies?: string;
     referenceToIt?: string;
+    status: object;
     }

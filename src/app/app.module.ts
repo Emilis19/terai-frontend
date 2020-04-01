@@ -14,6 +14,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ApplicantTableComponent } from './applicant-table/applicant-table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { HrUsersComponent } from './hr-users/hr-users.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     RegistrationFormComponent,
     CopyrightComponent,
     ApplicantTableComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    HrUsersComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Applicant } from '../applicant';
 import { Observable } from 'rxjs';
 import { Application } from '../shared/request/application';
+import { User } from '../user';
 
 
 @Injectable({
@@ -21,10 +22,15 @@ export class ApplicantService {
   constructor(private httpClient: HttpClient) { }
 
   getApplicants(): Observable<Applicant[]> {
-    return this.httpClient.get<Applicant[]>(`${this.Appurl}/application`).pipe();
+    return this.httpClient.get<Applicant[]>(`${this.Appurl}/applications`).pipe();
   }
 
   getApplication({ id }):Observable<Application>{
-    return this.httpClient.get<Application>(`${this.Appurl}/application/${id}`);
+    return this.httpClient.get<Application>(`${this.Appurl}/applications/${id}`);
   }
+
+  updateApplication(id: String, application: Application): Observable<Application> {
+    return this.httpClient.put<Application>(`${this.Appurl}/application/${id}`, application, this.httpOptions).pipe(
+     );
+
 }
