@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
+  errorDisplayable = '';
+  showSpinner = false;
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -37,10 +39,13 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
+    this.showSpinner = true;
     this.submitted = true;
-
+    this.error = '';
+    this.errorDisplayable = '';
     // stop here if form is invalid
     if (this.loginForm.invalid) {
+      this.showSpinner = false;
       return;
     }
 
@@ -50,12 +55,14 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          console.log('/'+this.authenticationService.currentUserValue.role);
+          this.showSpinner = false;
           this.router.navigate(['/'+this.authenticationService.currentUserValue.role]);
         },
         error => {
           this.error = error;
+          this.errorDisplayable = "Neteisingi prisijungimo duomenys";
           this.loading = false;
+          this.showSpinner = false;
         });
   }
 }

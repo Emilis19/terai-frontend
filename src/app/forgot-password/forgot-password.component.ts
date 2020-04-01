@@ -16,6 +16,9 @@ export class ForgotPasswordComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
+  errorDisplayable = '';
+  successMessage = '';
+  showSpinner = false;
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -36,20 +39,27 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.error = '';
+    this.errorDisplayable = '';
+    this.successMessage = '';
+    this.showSpinner = true;
 
-    // stop here if form is invalid
+
     if (this.forgotPasswordForm.invalid) {
+      this.showSpinner = false;
       return;
     }
     this.authenticationService.forgotPassword(this.forgotPasswordForm.controls.userEmail.value)
       .pipe(first())
       .subscribe(
         data => {
-          console.log('success');
-          //this.router.navigate(['/'+this.authenticationService.currentUserValue.role]);
+          this.successMessage="Naujas slaptažodis išsiųstas";
+          this.showSpinner = false;
         },
         error => {
+          this.showSpinner = false;
           this.error = error;
+          this.errorDisplayable = "Toks vartotojas neegzistuoja";
           this.loading = false;
         });
   }

@@ -2,6 +2,10 @@
   <div id="formContent">
     <h1>Prisijungimas </h1>
     <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+      <div *ngIf="showSpinner" class="spinner-border text-info" role="status">
+        <span class="sr-only">Loading...</span>
+      </div><br/>
+      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{errorDisplayable}}</div>
       <label for="userEmail">El. paštas</label>
       <input type="email" name="userEmail" formControlName="userEmail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userEmail.errors }"
              id="userEmail">
