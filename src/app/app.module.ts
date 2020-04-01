@@ -23,6 +23,7 @@ import {RedirectInterceptor} from './shared/interceptor/redirect.interceptor';
 import { ComfirmationComponent } from './comfirmation/comfirmation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ApplicationReviewComponent } from './application-review/application-review.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {JwtInterceptor} from "./shared/interceptor/jwt.interceptor";
@@ -34,6 +35,8 @@ import {JwtInterceptor} from "./shared/interceptor/jwt.interceptor";
     HomePageComponent,
     RegistrationFormComponent,
     CopyrightComponent,
+    ComfirmationComponent,
+    ApplicationReviewComponent,
 
     ApplicantTableComponent,
     ProfilePageComponent,
@@ -41,7 +44,6 @@ import {JwtInterceptor} from "./shared/interceptor/jwt.interceptor";
     ComfirmationComponent,
     LoginComponent,
     ForgotPasswordComponent
-
   ],
   imports: [
     BrowserModule,

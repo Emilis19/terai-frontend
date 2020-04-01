@@ -6,6 +6,7 @@ import { ApplicantTableComponent } from './applicant-table/applicant-table.compo
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { HrUsersComponent } from './hr-users/hr-users.component';
 import { ComfirmationComponent } from './comfirmation/comfirmation.component';
+import {ApplicationReviewComponent} from './application-review/application-review.component';
 import {LoginComponent} from "./login/login.component";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 
@@ -18,6 +19,8 @@ const routes: Routes = [
   {path: 'applicant/:id', component: ProfilePageComponent},
   {path: 'admin-dashboard', component: HrUsersComponent},
   {path: 'confirmation', component: ComfirmationComponent},
+
+  {path:'application/review', component: ApplicationReviewComponent},
   {path: 'login', component: LoginComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
