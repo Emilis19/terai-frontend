@@ -94,7 +94,7 @@ export class RegistrationFormComponent implements OnInit {
     ]],
 
     linkedinUrl:['', [
-     // Validators.pattern("https?://.+"),
+      Validators.pattern("https?://.+"),
      // this.urlDomainValidator
     ]],
   });
@@ -112,7 +112,6 @@ export class RegistrationFormComponent implements OnInit {
     return this.additional;
   }
  
-  
     answer=false;
     onchange(args){
       this.answer = true;
@@ -153,9 +152,14 @@ export class RegistrationFormComponent implements OnInit {
    this.serverErrorMessage = '';
    },
    error => this.serverErrorMessage = error
-   //error => this.serverErrorMessage = "Registracija negalima. Tu jau esi registruotas !"
+
   );
   }
+
+  refreshPage() {
+    window.location.reload();
+  }
+
 
   get firstName() { return this.applicationForm.get('firstName'); }
   get lastName() { return this.applicationForm.get('lastName');}

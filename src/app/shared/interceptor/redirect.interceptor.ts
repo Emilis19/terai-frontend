@@ -3,11 +3,13 @@ import { HttpEvent, HttpHandler, HttpRequest, HttpErrorResponse, HttpInterceptor
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class RedirectInterceptor implements HttpInterceptor {
     constructor(
-        private router: Router
+        private router: Router,
+        public toasterService: ToastrService
     ) {}
 
     intercept(
@@ -19,22 +21,27 @@ export class RedirectInterceptor implements HttpInterceptor {
                 tap((event: HttpEvent<any>) => {
                     if (event instanceof HttpResponse && event.status === 200 && this.router.url == '/registration') {
                         this.router.navigate(['/confirmation'])}}),
-                     //   this.toastr.success("Object created."),
-               // retry(1),
-                catchError((error: HttpErrorResponse) => {
-                    let errorMessage = '';
-                    if (error.error instanceof ErrorEvent) {
-                        if (error.statusText === "BAD_REQUEST" || error.status === 404 || error.status===401 || error.status===402 || error.status==403)
-                       errorMessage = `Error: ${error.message}`;
-                        //errorMessage = "Jau yra toks el pastas";
-                    } else {
-                        // server-side error
-                        errorMessage = `Error Status: ${error.status}\nMessage: ${error.message}`;
-                       // errorMessage = "Jau yra toks el pastas";
+                        //this.toastr.success("Object created."),
+               retry(1),
+               catchError((error: HttpErrorResponse) => {
+                   let errorMessage = '';
+                       if (error.status === 400 ) {
+                    errorMessage = `Klaida ! ${error.error.message}`;
+                } 
+                else {
+                     
+                       errorMessage = " Klaida - bandykite vėliau";
                     }
-                    console.log(errorMessage);
-                    return throwError(errorMessage);
-                }),
+                   console.log(errorMessage);
+                   return throwError(errorMessage);
+                })
+
+
+
+
+
+
+              
 
             )
     }
