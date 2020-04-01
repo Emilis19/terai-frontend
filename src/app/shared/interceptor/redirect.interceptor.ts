@@ -19,7 +19,7 @@ export class RedirectInterceptor implements HttpInterceptor {
         return next.handle(request)
             .pipe(
                 tap((event: HttpEvent<any>) => {
-                    if (event instanceof HttpResponse && event.status === 200) {
+                    if (event instanceof HttpResponse && event.status === 200 && this.router.url == '/registration') {
                         this.router.navigate(['/confirmation'])}}),
                         //this.toastr.success("Object created."),
                retry(1),
