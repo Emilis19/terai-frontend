@@ -23,6 +23,7 @@ export class RegistrationFormComponent implements OnInit {
   serverErrorMessage: string;
   numericNumberReg= '[\+[0-9]{0,11}]+';
   confirmationMessage='';
+  additional=false;
 
 
   applicationForm = this.fb.group({
@@ -41,7 +42,7 @@ export class RegistrationFormComponent implements OnInit {
       Validators.maxLength(32),
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
     ]],
-    academyTime: ['', 
+    academyTime: ['',
     [Validators.required
     ]],
 
@@ -86,11 +87,11 @@ export class RegistrationFormComponent implements OnInit {
     ]  ],
 
     hobbies: ['', [
-    
+
   ]],
-    
+
     referenceToIt:['', [
-     
+
     ]],
 
     linkedinUrl:['', [
@@ -100,8 +101,8 @@ export class RegistrationFormComponent implements OnInit {
   });
 
   constructor(private registrationService: RegistrationService, private fb: FormBuilder) { }
- 
-  additional=false;
+
+
   onchange2(args){
     this.additional = true;
     return this.additional;
@@ -111,7 +112,7 @@ export class RegistrationFormComponent implements OnInit {
     this.additional = false;
     return this.additional;
   }
- 
+
     answer=false;
     onchange(args){
       this.answer = true;
@@ -125,11 +126,10 @@ export class RegistrationFormComponent implements OnInit {
 
   ngOnInit() {
     this.copyrightList = copyrigthList;
-    this.application = new Application('', '', '','', '', '', '', '', '', '', '', '', '', '', '', '');
-  
+    this.application = null;
   }
 
-  
+
     urlDomainValidator(control: FormControl){
       let url = control.value;
       if (url != -1) {
@@ -144,15 +144,15 @@ export class RegistrationFormComponent implements OnInit {
         return null;
       }
     }
-    
+
   onSubmit() {
     this.application = this.applicationForm.value;
   this.registrationService.addRegistration(this.application).subscribe(() => {
-    this.application = new Application('', '', '', '', '','','','','','','','','','', '');
+    this.application = null;
    this.serverErrorMessage = '';
    },
    error => this.serverErrorMessage = error
-   //error => this.serverErrorMessage = "Registracija negalima. Tu jau esi registruotas !"
+
   );
   }
 
@@ -176,6 +176,4 @@ export class RegistrationFormComponent implements OnInit {
   get referenceToIt() {return this.applicationForm.get('referenceToIt'); }
   get linkedinUrl() {return this.applicationForm.get('linkedinUrl'); }
   get timeReason() {return this.applicationForm.get('timeReason');}
-
-
 }

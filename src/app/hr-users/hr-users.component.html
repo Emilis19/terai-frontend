@@ -1,0 +1,25 @@
+<h2>Hr naudotojų lentelė</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">Vardas</th>
+      <th scope="col">Pavardė</th>
+      <th scope="col">Paskutinio prisijungimo data</th>
+      <th scope="col">Peržiūrėtų paraiškų skaičius</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+
+      <td>{{ user.name }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.lastLoggedIn.toString().substr(0,10)}}</td>
+      <td>{{ user.reviewedApplications}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!--  Name , Last name, Last logged in date, number of Applications reviewed) -->
