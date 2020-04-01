@@ -9,6 +9,16 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { CopyrightComponent } from './copyright/copyright.component';
 
+import { FormsModule } from '@angular/forms';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ApplicantTableComponent } from './applicant-table/applicant-table.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { HrUsersComponent } from './hr-users/hr-users.component';
+
+
 import { TestComponent } from './test/test.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -20,16 +30,23 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     RegistrationFormComponent,
     CopyrightComponent,
+
+    ApplicantTableComponent,
+    ProfilePageComponent,
+    HrUsersComponent
+
     TestComponent,
     ComfirmationComponent,
     LoginComponent,
     ForgotPasswordComponent
+
   ],
   imports: [
     BrowserModule,
@@ -37,10 +54,15 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     // FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+
+    CollapseModule.forRoot(),
+    HttpClientModule
+
     HttpClientModule,
     ToastrModule.forRoot(),
     CollapseModule.forRoot()
     FormsModule
+
   ],
   providers: [// {provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: RedirectInterceptor, multi: true}],

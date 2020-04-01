@@ -1,0 +1,33 @@
+<h2>Aplikantų lentelė</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <!-- <th scope="col">Aplikanto unikalus numeris</th> -->
+      <th scope="col">Vardas</th>
+      <th scope="col">Pateikimo data</th>
+      <th scope="col">Aplikanto statusas</th>
+      <th scope="col">Nuoroda į profilį</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let applicant of applicants">
+      <!-- <th scope="row">{{ applicant.id }}</th> -->
+      <td>{{ applicant.firstName }}</td>
+      <td>{{ applicant.dateCreated }}</td>
+      <td>{{ applicant.status.name }}</td>
+      <td>
+        <a [routerLink]="['/applicant', applicant.id]">Pežiūrėti profilį</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <p class="text-right">
+      <a
+         [title]="'Read full profile: ' +applicant.firstName"
+        [routerLink]="['/post', applicant.id]"
+        >Read more</a
+      >
+     
+    </p> -->
