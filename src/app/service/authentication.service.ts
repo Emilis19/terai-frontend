@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { environment} from '../../environments/environment';
 import {User} from "../models/User";
+import {Application} from "../shared/request/application";
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -28,6 +29,11 @@ export class AuthenticationService {
                 this.currentUserSubject.next(user);
                 return user;
             }));
+    }
+    forgotPassword(email: string) {
+      return this.http.post<Application>(`${environment.apiUrl}/credentials/forgot`, {email}).pipe(
+        //   catchError(this.errorHandler)
+      );
     }
 
     logout() {

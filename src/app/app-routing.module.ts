@@ -5,6 +5,7 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 import { TestComponent } from './test/test.component';
 import { ComfirmationComponent } from './comfirmation/comfirmation.component';
 import {LoginComponent} from "./login/login.component";
+import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationFormComponent},
   {path: 'confirmation', component: ComfirmationComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'test', component: TestComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home'}

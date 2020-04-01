@@ -6,12 +6,12 @@ import {first} from "rxjs/operators";
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.scss']
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+export class ForgotPasswordComponent implements OnInit {
+  forgotPasswordForm: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
@@ -22,36 +22,31 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private authenticationService: AuthenticationService) {
     if (this.authenticationService.currentUserValue) {
-      authenticationService.logout();
-      //this.router.navigate(['/'+this.authenticationService.currentUserValue.role]);
+      this.router.navigate(['/'+this.authenticationService.currentUserValue.role]);
     }
   }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      userEmail: ['', Validators.required],
-      password: ['', Validators.required]
+    this.forgotPasswordForm = this.formBuilder.group({
+      userEmail: ['', Validators.required]
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-  get f() { return this.loginForm.controls; }
+  get f() { return this.forgotPasswordForm.controls; }
 
   onSubmit() {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.loginForm.invalid) {
+    if (this.forgotPasswordForm.invalid) {
       return;
     }
-
-
-    this.loading = true;
-    this.authenticationService.login(this.loginForm.controls.userEmail.value, this.loginForm.controls.password.value)
+    this.authenticationService.forgotPassword(this.forgotPasswordForm.controls.userEmail.value)
       .pipe(first())
       .subscribe(
         data => {
-          console.log('/'+this.authenticationService.currentUserValue.role);
-          this.router.navigate(['/'+this.authenticationService.currentUserValue.role]);
+          console.log('success');
+          //this.router.navigate(['/'+this.authenticationService.currentUserValue.role]);
         },
         error => {
           this.error = error;

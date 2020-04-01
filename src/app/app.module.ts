@@ -17,6 +17,7 @@ import { MyInterceptor } from './shared/interceptor/my.interceptor';
 import {RedirectInterceptor} from './shared/interceptor/redirect.interceptor';
 import { ComfirmationComponent } from './comfirmation/comfirmation.component';
 import { LoginComponent } from './login/login.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LoginComponent } from './login/login.component';
     CopyrightComponent,
     TestComponent,
     ComfirmationComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
