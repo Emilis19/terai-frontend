@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,17 +8,14 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { CopyrightComponent } from './copyright/copyright.component';
 
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ApplicantTableComponent } from './applicant-table/applicant-table.component';
-import { HttpClientModule } from '@angular/common/http';
+
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { HrUsersComponent } from './hr-users/hr-users.component';
 
 
-import { TestComponent } from './test/test.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyInterceptor } from './shared/interceptor/my.interceptor';
@@ -29,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import {JwtInterceptor} from "./shared/interceptor/jwt.interceptor";
 
 
 @NgModule({
@@ -40,9 +37,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 
     ApplicantTableComponent,
     ProfilePageComponent,
-    HrUsersComponent
-
-    TestComponent,
+    HrUsersComponent,
     ComfirmationComponent,
     LoginComponent,
     ForgotPasswordComponent
@@ -56,16 +51,15 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     BrowserAnimationsModule,
 
     CollapseModule.forRoot(),
-    HttpClientModule
-
     HttpClientModule,
     ToastrModule.forRoot(),
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
     FormsModule
 
   ],
   providers: [// {provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true},
-    { provide: HTTP_INTERCEPTORS, useClass: RedirectInterceptor, multi: true}],
+    { provide: HTTP_INTERCEPTORS, useClass: RedirectInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
 
   bootstrap: [AppComponent]
 })

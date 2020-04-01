@@ -36,7 +36,7 @@ export class ApplicantService {
 // }
 
 updateApplication(application: Application): Observable<Application> {
-  return this.httpClient.put<Application>(`${this.Appurl}/application/${application.id}`, application, this.httpOptions).pipe(
+  return this.httpClient.put<Application>(`${this.Appurl}/application/${''}`, application, this.httpOptions).pipe(
   );
 
     // getApplication(id : string): Observable<Application> {

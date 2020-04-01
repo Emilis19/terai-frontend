@@ -14,8 +14,8 @@
     <tr *ngFor="let applicant of applicants">
       <!-- <th scope="row">{{ applicant.id }}</th> -->
       <td>{{ applicant.firstName }}</td>
-      <td>{{ applicant.dateCreated }}</td>
-      <td>{{ applicant.status.name }}</td>
+      <td>{{ applicant.dateCreated.toString().substr(0,10) }}</td>
+      <td>{{ applicant.status }}</td>
       <td>
         <a [routerLink]="['/applicant', applicant.id]">Pežiūrėti profilį</a>
       </td>
@@ -29,5 +29,5 @@
         [routerLink]="['/post', applicant.id]"
         >Read more</a
       >
-     
+
     </p> -->

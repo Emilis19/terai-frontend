@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 })
 export class RegistrationService {
 
-  apiUrl = 'https://terai-backend-staging.herokuapp.com';
+  apiUrl = 'http://localhost:8080';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -19,27 +19,27 @@ export class RegistrationService {
   }
   constructor(private http: HttpClient) { }
 
-  
+
   getRegistrationForm(): Observable<Application[]> {
-   return this.http.get<Application[]>(`${this.apiUrl}/application`).pipe(
+   return this.http.get<Application[]>(`${this.apiUrl}/applications`).pipe(
    )
    ;
   }
 
  addRegistration(application: Application): Observable<Application> {
-   return this.http.post<Application>(`${this.apiUrl}/application`, application, this.httpOptions).pipe(
+   return this.http.post<Application>(`${this.apiUrl}/applications`, application, this.httpOptions).pipe(
   );
  }
 
 
   updateRegistation(id: String, application: Application): Observable<Application> {
-   return this.http.put<Application>(`${this.apiUrl}/application/${id}`, application, this.httpOptions).pipe(
+   return this.http.put<Application>(`${this.apiUrl}/applications/${id}`, application, this.httpOptions).pipe(
     );
   }
 
 
   delete(id: String): Observable<{}> {
-    return this.http.delete(`${this.apiUrl}/application/${id}`, this.httpOptions).pipe(
+    return this.http.delete(`${this.apiUrl}/applications/${id}`, this.httpOptions).pipe(
     );
  }
 

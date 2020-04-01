@@ -1,6 +1,4 @@
-export class Application {
-
-    constructor (
+export interface Application {
     firstName: string,
     lastName: string,
     email: string,
@@ -18,7 +16,4 @@ export class Application {
     referenceToIt?: string,
     id?: string,
     timeReason?: string
-    )  {
-
-    }
 }
