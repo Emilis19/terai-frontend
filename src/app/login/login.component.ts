@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private authenticationService: AuthenticationService) {
     if (this.authenticationService.currentUserValue) {
-      authenticationService.logout();
-      //this.router.navigate(['/'+this.authenticationService.currentUserValue.role]);
+      //authenticationService.logout();
+      this.router.navigate(['/'+this.authenticationService.currentUserValue.role]);
     }
   }
 
