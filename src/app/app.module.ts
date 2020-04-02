@@ -28,6 +28,7 @@ import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { StatusComponent } from './status/status.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
     ComfirmationComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,
