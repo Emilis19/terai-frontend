@@ -31,26 +31,40 @@ export class ProfilePageComponent implements OnInit {
     comment: ['', []]
   });
 
+
+  selectedOption: string;
+  printedOption: string;
+
+  options = [
+    { name: "IT akademija gavo formą", value: 1 },
+    { name: "Registracijos forma yra peržiūrima", value: 2 },
+    { name: "Priėmimas į akademiją patvirtintas", value: 3 },
+    { name: "Neigiamas atsakymas dėl priėmimo į akademiją", value: 4 }
+  ]
+
+
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");
     this.applicantService.getApplication(this.id).subscribe(data =>this.application=data);
   }
-  //get f() { return this.applicationForm.controls; }
-
-
-  // onSubmit() {
-  //   this.application = this.applicationForm.value;
-  // this.registrationService.addRegistration(this.application).subscribe(() => {
-  //   this.application = new Application('', '', '', '', '','','','','','','','','','', '');
-  //  this.serverErrorMessage = '';
-  //  },
-  //  error => this.serverErrorMessage = error
-
-  // );
+ 
 
   onSubmit() {
-    //this.statusRequest = { id: this.id, status: this.applicationForm.value};
-    //console.log(this.applicationForm.value);
-    //this.applicantService.updateStatus(this.statusRequest)
+    this.statusRequest = { id: this.id, status: this.selectedOption};
+   // console.log("Statusas atnaujinamas: "+ this.selectedOption);
+       this.applicantService.updateStatus(this.statusRequest).subscribe(() => {
+      this.serverErrorMessage = '';
+      },
+     error => this.serverErrorMessage = error
+     );
+  }
+
+  // refreshPage() {
+  //   window.location.reload();
+  // }
+
+  print() {
+    this.printedOption = this.selectedOption;
+    console.log("My input: ", this.selectedOption);
   }
 }
