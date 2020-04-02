@@ -35,9 +35,4 @@ export class ReviewApplicationService {
     return this.http.get<ApplicationFullResponse>(`${environment.apiUrl}/applications/${this.idValue}`);
   }
 
-  logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
-  }
 }

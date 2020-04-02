@@ -29,8 +29,5 @@ export class ApplicationReviewComponent implements OnInit {
     this.applicationReviewService.getApplication().subscribe(data =>this.applicationReviewContent=data);
   }
 
-logout(): void {
-this.applicationReviewService.logout();
-}
 
 }
