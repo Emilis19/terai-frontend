@@ -1,121 +1,100 @@
-<div *ngIf="application">
-  <!-- <td>{{ applicantion.status.name }}</td> -->
-</div>
+  <div class="container" *ngIf="application">
+    <div class="row-col-md-5 justify-content-left">
+      <h5>Statusas: {{ application.status }}</h5>
+      <div class="form-group ">
+        <form (ngSubmit)="onSubmit()">
+          <div class="form-group col-md-5">
+            <label for="FormControlSelect">Statuso pakeitimas</label>
 
-<div class="container" *ngIf="application">
-  <div class="row-col-md-5 justify-content-left">
-    <h2>Aplikanto profilis</h2>
-    <h5>Statusas: Replace with status </h5>
-    <div class="form-group ">
-      <form [formGroup]="applicationForm"
-            (ngSubmit)="onSubmit();">
-        <div class="form-group col-md-6">
-          <label for="FormControlSelect">Statuso pakeitimas</label>
-          <select class="form-control col-md-6" id="FormControlSelect">
-            <option>IT akademija gavo formą</option>
-            <option>Registracijos forma yra peržiūrima</option>
-            <option>Priėmimas į akademiją patvirtintas</option>
-            <option>Neigiamas atsakymas dėl priemimo į akademiją</option>
-
-          </select>
-        </div>
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Išsaugoti</button>
-        </div>
-      </form>
+            <select
+              class="form-control col-md-10"
+              [(ngModel)]="selectedOption"
+              name="first"
+            >
+              <option *ngFor="let o of options">
+                {{ o.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-sm-10">
+            <button type="submit" (click)="print()"  class="btn btn-primary"  >Išsaugoti</button>
+          </div>
+        </form>
+      </div>
+     <!-- (click)="refreshPage()" -->
+      <div class="alert alert-success" role="alert">
+        <h4>Atnaujintas statusas: {{ printedOption }}</h4>
+      </div>
     </div>
-  </div>
-  <table class="table table-striped ">
-    <tbody>
-    <tr>
-      <th>Vardas</th>
-      <td>{{ application.firstName }}</td>
-    </tr>
-    <tr>
-      <th>Pavardė</th>
-      <td>{{ application.lastName }}</td>
-    </tr>
-    <tr>
-      <th>El.paštas</th>
-      <td>{{ application.email }}</td>
-    </tr>
-    <tr>
-      <th>Ar galės skirti akademijai laiką darbo dienomis 14-18 val?</th>
-      <td>{{ application.academyTime }}</td>
-    </tr>
-    <tr>
-      <th>Ar bus galimybį pasirašyti trišalę sutartį</th>
-      <td>{{ application.contractAgreement }}</td>
-    </tr>
-    <tr>
-      <th>Komentaras, kodėl negalės pasirašyti trišalės sutarties</th>
-      <td>{{ application.contractReason }}</td>
-    </tr>
-    <tr>
-      <th class="col-md-2">
-        Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
-        turi patirties?
-      </th>
-      <td>{{ application.likedTechnologies }}</td>
-    </tr>
-    <tr>
-      <th>Kodėl nori dalyvauti IT akademijoje? Kokie tavo lūkesčiai?</th>
-      <td>{{ application.reasonForApplying }}</td>
-    </tr>
-    <tr>
-      <th>Mokymo įstaiga</th>
-      <td>{{ application.school }}</td>
-    </tr>
-    <tr>
-      <th>Studijų kryptis</th>
-      <td>{{ application.degree }}</td>
-    </tr>
-    <tr>
-      <th>Tel. numeris</th>
-      <td>{{ application.mobileNumber }}</td>
-    </tr>
-    <tr>
-      <th>Nuoroda į LinkedIN profilį arba į asmeninį puslapį</th>
-      <td>
-        <a>{{ application.linkedinUrl }}</a>
-      </td>
-    </tr>
-    <tr>
-      <th>Nuotrauka</th>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>Pomėgiai</th>
-      <td>{{ application.hobbies }}</td>
-    </tr>
-    <tr>
-      <th>Iš kur sužinojai apie IT akademiją?</th>
-      <td>{{ application.referenceToIt }}</td>
-    </tr>
-    </tbody>
-  </table>
+    <h2>Aplikanto profilis</h2>
+    <table class="table table-striped ">
+      <tbody>
+        <tr>
+          <th>Vardas</th>
+          <td>{{ application.firstName }}</td>
+        </tr>
+        <tr>
+          <th>Pavardė</th>
+          <td>{{ application.lastName }}</td>
+        </tr>
+        <tr>
+          <th>El.paštas</th>
+          <td>{{ application.email }}</td>
+        </tr>
+        <tr>
+          <th>Ar galės skirti akademijai laiką darbo dienomis 14-18 val?</th>
+          <td>{{ application.academyTime ?'Taip':'Ne'}}</td>
+        </tr>
+        <tr>
+          <th>Ar bus galimybį pasirašyti trišalę sutartį</th>
+          <td>{{ application.contractAgreement?'Taip':'Ne' }}</td>
+        </tr>
+        <tr>
+          <th>Komentaras, kodėl negalės pasirašyti trišalės sutarties</th>
+          <td>{{ application.contractReason }}</td>
+        </tr>
+        <tr>
+          <th class="col-md-2">
+            Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
+            turi patirties?
+          </th>
+          <td>{{ application.likedTechnologies }}</td>
+        </tr>
+        <tr>
+          <th>Kodėl nori dalyvauti IT akademijoje? Kokie tavo lūkesčiai?</th>
+          <td>{{ application.reasonForApplying }}</td>
+        </tr>
+        <tr>
+          <th>Mokymo įstaiga</th>
+          <td>{{ application.school }}</td>
+        </tr>
+        <tr>
+          <th>Studijų kryptis</th>
+          <td>{{ application.degree }}</td>
+        </tr>
+        <tr>
+          <th>Tel. numeris</th>
+          <td>{{ application.mobileNumber }}</td>
+        </tr>
+        <tr>
+          <th>Nuoroda į LinkedIN profilį arba į asmeninį puslapį</th>
+          <td>
+            <a>{{ application.linkedinUrl }}</a>
+          </td>
+        </tr>
+        <tr>
+          <th>Nuotrauka</th>
+          <td>NaN</td>
+        </tr>
+        <tr>
+          <th>Pomėgiai</th>
+          <td>{{ application.hobbies }}</td>
+        </tr>
+        <tr>
+          <th>Iš kur sužinojai apie IT akademiją?</th>
+          <td>{{ application.referenceToIt }}</td>
+        </tr>
+      </tbody>
+    </table>
+
 </div>
-
-<!-- <div>
-    <h5 id="comments">Komentaras</h5>
-    Palikti komentarą
-  </div>
-
-   export interface Application {
-    id?: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    academyTime: boolean;
-    contractAgreement: boolean;
-    contractReason: string;
-    likedTechnologies: string;
-    reasonForApplying: string;
-    school?: string;
-    degree?: string;
-    mobileNumber?: string;
-    linkedinUrl?: string;
-    photo?: string;
-    hobbies?: string;
-    referenceToIt?: string;
-    }-->
