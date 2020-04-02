@@ -1,0 +1,18 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">
+        <img src="../assets/terai.png" width="50" height="50" alt="">
+      </a>
+    </div>
+    <ul class="nav navbar-nav navbar-right" *ngIf="this.authenticationService.currentUserValue">
+      <li *ngIf="this.authenticationService.currentUserValue.role === 'admin'"><a href="/admin"><span class="glyphicon glyphicon-log-in"></span> Administratoriaus aplinka</a></li>
+      <li *ngIf="this.authenticationService.currentUserValue.role === 'hr'||this.authenticationService.currentUserValue.role === 'admin'"><a href="/hr"><span class="glyphicon glyphicon-log-in"></span> HR aplinka</a></li>
+      <li *ngIf="this.authenticationService.currentUserValue.role === 'application'"><a href="/application"><span class="glyphicon glyphicon-log-in"></span> Aplikacijos perziura</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="!this.authenticationService.currentUserValue"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Prisijungti</a></li>
+      <li *ngIf="this.authenticationService.currentUserValue" on-click="this.authenticationService.logout()"><a href="/home"><span class="glyphicon glyphicon-log-in"></span> Atsijungti</a></li>
+    </ul>
+  </div>
+</nav>
