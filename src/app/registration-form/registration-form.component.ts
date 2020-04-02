@@ -1,11 +1,13 @@
 
 
 import { Component, OnInit} from '@angular/core';
-import { ApplicationRequest } from '../shared/models/application';
+import { ApplicationFullResponse, ApplicationRequest } from '../shared/models/application';
 import { Copyright } from '../copyright';
 import { copyrigthList } from './listOfItems';
 import { RegistrationService } from '../shared/services/registration.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ApplicationService } from '../shared/services/application.service';
 
 
 
@@ -17,14 +19,18 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 
 export class RegistrationFormComponent implements OnInit {
+constructor(
+    private registrationService: RegistrationService, 
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private applicantService: ApplicationService) { }
 
   application: ApplicationRequest;
   copyrightList: Copyright[];
   serverErrorMessage: string;
   numericNumberReg= '[\+[0-9]{0,11}]+';
   confirmationMessage='';
-  additional=false;
-
+  additional=false; 
 
   applicationForm = this.fb.group({
     firstName: ['', [
@@ -100,8 +106,40 @@ export class RegistrationFormComponent implements OnInit {
     ]],
   });
 
-  constructor(private registrationService: RegistrationService, private fb: FormBuilder) { }
+ngOnInit() {
+    this.copyrightList = copyrigthList;
+    this.route.paramMap.subscribe(parameterMap => {
+      const id = parameterMap.get('id');
+      this.getApplicant(id);
+    });
+  }
 
+  private getApplicant(id: string){
+    if(id === '0'){
+      this.application = {
+        firstName: null,
+        lastName: null,
+        email:null,
+        academyTime: null,
+        contractAgreement: null,
+        contractReason: null,
+        likedTechnologies: null,
+        reasonForApplying: null,
+        school: null,
+        degree: null,
+        mobileNumber: null,
+        linkedinUrl: null,
+        hobbies: null,
+        referenceToIt: null
+      };
+      //this.applicationForm.reset();
+    } else {
+      this.applicantService.getApplication(id).subscribe(data =>this.application=data);
+    }
+  }
+
+ 
+  
 
   onchange2(args){
     this.additional = true;
@@ -124,11 +162,7 @@ export class RegistrationFormComponent implements OnInit {
         return this.answer;
     }
 
-  ngOnInit() {
-    this.copyrightList = copyrigthList;
-    this.application = null;
-  }
-
+  
 
     urlDomainValidator(control: FormControl){
       let url = control.value;
@@ -147,13 +181,27 @@ export class RegistrationFormComponent implements OnInit {
 
   onSubmit() {
     this.application = this.applicationForm.value;
-  this.registrationService.addRegistration(this.application).subscribe(() => {
-    this.application = null;
-   this.serverErrorMessage = '';
-   },
-   error => this.serverErrorMessage = error
-
-  );
+    this.route.paramMap.subscribe(parameterMap => {
+      const id = parameterMap.get('id');
+      if(id === '0'){
+        this.registrationService.addRegistration(this.application).subscribe(() => {
+          this.application = null;
+         this.serverErrorMessage = '';
+         },
+         error => this.serverErrorMessage = error
+      
+        );
+      }
+      else {
+        this.registrationService.updateRegistation(id, this.application).subscribe(() => {
+          this.application = null;
+         this.serverErrorMessage = '';
+         },
+         error => this.serverErrorMessage = error
+      
+        );
+      }
+    });
   }
 
   refreshPage() {

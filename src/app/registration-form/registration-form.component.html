@@ -10,7 +10,7 @@
             <p class="moreImportant"><strong>PRIVALOMA INFORMACIJA </strong></p>
             <div class="form-group">
               <label class ="inputText" for="firstName">Vardas </label>
-              <input type="text" name="firstName" class="form-control" id="firstName" aria-describedby="fnameHelp" placeholder="Vardas"  formControlName="firstName"/>
+              <input type="text" name="firstName" ngModel="{{application.firstName}}" class="form-control" id="firstName" aria-describedby="fnameHelp" placeholder="Vardas"  formControlName="firstName"/>
               <div
               [hidden]="(applicationForm.controls.firstName.valid || firstName.pristine) && lastName.untouched"
               class="alert p-0">

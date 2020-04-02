@@ -26,15 +26,16 @@ export class RegistrationService {
   // }
 
  addRegistration(application: ApplicationRequest): Observable<ApplicationRequest> {
+
    return this.http.post<ApplicationRequest>(`${environment.apiUrl}/applications`, application, this.httpOptions).pipe(
   );
  }
 
 
- //  updateRegistation(id: String, application: ApplicationRequest): Observable<ApplicationRequest> {
- //   return this.http.put<ApplicationRequest>(`${environment.apiUrl}/applications/${id}`, application, this.httpOptions).pipe(
- //    );
- //  }
+   updateRegistation(id: String, application: ApplicationRequest): Observable<ApplicationRequest> {
+    return this.http.put<ApplicationRequest>(`${environment.apiUrl}/applications/${id}`, application, this.httpOptions).pipe(
+     );
+   }
  //
  //
  //  delete(id: String): Observable<{}> {
