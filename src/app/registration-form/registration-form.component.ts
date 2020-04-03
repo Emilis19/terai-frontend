@@ -121,6 +121,7 @@ ngOnInit() {
         lastName: null,
         email:null,
         academyTime: null,
+        academyTimeReason: null,
         contractAgreement: null,
         contractReason: null,
         likedTechnologies: null,
@@ -212,6 +213,7 @@ ngOnInit() {
   get firstName() { return this.applicationForm.get('firstName'); }
   get lastName() { return this.applicationForm.get('lastName');}
   get academyTime() {return this.applicationForm.get('academyTime'); }
+  get academyTimeReason() {return this.applicationForm.get('academyTimeReason'); }
   get email() {return this.applicationForm.get('email'); }
   get contractAgreement() {return this.applicationForm.get('contractAgreement'); }
   get contractReason() {return this.applicationForm.get('contractReason'); }

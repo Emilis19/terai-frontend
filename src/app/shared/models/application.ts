@@ -15,7 +15,7 @@ export interface ApplicationRequest {
   photo?: string,
   hobbies?: string,
   referenceToIt?: string,
-  timeReason?: string
+  academyTimeReason?: string
 }
 export interface ApplicationStatusRequest {
   id: string;
@@ -35,6 +35,7 @@ export interface ApplicationFullResponse {
   lastName: string;
   email: string;
   academyTime: boolean;
+  academyTimeReason?: string;
   contractAgreement: boolean;
   contractReason: string;
   likedTechnologies: string;
