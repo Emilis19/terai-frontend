@@ -69,8 +69,14 @@
 
            <div class ="form-group"> 
               <label class ="inputText" for="academyTime">Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi akademijai skirti tiek laiko?</label><br>
-              <input name="academyTime" ng-control="options" name="academyTime" type="radio" [value]="true" formControlName="academyTime" (change)=onchange3($event)> Taip <br>
-              <input name="academyTime" ng-control="options" name="academyTime" type="radio" [value]="false" formControlName="academyTime" (change)=onchange2($event)> Ne <br>
+              <input name="academyTime" ng-control="options" name="academyTime" type="radio" [value]="true" 
+              formControlName="academyTime" 
+              (change)=onchange3($event)
+               [(ngModel)]="application.academyTime" > Taip <br>
+              <input name="academyTime" ng-control="options" name="academyTime" type="radio" [value]="false" 
+              formControlName="academyTime" 
+              (change)=onchange2($event) 
+              [(ngModel)]="application.academyTime"> Ne <br>
               <div
               [hidden]="applicationForm.controls.contractAgreement.untouched && academyTime.pristine"
               class="alert p-0">
@@ -96,8 +102,12 @@
            
             <div class = "form-group" > 
              <label class ="inputText" for="contractAgreement">Ar bus galimybė pasirašyti trišalę praktikos sutartį? Jei ne - pakomentuok plačiau</label><br>
-             <input  name="contractAgreement" ng-control="options" type="radio" [value]="true" value="true" formControlName="contractAgreement" (change)=onchange1($event) > Taip <br>
-             <input name="contractAgreement" ng-control="options" type="radio" [value]="false" value="false" formControlName="contractAgreement" (change)=onchange($event)> Ne <br>
+             <input  name="contractAgreement" ng-control="options" type="radio" [value]="true" value="true" 
+             formControlName="contractAgreement" 
+             (change)=onchange1($event) [(ngModel)]="application.contractAgreement"> Taip <br>
+             <input name="contractAgreement" ng-control="options" type="radio" [value]="false" value="false" 
+             formControlName="contractAgreement" (change)=onchange($event)
+             [(ngModel)]="application.contractAgreement"> Ne <br>
              <div
              [hidden]="applicationForm.controls.contractAgreement.pristine && likedTechnologies.untouched"
              class="alert p-0">
