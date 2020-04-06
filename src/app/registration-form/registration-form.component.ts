@@ -26,7 +26,7 @@ export class RegistrationFormComponent implements OnInit {
   serverErrorMessage: string;
   numericNumberReg= '[\+[0-9]{0,11}]+';
   confirmationMessage='';
-
+  title = "Registracija į 2021m. IT Akademiją";
 
   applicationForm = this.fb.group({
     firstName: ['', [
@@ -173,6 +173,7 @@ ngOnInit() {
       };
       // this.applicationForm.reset();
    } else {
+     this.title = "Redagavimas";
       this.applicantService.getApplication(id).subscribe(data =>this.application=data);
    }
   }
