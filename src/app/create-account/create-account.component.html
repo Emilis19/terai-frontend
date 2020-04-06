@@ -1,0 +1,41 @@
+<div class=" form-group wrapper fadeInDown">
+  <div id="formContent">
+    <h1>Sukurti naudotoją </h1>
+    <form (ngSubmit)="onSubmit()" [formGroup]="accountGroup">
+      <div *ngIf="showSpinner" class="spinner-border text-info" role="status">
+        <span class="sr-only">Loading...</span>
+      </div><br/>
+      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+      <label for="name">Vardas</label><br/>
+      <input type="text" name="name" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+             id="name">
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Vardas privalomas</div>
+      </div><br/>
+      <label for="lastName">Pavardė</label><br/>
+      <input type="text" name="lastName" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+             id="lastName">
+      <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+        <div *ngIf="f.lastName.errors.required">Pavardė privaloma</div>
+      </div>
+      <label for="userEmail">El. paštas</label>
+      <input type="email" name="userEmail" formControlName="userEmail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userEmail.errors }"
+             id="userEmail">
+      <div *ngIf="submitted && f.userEmail.errors" class="invalid-feedback">
+        <div *ngIf="f.userEmail.errors.required">El. paštas privalomas</div>
+      </div>
+      <label for="password">Slaptažodis</label>
+      <input type="password" name="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+             id="password">
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Slaptažodis privalomas</div>
+      </div><br/>
+      <input class="form-check-input" type="checkbox" value="" id="adminCheck" name="adminCheck" formControlName="adminCheck" >
+      <label class="form-check-label" for="adminCheck">
+        Administratoriaus privilegijos
+      </label>
+
+      <button type="submit" [disabled]="f.invalid" class="fadeIn fourth">Patvirtinti</button>
+    </form>
+  </div>
+</div>

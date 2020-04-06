@@ -9,6 +9,7 @@ import { ComfirmationComponent } from './comfirmation/comfirmation.component';
 import {ApplicationReviewComponent} from './application-review/application-review.component';
 import {LoginComponent} from "./login/login.component";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
+import {CreateAccountComponent} from "./create-account/create-account.component";
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
 
   {path:'application', component: ApplicationReviewComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'create-account', component: CreateAccountComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
