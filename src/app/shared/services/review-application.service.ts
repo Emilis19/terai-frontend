@@ -35,4 +35,8 @@ export class ReviewApplicationService {
     return this.http.get<ApplicationFullResponse>(`${environment.apiUrl}/applications/${this.idValue}`);
   }
 
+  delete(): Observable<ApplicationFullResponse> {
+     return this.http.delete<ApplicationFullResponse>(`${environment.apiUrl}/applications/${this.idValue}`, this.httpOptions);
+     }
+
 }

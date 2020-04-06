@@ -9,11 +9,12 @@
 <div class="row d-flex p-5"> 
 <div class="col-sm-4 fontsStyle"><i class="fas fa-clock"></i><p class="inline">Tavo registracijos data :</p>  {{applicationReviewContent.dateCreated.toString().substr(0,10)}}      </div>
 <div class="col-sm-4 fontsStyle "><i class="fas fa-pencil-alt"></i>  Keisti detales</div>
-<div class="col-sm-4 fontsStyle "> <i class="far fa-paper-plane"></i> <a href="mailto:name@mydomain.com">Parašyti IT akademijai</a></div>
+<div class="col-sm-4 fontsStyle "> <i class="far fa-paper-plane"></i> <a href="info@itakademija.lt">Parašyti IT akademijai</a></div>
+<div class="col-sm-4 fontsStyle "> <i class="fas fa-trash-alt"></i> <a href="#" click="delete()"> Ištrinti registracijos duomenis</a></div>
 </div>
 <div class="d-flex m-2 container-fluid">
 <div class="row d-flex flex-row"> 
-<div class="col-sm-5 text-uppercase infoBoxMain shadow">Vardas, Pavardė</div>
+ <!-- <div class="col-sm-5 text-uppercase infoBoxMain shadow">Vardas, Pavardė</div>
 <div class="col-sm-6 infoBoxText shadow">
     {{applicationReviewContent.firstName}} {{applicationReviewContent.lastName}}  
 </div>
@@ -52,13 +53,7 @@
       </div>
 </div>
 </div>
-</div>
-<div class="container-fluid d-flex flex-row-reverse">
- <!--   <div class="m-5 ">
-    <button class="btn btn-success btn-lg" (click)="logout()" [routerLink]="'/home'">Atsijungti<br></button>
-    </div> -->
-  </div>
-
-
+</div> -->
+  </div> 
 
 </div>

@@ -49,3 +49,4 @@ export interface ApplicationFullResponse {
   dateCreated: Date;
   status: string;
 }
+

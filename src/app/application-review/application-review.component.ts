@@ -29,5 +29,13 @@ export class ApplicationReviewComponent implements OnInit {
     this.applicationReviewService.getApplication().subscribe(data =>this.applicationReviewContent=data);
   }
 
-
+  delete() {
+    this.applicationReviewService.delete().subscribe(() => {
+      this.serverErrorMessage = '';
+      },
+     error => this.serverErrorMessage = error
+     );
 }
+  }
+
+
