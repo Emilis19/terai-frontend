@@ -1,1 +1,68 @@
 
+<!-- <div class="bg-primary">
+    {{applicationReviewContent.status}}
+</div> -->
+
+
+
+<div class="container-fluid d-flex justified-content-center" *ngIf="answer">
+    <div class="row">
+    <div class="col-sm-12 alert purple pt-4 pb-4 pl-5 pr-5" role="alert">
+        <div class=" inline ml-auto pr-5">
+        <img src="assets/img/receive-mail.svg" class="img-fluid" id="imgresponsive" /></div>
+        <div class="inline mr-auto">
+              <h5 class="inline"> {{ applicationReviewContent.status }}</h5>
+              </div>
+      </div>
+      </div>
+</div>
+
+<div class= "container-fluid d-flex justified-content-center" *ngIf="answer1">
+    <div class="row">
+    <div class="col-sm-12 alert green pt-4 pb-4 pl-5 pr-5" role="alert">
+        <div class="inline ml-auto pr-5">
+            <img src="assets/img/tick-inside-circle.svg" class="img-fluid" id="imgresponsive" /></div>
+            <div class="inline mr-auto">
+        <h5 class="inline"> {{ applicationReviewContent.status }}</h5>
+      </div>
+</div>
+</div>
+</div>
+
+<div class= "container-fluid d-flex justified-content-center" *ngIf="answer2">
+    <div class="row">
+    <div class="col-sm-12 alert red pt-4 pb-4 pl-5 pr-5" role="alert">
+        <div class="inline ml-auto pr-5">
+            <img src="assets/img/cancel.svg" class="img-fluid" id="imgresponsive" /></div>
+            <div class="inline mr-auto">
+                <h5 class="inline"> {{ applicationReviewContent.status }}</h5>
+                </div>
+                </div>
+      </div>
+</div>
+
+<div class= "container-fluid d-flex justified-content-center" *ngIf="answer3">
+    <div class="row">
+    <div class="alert white col-sm-12 pt-4 pb-4 pl-5 pr-5" role="alert">
+        <div class="inline ml-auto pr-5">
+            <img src="assets/img/incomplete-hand-drawn-symbol.svg" class="img-fluid" id="imgresponsive" /></div>
+            <div class="inline mr-auto">
+                <h5 class="inline"> {{ applicationReviewContent.status }}</h5>  
+</div>
+</div>
+      </div>
+</div>
+
+<div class= "container-fluid d-flex justified-content-center" *ngIf="answer4">
+    <div class="row">
+    <div class="alert orangle col-sm-12 pt-4 pb-4 pl-5 pr-5" role="alert">
+        <div class="inline ml-auto pr-5">
+            <img src="assets/img/hourglass.svg" class="img-fluid" id="imgresponsive" /></div>
+            <div class="inline mr-auto">
+                <h5 class="inline"> {{ applicationReviewContent.status }}</h5> 
+      </div>
+</div>
+</div>
+</div>
+
+
