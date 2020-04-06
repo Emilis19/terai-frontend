@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./navigation-bar.component.scss']
 })
 export class NavigationBarComponent implements OnInit {
-  constructor(private router: Router,
+  constructor(public router: Router,
               public authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {
