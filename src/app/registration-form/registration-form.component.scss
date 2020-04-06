@@ -30,8 +30,8 @@
     font-size: small;
   }
 
-  .required:after {
-    content:" *";
+  .required:before {
+    content:"* ";
     color: red;
   }
 
