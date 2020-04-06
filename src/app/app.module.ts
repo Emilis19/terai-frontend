@@ -27,6 +27,7 @@ import { ApplicationReviewComponent } from './application-review/application-rev
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
+import { ViewApplicantProfileComponent } from './applicant-profile/view-applicant-profile.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
     HrUsersComponent,
     ComfirmationComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ViewApplicantProfileComponent
   ],
   imports: [
     BrowserModule,
