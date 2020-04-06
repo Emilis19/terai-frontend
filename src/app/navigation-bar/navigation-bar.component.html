@@ -10,6 +10,10 @@
         <a *ngIf="router.url==='/admin'" href="/admin" class="nav-link active">HR NAUDOTOJAI</a>
         <a *ngIf="router.url!='/admin'" href="/admin" class="nav-link">HR NAUDOTOJAI</a>
       </li>
+      <li data-toggle="tab" *ngIf="this.authenticationService.currentUserValue.role === 'admin'" class="nav-item">
+        <a *ngIf="router.url==='/create-account'" href="/create-account" class="nav-link active">PRIDĖTI NAUDOTOJĄ</a>
+        <a *ngIf="router.url!='/create-account'" href="/create-account" class="nav-link">PRIDĖTI NAUDOTOJĄ</a>
+      </li>
       <li data-toggle="tab"
           *ngIf="this.authenticationService.currentUserValue.role === 'hr'||this.authenticationService.currentUserValue.role === 'admin'"
           class="nav-item">
