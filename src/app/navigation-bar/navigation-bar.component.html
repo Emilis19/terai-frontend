@@ -5,14 +5,29 @@
         <img src="../assets/terai.png" width="50" height="50" alt="">
       </a>
     </div>
-    <ul class="nav navbar-nav navbar-right" *ngIf="this.authenticationService.currentUserValue">
-      <li *ngIf="this.authenticationService.currentUserValue.role === 'admin'"><a href="/admin"><span class="glyphicon glyphicon-log-in"></span> Administratoriaus aplinka</a></li>
-      <li *ngIf="this.authenticationService.currentUserValue.role === 'hr'||this.authenticationService.currentUserValue.role === 'admin'"><a href="/hr"><span class="glyphicon glyphicon-log-in"></span> HR aplinka</a></li>
-      <li *ngIf="this.authenticationService.currentUserValue.role === 'application'"><a href="/application"><span class="glyphicon glyphicon-log-in"></span> Aplikacijos perziura</a></li>
+    <ul class="nav nav-tabs" *ngIf="this.authenticationService.currentUserValue">
+      <li data-toggle="tab" *ngIf="this.authenticationService.currentUserValue.role === 'admin'" class="nav-item">
+        <a *ngIf="router.url==='/admin'" href="/admin" class="nav-link active">HR NAUDOTOJAI</a>
+        <a *ngIf="router.url!='/admin'" href="/admin" class="nav-link">HR NAUDOTOJAI</a>
+      </li>
+      <li data-toggle="tab"
+          *ngIf="this.authenticationService.currentUserValue.role === 'hr'||this.authenticationService.currentUserValue.role === 'admin'"
+          class="nav-item">
+        <a *ngIf="router.url==='/hr'" href="/hr" class="nav-link active">APLIKACIJOS</a>
+        <a *ngIf="router.url !='/hr'" href="/hr" class="nav-link">APLIKACIJOS</a>
+      </li>
+      <li data-toggle="tab" *ngIf="this.authenticationService.currentUserValue.role === 'application'" class="nav-item">
+        <a *ngIf="router.url==='/application'" href="/application" class="nav-link active">APLIKACIJOS PERŽIŪRA</a>
+        <a *ngIf="router.url!='/application'" href="/application" class="nav-link">APLIKACIJOS PERŽIŪRA</a>
+      </li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li *ngIf="!this.authenticationService.currentUserValue"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Prisijungti</a></li>
-      <li *ngIf="this.authenticationService.currentUserValue" on-click="this.authenticationService.logout()"><a href="/home"><span class="glyphicon glyphicon-log-in"></span> Atsijungti</a></li>
+    <ul class="nav nav-pills">
+      <li *ngIf="!this.authenticationService.currentUserValue">
+        <a href="/login" class="nav-link active">PRISIJUNGTI</a>
+      </li>
+      <li *ngIf="this.authenticationService.currentUserValue" on-click="this.authenticationService.logout()">
+        <a href="/home" class="nav-link active" style="color: #1c3144">ATSIJUNGTI</a>
+      </li>
     </ul>
   </div>
 </nav>
