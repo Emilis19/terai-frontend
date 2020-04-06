@@ -30,7 +30,7 @@ constructor(
   serverErrorMessage: string;
   numericNumberReg= '[\+[0-9]{0,11}]+';
   confirmationMessage='';
-  additional=false; 
+
 
   applicationForm = this.fb.group({
     firstName: ['', [
@@ -52,7 +52,7 @@ constructor(
     [Validators.required
     ]],
 
-    timeReason: [" ", [
+    academyTimeReason: [" ", [
       Validators.required
     ]],
 
@@ -133,13 +133,23 @@ ngOnInit() {
         hobbies: null,
         referenceToIt: null
       };
-      //this.applicationForm.reset();
-    } else {
+      this.applicationForm.reset();
+   } else {
       this.applicantService.getApplication(id).subscribe(data =>this.application=data);
-    }
+   }
   }
-
- 
+  additional = false; 
+     answer = false;
+  // onload(args){
+  //   if(!this.application.academyTime)
+  //     {this.additional=true;
+  //       return this.additional;
+  //     }
+  //     if(!this.application.contractAgreement)
+  //     {this.answer=true;
+  //       return this.answer;
+  //     }
+  // }
   
 
   onchange2(args){
@@ -152,7 +162,7 @@ ngOnInit() {
     return this.additional;
   }
 
-    answer=false;
+
     onchange(args){
       this.answer = true;
         return this.answer;
@@ -163,7 +173,6 @@ ngOnInit() {
         return this.answer;
     }
 
-  
 
     urlDomainValidator(control: FormControl){
       let url = control.value;
@@ -225,5 +234,4 @@ ngOnInit() {
   get hobbies() {return this.applicationForm.get('hobbies'); }
   get referenceToIt() {return this.applicationForm.get('referenceToIt'); }
   get linkedinUrl() {return this.applicationForm.get('linkedinUrl'); }
-  get timeReason() {return this.applicationForm.get('timeReason');}
 }

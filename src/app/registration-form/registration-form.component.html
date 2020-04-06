@@ -71,12 +71,12 @@
               <label class ="inputText" for="academyTime">Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi akademijai skirti tiek laiko?</label><br>
               <input name="academyTime" ng-control="options" name="academyTime" type="radio" [value]="true" 
               formControlName="academyTime" 
-              (change)=onchange3($event)
-               [(ngModel)]="application.academyTime" > Taip <br>
+             (change)=onchange3($event)
+                > Taip <br>
               <input name="academyTime" ng-control="options" name="academyTime" type="radio" [value]="false" 
               formControlName="academyTime" 
               (change)=onchange2($event) 
-              [(ngModel)]="application.academyTime"> Ne <br>
+              > Ne <br>
               <div
               [hidden]="applicationForm.controls.contractAgreement.untouched && academyTime.pristine"
               class="alert p-0">
@@ -88,12 +88,12 @@
 
           <div *ngIf="additional" class="form-group"> 
             
-              <label class ="inputText" for="timeReason">Komentaras dėl laiko</label>
-              <input  ngModel="{{application.academyTimeReason}}" type="text" name="timeReason" class="form-control" id="timeReason" placeholder="Parašyk komentarą" formControlName="timeReason"/>
+              <label class ="inputText" for="academyTimeReason">Komentaras dėl laiko</label>
+              <input  type="text" name="academyTimeReason" class="form-control" id="academyTimeReason" placeholder="Parašyk komentarą" formControlName="academyTimeReason"/>
                 <div
-                [hidden]="(applicationForm.controls.timeReason.valid || timeReason.pristine) && contractAgreement.untouched"
+                [hidden]="(applicationForm.controls.academyTimeReason.valid || academyTimeReason.pristine) && contractAgreement.untouched"
                 class="alert p-0">
-                <div class="text-danger" *ngIf="timeReason.errors?.required">
+                <div class="text-danger" *ngIf="academyTimeReason.errors?.required">
                   Pakomentuok, kiek gali skirti laiko
                 </div>
               </div>
@@ -104,10 +104,10 @@
              <label class ="inputText" for="contractAgreement">Ar bus galimybė pasirašyti trišalę praktikos sutartį? Jei ne - pakomentuok plačiau</label><br>
              <input  name="contractAgreement" ng-control="options" type="radio" [value]="true" value="true" 
              formControlName="contractAgreement" 
-             (change)=onchange1($event) [(ngModel)]="application.contractAgreement"> Taip <br>
+             (change)=onchange1($event)> Taip <br>
              <input name="contractAgreement" ng-control="options" type="radio" [value]="false" value="false" 
              formControlName="contractAgreement" (change)=onchange($event)
-             [(ngModel)]="application.contractAgreement"> Ne <br>
+            > Ne <br>
              <div
              [hidden]="applicationForm.controls.contractAgreement.pristine && likedTechnologies.untouched"
              class="alert p-0">
@@ -120,7 +120,7 @@
 
            <div *ngIf="answer" class="form-group"> 
               <label class ="inputText" for="contractReason">Komentaras dėl sutarties</label>
-              <input  ngModel="{{application.contractReason}}" type="text" name="contractReason" class="form-control" id="contractReason" placeholder="Parašyk komentarą" formControlName="contractReason"/>
+              <input  type="text" name="contractReason" class="form-control" id="contractReason" placeholder="Parašyk komentarą" formControlName="contractReason"/>
                 <div
                 [hidden]="(applicationForm.controls.contractReason.valid || contractReason.pristine) && likedTechnologies.untouched"
                 class="alert p-0">
