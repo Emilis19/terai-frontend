@@ -9,7 +9,7 @@
             (ngSubmit)="onSubmit(); applicationForm.reset()" >
             <p class="moreImportant"><strong>PRIVALOMA INFORMACIJA </strong></p>
             <div class="form-group">
-              <label class ="inputText" for="firstName">Vardas </label>
+              <label class ="inputText required" for="firstName">Vardas </label>
               <input type="text" name="firstName" ngModel="{{application.firstName}}" class="form-control" id="firstName" aria-describedby="fnameHelp" placeholder="Vardas"  formControlName="firstName"/>
               <div
               [hidden]="(applicationForm.controls.firstName.valid || firstName.pristine) && lastName.untouched"
@@ -27,7 +27,7 @@
           </div>
           
           <div class="form-group">
-              <label class ="inputText" for="lastName">Pavardė </label>
+              <label class ="inputText required" for="lastName">Pavardė </label>
               <input ngModel="{{application.lastName}}" type="text" name="lastName" class="form-control" id="lastName" aria-describedby="lnameHelp" placeholder="Pavardė" formControlName="lastName"/> 
               <div
               [hidden]="(applicationForm.controls.lastName.valid || lastName.pristine) && email.untouched"
@@ -46,7 +46,7 @@
           </div>
 
           <div class ="form-group">
-              <label class ="inputText" for="email">El. paštas</label>
+              <label class ="inputText required" for="email">El. paštas</label>
               <input  ngModel="{{application.email}}" type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
                 placeholder="Įveskite savo el. paštą" formControlName="email"/>
                 <div
@@ -68,7 +68,7 @@
         
 
            <div class ="form-group"> 
-              <label class ="inputText" for="academyTime">Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi akademijai skirti tiek laiko?</label><br>
+              <label class ="inputText required" for="academyTime">Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi akademijai skirti tiek laiko?</label><br>
               <input name="academyTime" ng-control="options" name="academyTime" type="radio" [value]="true" 
               formControlName="academyTime" 
              (change)=onchange3($event)
@@ -101,7 +101,7 @@
 
            
             <div class = "form-group" > 
-             <label class ="inputText" for="contractAgreement">Ar bus galimybė pasirašyti trišalę praktikos sutartį? Jei ne - pakomentuok plačiau</label><br>
+             <label class ="inputText required" for="contractAgreement">Ar bus galimybė pasirašyti trišalę praktikos sutartį? Jei ne - pakomentuok plačiau</label><br>
              <input  name="contractAgreement" ng-control="options" type="radio" [value]="true" value="true" 
              formControlName="contractAgreement" 
              (change)=onchange1($event)> Taip <br>
@@ -135,7 +135,7 @@
             
           
             <div class ="form-group">
-              <label class ="inputText" for="likedTechnologies">Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau turi patirties?</label>
+              <label class ="inputText required" for="likedTechnologies">Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau turi patirties?</label>
               <textarea ngModel="{{application.likedTechnologies}}" name="likedTechnologies" class="form-control" id="likedTechnologies" aria-describedby="techHelp" rows="4" placeholder="Technologijos" formControlName="likedTechnologies"></textarea>
               <small id="techHelp" class="form-text text-muted">Jei teko dirbti prie konkretaus projekto, aprašyk jį arba pasidalink jo nuoroda. </small>
               <div
@@ -155,7 +155,7 @@
 
 
             <div class ="form-group">
-              <label class ="inputText" for="reasonForApplying">Kodėl nori dalyvauti IT akademijoje? Kokie tavo lūkesčiai?</label>
+              <label class ="inputText required" for="reasonForApplying">Kodėl nori dalyvauti IT akademijoje? Kokie tavo lūkesčiai?</label>
               <textarea ngModel="{{application.reasonForApplying}}" name="reasonForApplying" class="form-control" id="reasonForApplying" rows="4" placeholder="Lūkesčiai" formControlName="reasonForApplying"></textarea>
               <div
                 [hidden]="(applicationForm.controls.reasonForApplying.valid || reasonForApplying.pristine) && school.untouched"
@@ -172,7 +172,7 @@
               </div>
             </div>
               <br>
-              <p class="moreImportant"><strong> PAPILDOMA INFORMACIJA *</strong></p>
+              <p class="moreImportant"><strong> PAPILDOMA INFORMACIJA</strong></p>
               <div class ="form-group">
               <label class ="" for="school">Mokymo įstaiga</label>
               <input  ngModel="{{application.school}}" type="text" name="school" class="form-control" id="school" placeholder="Mokymo įstaiga" formControlName="school">
