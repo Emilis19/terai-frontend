@@ -27,7 +27,7 @@ export class CreateAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.accountGroup = this.formBuilder.group({
-      userEmail: ['', Validators.required],
+      userEmail: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       password: ['', Validators.required],
       name: ['',Validators.required],
       lastName: ['',Validators.required],
