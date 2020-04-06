@@ -1,67 +1,74 @@
 <div class="bg container-fluid">
-    <div class="container headerBox ">
-        <h2 class="text-uppercase text-center">Registracija į 2021m. IT Akademiją</h2>
-    </div>
-    <div class="d-flex justify-content-center">
-<!-- <div class="container text-center statusBox fontsStyle fontSize shadow"><i class="far fa-clock"></i>  {{applicationReviewContent.status}} </div> -->
-<app-status
-[applicationReviewContent]="applicationReviewContent"
-></app-status>
-    </div>
-<div>
-<div class="row d-flex p-5"> 
-<div class="col-sm-4 fontsStyle"><i class="fas fa-clock"></i><p class="inline">Tavo registracijos data :</p>  {{applicationReviewContent.dateCreated.toString().substr(0,10)}}      </div>
-<div class="col-sm-4 fontsStyle "><i class="fas fa-pencil-alt"></i>  Keisti detales</div>
-<div class="col-sm-4 fontsStyle "> <i class="far fa-paper-plane"></i> <a href="mailto:name@mydomain.com">Parašyti IT akademijai</a></div>
-</div>
-<div class="d-flex m-2 container-fluid">
-<div class="row d-flex flex-row"> 
-<div class="col-sm-5 text-uppercase infoBoxMain shadow">Vardas, Pavardė</div>
-<div class="col-sm-6 infoBoxText shadow">
-    {{applicationReviewContent.firstName}} {{applicationReviewContent.lastName}}  
-</div>
-<div class="col-sm-5 text-uppercase infoBoxMain shadow">Elektroninis paštas </div>
-  <div class="col-sm-6 infoBoxText shadow">  {{applicationReviewContent.email}}  </div>
-<div class="col-sm-5 text-uppercase infoBoxMain shadow">Ar galėsi akademijai skirti laiko darbo dienomis 14-18 val.?</div>
-<div class="col-sm-6 infoBoxText shadow"> {{applicationReviewContent.academyTime ? 'Taip': 'Ne'}}   </div>
-
-<div class="col-sm-5 text-uppercase infoBoxMain shadow"> Ar bus galimybė pasirašyti trišalę praktikos sutartį?</div>
-<div class="col-sm-6 infoBoxText shadow"> {{applicationReviewContent.contractAgreement ? 'Taip' : 'Ne'}} {{applicationReviewContent.contractReason}} </div>
-
-<div class="col-sm-5 text-uppercase infoBoxMain shadow">Technologijos</div>
-<div class="col-sm-6 infoBoxText shadow"> 
-        {{applicationReviewContent.likedTechnologies}}  </div>
-<div class="col-sm-5 text-uppercase infoBoxMain shadow">Lūkesčiai</div>
-<div class="col-sm-6 infoBoxText shadow">
-         {{applicationReviewContent.reasonForApplying}} 
-</div>
-
-<div class="col-sm-5 text-uppercase infoBoxMain shadow">Papildoma informacija</div>
-
-<div class="col-sm-6 infoBoxText shadow"> 
-
-    <div class="containerNew" [class.show]="show">
-  <p><strong>Mokymo įstaiga ir kursas </strong></p>
-<p> {{applicationReviewContent.school}} {{applicationReviewContent.degree}}</p>
-<p><strong>Tel. numeris ir nuoroda į tavo LinkedIN profilį arba į savo asmeninį puslapį </strong></p>
-<p> {{applicationReviewContent.mobileNumber}} {{applicationReviewContent.linkedinUrl}}</p> 
-<p><strong>Tavo pomėgiai</strong></p>
-<p>{{applicationReviewContent.hobbies}}</p>
-<p><strong>Informacija apie IT Akademiją</strong></p>
-<p>{{applicationReviewContent.referenceToIt}} </p>
-</div>
-<button class ="btn btn-warning btn-mm" (click)="show = !show"> {{ show? 'Rodyti mažiau': 'Rodyti daugiau' }}</button>
-
-      </div>
-</div>
-</div>
-</div>
-<div class="container-fluid d-flex flex-row-reverse">
- <!--   <div class="m-5 ">
-    <button class="btn btn-success btn-lg" (click)="logout()" [routerLink]="'/home'">Atsijungti<br></button>
-    </div> -->
+  <div class="container headerBox ">
+    <h2 class="text-uppercase text-center">Registracija į 2021m. IT Akademiją</h2>
   </div>
+  <div class="d-flex justify-content-center">
+    <!-- <div class="container text-center statusBox fontsStyle fontSize shadow"><i class="far fa-clock"></i>  {{applicationReviewContent.status}} </div> -->
+    <app-status *ngIf="applicationReviewContent"
+      [applicationReviewContent]="applicationReviewContent"
+    ></app-status>
+  </div>
+  <div>
+    <div class="row d-flex p-5">
+      <div class="col-sm-4 fontsStyle"><i class="fas fa-clock"></i>
+        <p class="inline">Tavo registracijos data
+          :</p>  {{applicationReviewContent.dateCreated.toString().substr(0, 10)}}      </div>
+      <div class="col-sm-4 fontsStyle "><i class="fas fa-pencil-alt"></i> Keisti detales</div>
+      <div class="col-sm-4 fontsStyle "><i class="far fa-paper-plane"></i> <a href="mailto:name@mydomain.com">Parašyti
+        IT akademijai</a></div>
+    </div>
+    <div class="d-flex m-2 container-fluid">
+      <div class="row d-flex flex-row">
+        <div class="col-sm-5 text-uppercase infoBoxMain shadow">Vardas, Pavardė</div>
+        <div class="col-sm-6 infoBoxText shadow">
+          {{applicationReviewContent.firstName}} {{applicationReviewContent.lastName}}
+        </div>
+        <div class="col-sm-5 text-uppercase infoBoxMain shadow">Elektroninis paštas</div>
+        <div class="col-sm-6 infoBoxText shadow">  {{applicationReviewContent.email}}  </div>
+        <div class="col-sm-5 text-uppercase infoBoxMain shadow">Ar galėsi akademijai skirti laiko darbo dienomis 14-18
+          val.?
+        </div>
+        <div class="col-sm-6 infoBoxText shadow"> {{applicationReviewContent.academyTime ? 'Taip' : 'Ne'}}   </div>
 
+        <div class="col-sm-5 text-uppercase infoBoxMain shadow"> Ar bus galimybė pasirašyti trišalę praktikos sutartį?
+        </div>
+        <div
+          class="col-sm-6 infoBoxText shadow"> {{applicationReviewContent.contractAgreement ? 'Taip' : 'Ne'}} {{applicationReviewContent.contractReason}} </div>
+
+        <div class="col-sm-5 text-uppercase infoBoxMain shadow">Technologijos</div>
+        <div class="col-sm-6 infoBoxText shadow">
+          {{applicationReviewContent.likedTechnologies}}  </div>
+        <div class="col-sm-5 text-uppercase infoBoxMain shadow">Lūkesčiai</div>
+        <div class="col-sm-6 infoBoxText shadow">
+          {{applicationReviewContent.reasonForApplying}}
+        </div>
+
+        <div class="col-sm-5 text-uppercase infoBoxMain shadow">Papildoma informacija</div>
+
+        <div class="col-sm-6 infoBoxText shadow">
+
+          <div class="containerNew" [class.show]="show">
+            <p><strong>Mokymo įstaiga ir kursas </strong></p>
+            <p> {{applicationReviewContent.school}} {{applicationReviewContent.degree}}</p>
+            <p><strong>Tel. numeris ir nuoroda į tavo LinkedIN profilį arba į savo asmeninį puslapį </strong></p>
+            <p> {{applicationReviewContent.mobileNumber}} {{applicationReviewContent.linkedinUrl}}</p>
+            <p><strong>Tavo pomėgiai</strong></p>
+            <p>{{applicationReviewContent.hobbies}}</p>
+            <p><strong>Informacija apie IT Akademiją</strong></p>
+            <p>{{applicationReviewContent.referenceToIt}} </p>
+          </div>
+          <button class="btn btn-warning btn-mm"
+                  (click)="show = !show"> {{ show ? 'Rodyti mažiau' : 'Rodyti daugiau' }}</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid d-flex flex-row-reverse">
+    <!--   <div class="m-5 ">
+       <button class="btn btn-success btn-lg" (click)="logout()" [routerLink]="'/home'">Atsijungti<br></button>
+       </div> -->
+  </div>
 
 
 </div>

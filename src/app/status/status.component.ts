@@ -1,12 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {from, Observable} from 'rxjs';
-import {ApplicationFullResponse, ApplicationRequest, ApplicationStatusRequest} from '../shared/models/application';
-import {LoggedInUser} from "../shared/models/loggedInUser";
-import {ActivatedRoute} from '@angular/router';
-import {StatusService} from '../shared/services/status.service'
-import { ɵangular_packages_animations_browser_browser_a } from '@angular/animations/browser';
-import { SelectMultipleControlValueAccessor } from '@angular/forms';
-import {ApplicationReviewComponent} from '../application-review/application-review.component'
+import {Component, OnInit, Input} from '@angular/core';
+import {ApplicationFullResponse} from '../shared/models/application';
 import {Status} from '../shared/models/status';
 
 
@@ -16,60 +9,45 @@ import {Status} from '../shared/models/status';
   styleUrls: ['./status.component.scss']
 })
 export class StatusComponent implements OnInit {
-  content : string;
-
-  serverErrorMessage: string;
+  content: string;
+  divClass: string;
+  imageSrc: string;
   statusEnum = Status;
-  answer = false;
-  answer1 = false;
-  answer2 = false;
-  answer3 = false;
-  answer4 = false;
-  status = '';
-  @Input() applicationReviewContent: ApplicationFullResponse; 
+  answer = 0;
+  @Input()
+  applicationReviewContent: ApplicationFullResponse;
 
 
-  constructor(
-    private route: ActivatedRoute,
-    private StatusService: StatusService,
-  ) {  
+  constructor() {
   }
 
   ngOnInit(): void {
-   // this.id = '';
-   // this.StatusService.getStatusData(this.id).subscribe(data =>this.statusContent=data);
-   //this.StatusService.getStatus().subscribe(data => this.statusContent=data);
-   //this.status= this.statusContent.status;
-  // console.log(this.statusContent);
-  // this.onshow1;
-  this.status = JSON.stringify(this.applicationReviewContent.status);
+    switch (this.applicationReviewContent.status) {
+      case this.statusEnum.Gavo:
+        this.divClass = "col-sm-12 alert purple pt-4 pb-4 pl-5 pr-5";
+        this.imageSrc = "assets/img/receive-mail.svg";
+        this.answer = 1;
+        break;
+      case this.statusEnum.Priimtas:
+        this.divClass = "col-sm-12 alert green pt-4 pb-4 pl-5 pr-5";
+        this.imageSrc = "assets/img/tick-inside-circle.svg";
+        this.answer = 2;
+        break;
+      case this.statusEnum.Nepriime:
+        this.divClass = "col-sm-12 alert red pt-4 pb-4 pl-5 pr-5";
+        this.imageSrc = "assets/img/cancel.svg";
+        this.answer = 3;
+        break;
+      case this.statusEnum.Nebaigta:
+        this.divClass = "col-sm-12 alert white pt-4 pb-4 pl-5 pr-5";
+        this.imageSrc = "assets/img/incomplete-hand-drawn-symbol.svg";
+        this.answer = 4;
+        break;
+      case this.statusEnum.Vykdoma:
+        this.divClass = "col-sm-12 alert orange pt-4 pb-4 pl-5 pr-5";
+        this.imageSrc = "assets/img/hourglass.svg";
+        this.answer = 5;
+        break;
+    }
   }
-
- onload = this.onshow1();
-
-
-onshow1() {
-  if (this.status.indexOf('gavo')){  //=== '"IT akademija gavo formą"') {
-    this.answer = true;
-    return this.answer;
- }
-  else if (this.status.indexOf('patvirtintas')) { // === '"Priėmimas į akademiją patvirtintas"') {
-    this.answer1 = true;
-    return this.answer1;
-  }
-  else if (this.status.indexOf('atsakymas')) {   // === '"Neigiamas atsakymas dėl priemimo į akademiją"')  {
-    this.answer2 = true;
-    return this.answer2;
-  }
-  else if (this.status.indexOf('nebaigta')) { // === '"Registracijos forma nebaigta pildyti"') {
-    this.answer3 = true;
-  return this.answer3;
-  }
-  else if (this.status.indexOf('peržiūrima')) {
-   this.answer4 = true;
-   return this.answer4;
- }
-
-}
-
 }

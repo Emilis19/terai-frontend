@@ -1,38 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import {from, Observable} from 'rxjs';
-import {ApplicationFullResponse, ApplicationRequest, ApplicationStatusRequest} from '../shared/models/application';
-import {LoggedInUser} from "../shared/models/loggedInUser";
+import {Component, OnInit} from '@angular/core';
+import {ApplicationFullResponse} from '../shared/models/application';
 import {ActivatedRoute} from '@angular/router';
-import {ReviewApplicationService} from '../shared/services/review-application.service'
+import {ApplicationService} from "../shared/services/application.service";
+import {AuthenticationService} from "../shared/services/authentication.service";
+import {Observable} from "rxjs";
 
 
 @Component({
   selector: 'app-application-review',
   templateUrl: './application-review.component.html',
   styleUrls: ['./application-review.component.scss']
+
 })
 export class ApplicationReviewComponent implements OnInit {
-
-  serverErrorMessage: string;
   public applicationReviewContent: ApplicationFullResponse;
-  private statusRequest: ApplicationStatusRequest;
-  private id: string;
-  private status = '';
   show = false;
 
   constructor(
     private route: ActivatedRoute,
-    private applicationReviewService: ReviewApplicationService,
-  ) { 
+    private applicationService: ApplicationService,
+    private authenticationService: AuthenticationService
+  ) {
   }
 
   ngOnInit(): void {
-    this.applicationReviewService.getApplication().subscribe(data =>this.applicationReviewContent=data);
-    this.status = this.applicationReviewContent.status;
-    console.log(this.status);
+    this.applicationService.getApplication(this.authenticationService.currentUserValue.id).subscribe(data => this.applicationReviewContent = data);
   }
-
-  onload=this.applicationReviewService.getApplication().subscribe(data =>this.applicationReviewContent=data);
-
-  get status1(): string { return this.applicationReviewContent.status; }
 }
