@@ -19,11 +19,7 @@ import { ApplicationService } from '../shared/services/application.service';
 })
 
 export class RegistrationFormComponent implements OnInit {
-constructor(
-    private registrationService: RegistrationService, 
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private applicantService: ApplicationService) { }
+
 
   application: ApplicationRequest;
   copyrightList: Copyright[];
@@ -53,7 +49,7 @@ constructor(
     ]],
 
     academyTimeReason: [" ", [
-      Validators.required
+
     ]],
 
     contractAgreement: ['',
@@ -61,7 +57,7 @@ constructor(
     ]],
 
     contractReason: [" ", [
-     Validators.required
+
     ]],
 
     likedTechnologies: ['', [
@@ -105,39 +101,14 @@ constructor(
      // this.urlDomainValidator
     ]],
   });
+  
+constructor(
+    private registrationService: RegistrationService, 
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private applicantService: ApplicationService) { }
 
-ngOnInit() {
-    this.copyrightList = copyrigthList;
-    this.route.paramMap.subscribe(parameterMap => {
-      const id = parameterMap.get('id');
-      this.getApplicant(id);
-    });
-  }
 
-  private getApplicant(id: string){
-    if(id === '0'){
-      this.application = {
-        firstName: null,
-        lastName: null,
-        email:null,
-        academyTime: null,
-        academyTimeReason: null,
-        contractAgreement: null,
-        contractReason: null,
-        likedTechnologies: null,
-        reasonForApplying: null,
-        school: null,
-        degree: null,
-        mobileNumber: null,
-        linkedinUrl: null,
-        hobbies: null,
-        referenceToIt: null
-      };
-      this.applicationForm.reset();
-   } else {
-      this.applicantService.getApplication(id).subscribe(data =>this.application=data);
-   }
-  }
   additional = false; 
      answer = false;
   // onload(args){
@@ -173,7 +144,38 @@ ngOnInit() {
         return this.answer;
     }
 
+ngOnInit() {
+    this.copyrightList = copyrigthList;
+    this.route.paramMap.subscribe(parameterMap => {
+      const id = parameterMap.get('id');
+      this.getApplicant(id);
+    });
+  }
 
+  private getApplicant(id: string){
+    if(id === '0'){
+      this.application = {
+        firstName: null,
+        lastName: null,
+        email:null,
+        academyTime: null,
+        academyTimeReason: null,
+        contractAgreement: null,
+        contractReason: null,
+        likedTechnologies: null,
+        reasonForApplying: null,
+        school: null,
+        degree: null,
+        mobileNumber: null,
+        linkedinUrl: null,
+        hobbies: null,
+        referenceToIt: null
+      };
+      // this.applicationForm.reset();
+   } else {
+      this.applicantService.getApplication(id).subscribe(data =>this.application=data);
+   }
+  }
     urlDomainValidator(control: FormControl){
       let url = control.value;
       if (url != -1) {
