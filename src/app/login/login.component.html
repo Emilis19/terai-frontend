@@ -11,6 +11,7 @@
              id="userEmail">
       <div *ngIf="submitted && f.userEmail.errors" class="invalid-feedback">
         <div *ngIf="f.userEmail.errors.required">El. paštas privalomas</div>
+        <div *ngIf="f.userEmail.errors.pattern">Neteisingas el. pašto formatas</div>
       </div>
       <label for="password">Slaptažodis</label>
       <input type="password" name="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
