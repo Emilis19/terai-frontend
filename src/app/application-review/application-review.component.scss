@@ -1,5 +1,5 @@
 .bg{
-    background-color: #ffffe6;
+    background-color: #ffffff;
     box-sizing: border-box;
     min-height: 100vh;
 }
@@ -24,31 +24,53 @@
 
 
 .infoBoxText {
+    background-color: #ffff99;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 6px;
+    color: #404040;
+
+}
+
+.containerNew {
+    font-size: 16px;
+    line-height: 16px;
+    height: 30px;
+    overflow: hidden;
+  }
+  
+  .show {
+    overflow: visible;
+    height: auto;
+  }
+
+
+  .statusBox {
+    background-color: #ff884d; 
     box-sizing: border-box;
     padding: 15px;
     margin: 5px;
-    font-family: 'Bookman';
-    font-size: large;
-}
+    border-radius: 10px;
+    color: #ffffff;
+ 
+    
+  }
 
-#module {
-    width: 500px;
+  .fontsStyle{
+      font-size: larger;
   }
-  
-  #module p.collapse[aria-expanded="false"] {
-      display: block;
-      height: 40px !important;
-      overflow: hidden;
+
+  .shadow {
+    -webkit-box-shadow: 10px 10px 5px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px -2px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px -2px rgba(0,0,0,0.75);
   }
-  
-  #module p.collapsing[aria-expanded="false"] {
-      height: 40px !important;
+
+  .inline {
+    display: inline;
   }
-  
-  #module a.collapsed:after  {
-      content: '+ Show More';
-  }
-  
-  #module a:not(.collapsed):after {
-      content: '- Show Less';
+
+  .fontSize {
+      font-size: 20px;
   }
