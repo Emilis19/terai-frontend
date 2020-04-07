@@ -1,6 +1,6 @@
 <div class="container" *ngIf="application">
   <div class="row-col-md-5 justify-content-left">
-    <h5>Statusas: {{ application.status }}</h5>
+    
     <div class="form-group ">
       <form (ngSubmit)="onSubmit()">
         <div class="form-group col-md-5">
@@ -23,17 +23,18 @@
         </div>
       </form>
     </div>
-    <!-- (click)="refreshPage()" -->
-    <div class="alert alert-success" role="alert">
-      <h4>Atnaujintas statusas: {{ printedOption }}</h4>
-    </div>
+   <div class="d-flex justify-content-center">
+      <app-status *ngIf="applicationReviewContent"
+      [applicationReviewContent]="application"
+    ></app-status>
+  </div>
   </div>
   <h3>Aplikanto profilis</h3>
 </div>
 
 
 <app-view-applicant-profile
-[viewApplicantProfileContent]="viewApplicantProfileContent"
+[viewApplicantProfileContent]="application"
 >
 
 </app-view-applicant-profile>

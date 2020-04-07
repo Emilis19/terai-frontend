@@ -12,7 +12,8 @@ import {FormGroup, FormBuilder} from "@angular/forms";
   styleUrls: ['./profile-page.component.scss']
 })
 export class ProfilePageComponent implements OnInit {
-
+  
+  public applicationReviewContent: ApplicationFullResponse;
   viewApplicantProfileContent:ApplicationFullResponse;
 
   serverErrorMessage: string;
