@@ -25,17 +25,20 @@ export class ForgotPasswordComponent implements OnInit {
               private router: Router,
               private authenticationService: AuthenticationService) {
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/'+this.authenticationService.currentUserValue.role]);
+      this.router.navigate(['/' + this.authenticationService.currentUserValue.role]);
     }
   }
 
   ngOnInit(): void {
     this.forgotPasswordForm = this.formBuilder.group({
-      userEmail: ['', Validators.required]
+      userEmail: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]]
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-  get f() { return this.forgotPasswordForm.controls; }
+
+  get f() {
+    return this.forgotPasswordForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -53,7 +56,7 @@ export class ForgotPasswordComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.successMessage="Naujas slaptažodis išsiųstas";
+          this.successMessage = "Naujas slaptažodis išsiųstas";
           this.showSpinner = false;
         },
         error => {

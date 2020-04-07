@@ -1,105 +1,38 @@
-  <div class="container" *ngIf="application">
-    <div class="row-col-md-5 justify-content-left">
-      <h5>Statusas: {{ application.status }}</h5>
-      <div class="form-group ">
-        <form (ngSubmit)="onSubmit()">
-          <div class="form-group col-md-5">
-            <label for="FormControlSelect">Statuso pakeitimas</label>
-
-            <select
-              class="form-control col-md-10"
-              [(ngModel)]="selectedOption"
-              name="first"
-            >
-              <option *ngFor="let o of options">
-                {{ o.name }}
-              </option>
-            </select>
-          </div>
-          <div class="col-sm-10">
-            <button type="submit" (click)="print()"  class="btn btn-primary"  >Išsaugoti</button>
-            <!-- <button type="submit" (click)="editApplicant()"  class="btn btn-primary"  [disabled]="!editable()" >Redaguoti (placeholder)</button> -->
-          </div>
-        </form>
-      </div>
-     <!-- (click)="refreshPage()" -->
-      <div class="alert alert-success" role="alert">
-        <h4>Atnaujintas statusas: {{ printedOption }}</h4>
-      </div>
+<div class="container" *ngIf="application">
+  <div class="row-col-md-5 justify-content-left">
+    <h5>Statusas: {{ application.status }}</h5>
+    <div class="form-group ">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group col-md-5">
+          <label for="FormControlSelect">Statuso pakeitimas</label>
+          <select
+            class="form-control col-md-10"
+            [(ngModel)]="selectedOption"
+            name="first"
+          >
+            <option *ngFor="let o of options">
+              {{ o.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col-sm-10">
+          <button type="submit" (click)="print()" class="btn btn-primary">
+            Išsaugoti
+          </button>
+        </div>
+      </form>
     </div>
-    <h2>Aplikanto profilis</h2>
-    <table class="table table-striped ">
-      <tbody>
-        <tr>
-          <th>Vardas</th>
-          <td>{{ application.firstName }}</td>
-        </tr>
-        <tr>
-          <th>Pavardė</th>
-          <td>{{ application.lastName }}</td>
-        </tr>
-        <tr>
-          <th>El.paštas</th>
-          <td>{{ application.email }}</td>
-        </tr>
-        <tr>
-          <th>Ar galės skirti akademijai laiką darbo dienomis 14-18 val?</th>
-          <td>{{ application.academyTime ?'Taip':'Ne'}}</td>
-        </tr>
-        <tr>
-          <th>Komentaras dėl laiko</th>
-          <td>{{ application.academyTimeReason}}</td>
-        </tr>
-        <tr>
-          <th>Ar bus galimybį pasirašyti trišalę sutartį</th>
-          <td>{{ application.contractAgreement?'Taip':'Ne' }}</td>
-        </tr>
-        <tr>
-          <th>Komentaras, kodėl negalės pasirašyti trišalės sutarties</th>
-          <td>{{ application.contractReason }}</td>
-        </tr>
-        <tr>
-          <th class="col-md-2">
-            Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
-            turi patirties?
-          </th>
-          <td>{{ application.likedTechnologies }}</td>
-        </tr>
-        <tr>
-          <th>Kodėl nori dalyvauti IT akademijoje? Kokie tavo lūkesčiai?</th>
-          <td>{{ application.reasonForApplying }}</td>
-        </tr>
-        <tr>
-          <th>Mokymo įstaiga</th>
-          <td>{{ application.school }}</td>
-        </tr>
-        <tr>
-          <th>Studijų kryptis</th>
-          <td>{{ application.degree }}</td>
-        </tr>
-        <tr>
-          <th>Tel. numeris</th>
-          <td>{{ application.mobileNumber }}</td>
-        </tr>
-        <tr>
-          <th>Nuoroda į LinkedIN profilį arba į asmeninį puslapį</th>
-          <td>
-            <a>{{ application.linkedinUrl }}</a>
-          </td>
-        </tr>
-        <tr>
-          <th>Nuotrauka</th>
-          <td>NaN</td>
-        </tr>
-        <tr>
-          <th>Pomėgiai</th>
-          <td>{{ application.hobbies }}</td>
-        </tr>
-        <tr>
-          <th>Iš kur sužinojai apie IT akademiją?</th>
-          <td>{{ application.referenceToIt }}</td>
-        </tr>
-      </tbody>
-    </table>
-
+    <!-- (click)="refreshPage()" -->
+    <div class="alert alert-success" role="alert">
+      <h4>Atnaujintas statusas: {{ printedOption }}</h4>
+    </div>
+  </div>
+  <h3>Aplikanto profilis</h3>
 </div>
+
+
+<app-view-applicant-profile
+[viewApplicantProfileContent]="viewApplicantProfileContent"
+>
+
+</app-view-applicant-profile>

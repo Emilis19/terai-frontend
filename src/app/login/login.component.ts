@@ -25,18 +25,21 @@ export class LoginComponent implements OnInit {
               private authenticationService: AuthenticationService) {
     if (this.authenticationService.currentUserValue) {
       //authenticationService.logout();
-      this.router.navigate(['/'+this.authenticationService.currentUserValue.role]);
+      this.router.navigate(['/' + this.authenticationService.currentUserValue.role]);
     }
   }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      userEmail: ['', Validators.required],
+      userEmail: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       password: ['', Validators.required]
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-  get f() { return this.loginForm.controls; }
+
+  get f() {
+    return this.loginForm.controls;
+  }
 
   onSubmit() {
     this.showSpinner = true;
@@ -56,7 +59,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.showSpinner = false;
-          this.router.navigate(['/'+this.authenticationService.currentUserValue.role]);
+          this.router.navigate(['/' + this.authenticationService.currentUserValue.role]);
         },
         error => {
           this.error = error;

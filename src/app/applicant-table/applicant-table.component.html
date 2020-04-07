@@ -1,9 +1,8 @@
-<h2>Aplikantų lentelė</h2>
-
+<div class="container justify-content-center">
 <table class="table">
   <thead>
     <tr>
-      <!-- <th scope="col">Aplikanto unikalus numeris</th> -->
+    
       <th scope="col">Vardas</th>
       <th scope="col">Pateikimo data</th>
       <th scope="col">Aplikanto statusas</th>
@@ -12,7 +11,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let applicant of applicants">
-      <!-- <th scope="row">{{ applicant.id }}</th> -->
+     
       <td>{{ applicant.firstName }}</td>
       <td>{{ applicant.dateCreated.toString().substr(0,10) }}</td>
       <td>{{ applicant.status }}</td>
@@ -22,12 +21,4 @@
     </tr>
   </tbody>
 </table>
-
-<!-- <p class="text-right">
-      <a
-         [title]="'Read full profile: ' +applicant.firstName"
-        [routerLink]="['/post', applicant.id]"
-        >Read more</a
-      >
-
-    </p> -->
+</div>
