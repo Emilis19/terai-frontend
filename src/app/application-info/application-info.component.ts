@@ -18,7 +18,7 @@ export class ApplicationInfoComponent implements OnInit {
 
 
   serverErrorMessage: string;
-  public application: ApplicationFullResponse;
+  //public application: ApplicationFullResponse;
   private statusRequest: ApplicationStatusRequest;
   public applicationContent: string[];
   private id: string;
@@ -49,7 +49,7 @@ export class ApplicationInfoComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");
-    this.applicantService.getApplication(this.id).subscribe(data =>this.application=data);
+//    this.applicantService.getApplication(this.id).subscribe(data =>this.application=data);
   }
 
 

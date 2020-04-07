@@ -3,7 +3,7 @@
       <div class="col-md-4">
         <div class="profile-img">
           <!-- <img   class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt=""/> -->
-          <img class="card-img-top"  id="imgsize" src="{{ application.image }}" onerror="this.onerror=null;this.src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';" />
+          <img class="card-img-top"  id="imgsize" src="{{ viewApplicantProfileContent.image }}" onerror="this.onerror=null;this.src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';" />
 
 
           
@@ -11,9 +11,9 @@
       </div>
       <div class="col-md-6">
         <div class="profile-head">
-          <h5>{{ application.firstName }} {{ application.lastName }}</h5>
-          <h6>{{ application.email }} {{ application.mobileNumber }}</h6>
-          <p>{{ application.school }}, {{ application.degree }}</p>
+          <h5>{{ viewApplicantProfileContent.firstName }} {{ viewApplicantProfileContent.lastName }}</h5>
+          <h6>{{ viewApplicantProfileContent.email }} {{ viewApplicantProfileContent.mobileNumber }}</h6>
+          <p>{{ viewApplicantProfileContent.school }}, {{ viewApplicantProfileContent.degree }}</p>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
           <th>Ar galės skirti akademijai laiką darbo dienomis 14-18 val?</th>
         </div>
         <div class="col-md-6">
-          <p>{{ application.academyTime ? "Taip" : "Ne" }}</p>
+          <p>{{ viewApplicantProfileContent.academyTime ? "Taip" : "Ne" }}</p>
         </div>
       </div>
       <hr />
@@ -34,7 +34,7 @@
           <th>Ar bus galimybė pasirašyti trišalę sutartį?</th>
         </div>
         <div class="col-md-6">
-          <p>{{ application.contractAgreement ? "Taip" : "Ne" }}</p>
+          <p>{{ viewApplicantProfileContent.contractAgreement ? "Taip" : "Ne" }}</p>
         </div>
       </div>
       <hr />
@@ -43,7 +43,7 @@
           <th>Komentaras, kodėl negalės pasirašyti trišalės sutarties</th>
         </div>
         <div class="col-md-6">
-          <p>{{ application.contractReason }}</p>
+          <p>{{ viewApplicantProfileContent.contractReason }}</p>
         </div>
       </div>
       <hr />
@@ -55,7 +55,7 @@
           </th>
         </div>
         <div class="col-md-6">
-          <p>{{ application.likedTechnologies }}</p>
+          <p>{{ viewApplicantProfileContent.likedTechnologies }}</p>
         </div>
       </div>
       <hr />
@@ -64,7 +64,7 @@
           <th>Kodėl nori dalyvauti IT akademijoje? Kokie tavo lūkesčiai?</th>
         </div>
         <div class="col-md-6">
-          <p>{{ application.reasonForApplying }}</p>
+          <p>{{ viewApplicantProfileContent.reasonForApplying }}</p>
         </div>
       </div>
       <hr />
@@ -75,7 +75,7 @@
         </div>
         <div class="col-md-6">
           <p>
-            <a>{{ application.linkedinUrl }}</a>
+            <a>{{ viewApplicantProfileContent.linkedinUrl }}</a>
           </p>
         </div>
       </div>
@@ -86,7 +86,7 @@
           <th>Pomėgiai</th>
         </div>
         <div class="col-md-6">
-          <p>{{ application.hobbies }}</p>
+          <p>{{ viewApplicantProfileContent.hobbies }}</p>
         </div>
       </div>
       <hr />
@@ -96,7 +96,7 @@
           <th>Iš kur sužinojai apie IT akademiją?</th>
         </div>
         <div class="col-md-6">
-          <p>{{ application.referenceToIt }}</p>
+          <p>{{ viewApplicantProfileContent.referenceToIt }}</p>
         </div>
       </div>
     </div>
