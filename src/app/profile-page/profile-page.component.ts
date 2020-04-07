@@ -49,16 +49,17 @@ export class ProfilePageComponent implements OnInit {
     this.applicantService.getApplication(this.id).subscribe(data =>this.application=data);
   }
   
-  editable(){
-    if(this.application.status != "IT akademija gavo formą")
-        return false;
-    else
-      return true;
-  }
+  // editable(){
+  //   if(this.application.status != "IT akademija gavo formą")
+  //       return false;
+  //   else
+  //     return true;
+  // }
 
-  editApplicant(){
-    this.router.navigate(['/registration', this.application.id]);
-  }
+  // editApplicant(){
+  //   this.router.navigate(['/registration', this.application.id]);
+  // }
+  
   onSubmit() {
     this.statusRequest = { id: this.id, status: this.selectedOption};
    // console.log("Statusas atnaujinamas: "+ this.selectedOption);
