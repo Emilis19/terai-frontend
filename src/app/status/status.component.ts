@@ -34,7 +34,7 @@ export class StatusComponent implements OnInit {
         this.answer = 2;
         break;
       case this.statusEnum.Nepriime:
-        this.divClass = "col-sm-12 alert red pt-4 pb-4 pl-5 pr-5";
+        this.divClass = "col-sm-12 alert redN pt-4 pb-4 pl-5 pr-5";
         this.imageSrc = "assets/img/cancel.svg";
         this.answer = 3;
         break;
@@ -44,7 +44,7 @@ export class StatusComponent implements OnInit {
         this.answer = 4;
         break;
       case this.statusEnum.Vykdoma:
-        this.divClass = "col-sm-12 alert orange pt-4 pb-4 pl-5 pr-5";
+        this.divClass = "col-sm-12 alert orangle pt-4 pb-4 pl-5 pr-5";
         this.imageSrc = "assets/img/hourglass.svg";
         this.answer = 5;
         break;
