@@ -1,11 +1,13 @@
 
 
 import { Component, OnInit} from '@angular/core';
-import { ApplicationRequest } from '../shared/models/application';
+import { ApplicationFullResponse, ApplicationRequest } from '../shared/models/application';
 import { Copyright } from '../copyright';
 import { copyrigthList } from './listOfItems';
 import { RegistrationService } from '../shared/services/registration.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ApplicationService } from '../shared/services/application.service';
 
 
 
@@ -18,13 +20,13 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 
 export class RegistrationFormComponent implements OnInit {
 
+
   application: ApplicationRequest;
   copyrightList: Copyright[];
   serverErrorMessage: string;
   numericNumberReg= '[\+[0-9]{0,11}]+';
   confirmationMessage='';
-  additional=false;
-
+  title = "Registracija į 2021m. IT Akademiją";
 
   applicationForm = this.fb.group({
     firstName: ['', [
@@ -46,8 +48,8 @@ export class RegistrationFormComponent implements OnInit {
     [Validators.required
     ]],
 
-    timeReason: [" ", [
-      Validators.required
+    academyTimeReason: [" ", [
+
     ]],
 
     contractAgreement: ['',
@@ -55,7 +57,7 @@ export class RegistrationFormComponent implements OnInit {
     ]],
 
     contractReason: [" ", [
-     Validators.required
+
     ]],
 
     likedTechnologies: ['', [
@@ -99,9 +101,27 @@ export class RegistrationFormComponent implements OnInit {
      // this.urlDomainValidator
     ]],
   });
+  
+constructor(
+    private registrationService: RegistrationService, 
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private applicantService: ApplicationService) { }
 
-  constructor(private registrationService: RegistrationService, private fb: FormBuilder) { }
 
+  additional = false; 
+     answer = false;
+  // onload(args){
+  //   if(!this.application.academyTime)
+  //     {this.additional=true;
+  //       return this.additional;
+  //     }
+  //     if(!this.application.contractAgreement)
+  //     {this.answer=true;
+  //       return this.answer;
+  //     }
+  // }
+  
 
   onchange2(args){
     this.additional = true;
@@ -113,7 +133,7 @@ export class RegistrationFormComponent implements OnInit {
     return this.additional;
   }
 
-    answer=false;
+
     onchange(args){
       this.answer = true;
         return this.answer;
@@ -124,12 +144,39 @@ export class RegistrationFormComponent implements OnInit {
         return this.answer;
     }
 
-  ngOnInit() {
+ngOnInit() {
     this.copyrightList = copyrigthList;
-    this.application = null;
+    this.route.paramMap.subscribe(parameterMap => {
+      const id = parameterMap.get('id');
+      this.getApplicant(id);
+    });
   }
 
-
+  private getApplicant(id: string){
+    if(id === '0'){
+      this.application = {
+        firstName: null,
+        lastName: null,
+        email:null,
+        academyTime: null,
+        academyTimeReason: null,
+        contractAgreement: null,
+        contractReason: null,
+        likedTechnologies: null,
+        reasonForApplying: null,
+        school: null,
+        degree: null,
+        mobileNumber: null,
+        linkedinUrl: null,
+        hobbies: null,
+        referenceToIt: null
+      };
+      // this.applicationForm.reset();
+   } else {
+     this.title = "Redagavimas";
+      this.applicantService.getApplication(id).subscribe(data =>this.application=data);
+   }
+  }
     urlDomainValidator(control: FormControl){
       let url = control.value;
       if (url != -1) {
@@ -147,13 +194,27 @@ export class RegistrationFormComponent implements OnInit {
 
   onSubmit() {
     this.application = this.applicationForm.value;
-  this.registrationService.addRegistration(this.application).subscribe(() => {
-    this.application = null;
-   this.serverErrorMessage = '';
-   },
-   error => this.serverErrorMessage = error
-
-  );
+    this.route.paramMap.subscribe(parameterMap => {
+      const id = parameterMap.get('id');
+      if(id === '0'){
+        this.registrationService.addRegistration(this.application).subscribe(() => {
+          this.application = null;
+         this.serverErrorMessage = '';
+         },
+         error => this.serverErrorMessage = error
+      
+        );
+      }
+      else {
+        this.registrationService.updateRegistation(id, this.application).subscribe(() => {
+          this.application = null;
+         this.serverErrorMessage = '';
+         },
+         error => this.serverErrorMessage = error
+      
+        );
+      }
+    });
   }
 
   refreshPage() {
@@ -164,6 +225,7 @@ export class RegistrationFormComponent implements OnInit {
   get firstName() { return this.applicationForm.get('firstName'); }
   get lastName() { return this.applicationForm.get('lastName');}
   get academyTime() {return this.applicationForm.get('academyTime'); }
+  get academyTimeReason() {return this.applicationForm.get('academyTimeReason'); }
   get email() {return this.applicationForm.get('email'); }
   get contractAgreement() {return this.applicationForm.get('contractAgreement'); }
   get contractReason() {return this.applicationForm.get('contractReason'); }
@@ -175,5 +237,4 @@ export class RegistrationFormComponent implements OnInit {
   get hobbies() {return this.applicationForm.get('hobbies'); }
   get referenceToIt() {return this.applicationForm.get('referenceToIt'); }
   get linkedinUrl() {return this.applicationForm.get('linkedinUrl'); }
-  get timeReason() {return this.applicationForm.get('timeReason');}
 }

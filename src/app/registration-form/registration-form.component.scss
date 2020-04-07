@@ -30,6 +30,11 @@
     font-size: small;
   }
 
+  .required:before {
+    content:"* ";
+    color: red;
+  }
+
   
 
   
