@@ -13,7 +13,8 @@
       <div class="col-sm-4 fontsStyle"><i class="fas fa-clock"></i>
         <p class="inline">Tavo registracijos data
           :</p>  {{applicationReviewContent.dateCreated.toString().substr(0, 10)}}      </div>
-      <div class="col-sm-4 fontsStyle "><i class="fas fa-pencil-alt"></i> Keisti detales</div>
+      <div class="col-sm-4 fontsStyle "><i class="fas fa-pencil-alt"></i>  <button class="btn btn-primary" (click)="editApplicant()"
+        [disabled]="!editable()">Keisti detales</button></div>
       <div class="col-sm-4 fontsStyle "><i class="far fa-paper-plane"></i> <a href="mailto:name@mydomain.com">Parašyti
         IT akademijai</a></div>
     </div>
