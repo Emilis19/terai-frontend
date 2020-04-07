@@ -4,6 +4,7 @@ export interface ApplicationRequest {
   lastName: string,
   email: string,
   academyTime: boolean,
+  academyTimeReason: string,
   contractAgreement: boolean,
   contractReason: string,
   likedTechnologies: string,
@@ -14,8 +15,8 @@ export interface ApplicationRequest {
   linkedinUrl?: string,
   photo?: string,
   hobbies?: string,
-  referenceToIt?: string,
-  timeReason?: string
+  referenceToIt?: string
+  
 }
 export interface ApplicationStatusRequest {
   id: string;
@@ -35,6 +36,7 @@ export interface ApplicationFullResponse {
   lastName: string;
   email: string;
   academyTime: boolean;
+  academyTimeReason: string;
   contractAgreement: boolean;
   contractReason: string;
   likedTechnologies: string;
@@ -48,4 +50,10 @@ export interface ApplicationFullResponse {
   referenceToIt: string;
   dateCreated: Date;
   status: string;
+}
+export interface ApplicationComment {
+  userId: string;
+  userName: string;
+  comment: string;
+  dateCreated: string;
 }

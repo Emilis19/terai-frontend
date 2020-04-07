@@ -5,7 +5,6 @@
       <form (ngSubmit)="onSubmit()">
         <div class="form-group col-md-5">
           <label for="FormControlSelect">Statuso pakeitimas</label>
-
           <select
             class="form-control col-md-10"
             [(ngModel)]="selectedOption"
@@ -24,7 +23,7 @@
       </form>
     </div>
    <div class="d-flex justify-content-center">
-      <app-status *ngIf="applicationReviewContent"
+      <app-status *ngIf="application"
       [applicationReviewContent]="application"
     ></app-status>
   </div>

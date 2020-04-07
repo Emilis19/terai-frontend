@@ -29,7 +29,7 @@ export class RedirectInterceptor implements HttpInterceptor {
     return next.handle(request)
       .pipe(
         tap((event: HttpEvent<any>) => {
-          if (event instanceof HttpResponse && event.status === 200 && this.router.url == '/registration') {
+          if (event instanceof HttpResponse && event.status === 200 && this.router.url == 'registration/:id') {
             this.router.navigate(['/confirmation'])
           }
         }),
@@ -43,7 +43,6 @@ export class RedirectInterceptor implements HttpInterceptor {
             this.authenticationService.logout();
             this.router.navigate(['/login']);
           } else {
-
             errorMessage = " Klaida - bandykite vėliau";
           }
           console.log(errorMessage);

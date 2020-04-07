@@ -3,10 +3,10 @@ import { AccountService } from '../shared/services/account.service';
 
 @Component({
   selector: 'app-hr-users',
-  templateUrl: './hr-users.component.html',
-  styleUrls: ['./hr-users.component.scss']
+  templateUrl: './admin-account-table.component.html',
+  styleUrls: ['./admin-account-table.component.scss']
 })
-export class HrUsersComponent implements OnInit {
+export class AdminAccountTableComponent implements OnInit {
 
   public users=[ ];
   constructor(private userService: AccountService) { }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfilePageComponent } from './profile-page.component';
+import { HrApplicationTableComponent } from './hr-application-table.component';
 
-describe('ProfilePageComponent', () => {
-  let component: ProfilePageComponent;
-  let fixture: ComponentFixture<ProfilePageComponent>;
+describe('ApplicantTableComponent', () => {
+  let component: HrApplicationTableComponent;
+  let fixture: ComponentFixture<HrApplicationTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfilePageComponent ]
+      declarations: [ HrApplicationTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfilePageComponent);
+    fixture = TestBed.createComponent(HrApplicationTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

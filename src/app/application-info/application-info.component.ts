@@ -9,16 +9,16 @@ import {FormGroup, FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-view-applicant-profile',
-  templateUrl: './view-applicant-profile.component.html',
-  styleUrls: ['./view-applicant-profile.component.scss']
+  templateUrl: './application-info.component.html',
+  styleUrls: ['./application-info.component.scss']
 })
-export class ViewApplicantProfileComponent implements OnInit {
+export class ApplicationInfoComponent implements OnInit {
   @Input() viewApplicantProfileContent: ApplicationFullResponse;
 
- 
+
 
   serverErrorMessage: string;
-  public application: ApplicationFullResponse;
+  //public application: ApplicationFullResponse;
   private statusRequest: ApplicationStatusRequest;
   public applicationContent: string[];
   private id: string;
@@ -49,9 +49,9 @@ export class ViewApplicantProfileComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");
-    this.applicantService.getApplication(this.id).subscribe(data =>this.application=data);
+//    this.applicantService.getApplication(this.id).subscribe(data =>this.application=data);
   }
- 
+
 
   onSubmit() {
     this.statusRequest = { id: this.id, status: this.selectedOption};
@@ -70,7 +70,7 @@ export class ViewApplicantProfileComponent implements OnInit {
   print() {
     this.printedOption = this.selectedOption;
     console.log("My input: ", this.selectedOption);
-    
+
   }
 }
 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ApplicantTableComponent } from './applicant-table.component';
+import { ApplicationInfoComponent } from './application-info.component';
 
-describe('ApplicantTableComponent', () => {
-  let component: ApplicantTableComponent;
-  let fixture: ComponentFixture<ApplicantTableComponent>;
+describe('ViewApplicantProfileComponent', () => {
+  let component: ApplicationInfoComponent;
+  let fixture: ComponentFixture<ApplicationInfoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ApplicantTableComponent ]
+      declarations: [ ApplicationInfoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ApplicantTableComponent);
+    fixture = TestBed.createComponent(ApplicationInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
