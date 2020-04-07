@@ -49,3 +49,9 @@ export interface ApplicationFullResponse {
   dateCreated: Date;
   status: string;
 }
+export interface ApplicationComment {
+  userId: string;
+  userName: string;
+  comment: string;
+  dateCreated: string;
+}

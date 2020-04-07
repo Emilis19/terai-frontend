@@ -29,6 +29,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { CreateAccountComponent } from './create-account/create-account.componen
     LoginComponent,
     ForgotPasswordComponent,
     NavigationBarComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
