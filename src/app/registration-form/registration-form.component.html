@@ -9,7 +9,7 @@
             (ngSubmit)="onSubmit(); applicationForm.reset()" >
             <p class="moreImportant"><strong>PRIVALOMA INFORMACIJA </strong></p>
             <div class="form-group">
-              <label class ="inputText" for="firstName">Vardas </label>
+              <label class ="inputText p-3" for="firstName">Vardas </label>
               <input type="text" name="firstName" class="form-control" id="firstName" aria-describedby="fnameHelp" placeholder="Vardas"  formControlName="firstName"/>
               <div
               [hidden]="(applicationForm.controls.firstName.valid || firstName.pristine) && lastName.untouched"
@@ -27,7 +27,7 @@
           </div>
           
           <div class="form-group">
-              <label class ="inputText" for="lastName">Pavardė </label>
+              <label class ="inputText p-3" for="lastName">Pavardė </label>
               <input type="text" name="lastName" class="form-control" id="lastName" aria-describedby="lnameHelp" placeholder="Pavardė" formControlName="lastName"/> 
               <div
               [hidden]="(applicationForm.controls.lastName.valid || lastName.pristine) && email.untouched"
@@ -46,7 +46,7 @@
           </div>
 
           <div class ="form-group">
-              <label class ="inputText" for="email">El. paštas</label>
+              <label class ="inputText p-3" for="email">El. paštas</label>
               <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
                 placeholder="Įveskite savo el. paštą" formControlName="email"/>
                 <div
@@ -67,10 +67,10 @@
 
         
 
-           <div class ="form-group"> 
-              <label class ="inputText" for="academyTime">Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi akademijai skirti tiek laiko?</label><br>
-              <input name="academyTime" ng-control="options" name="academyTime" type="radio" [value]="true" formControlName="academyTime" (change)=onchange3($event)> Taip <br>
-              <input name="academyTime" ng-control="options" name="academyTime" type="radio" [value]="false" formControlName="academyTime" (change)=onchange2($event)> Ne <br>
+           <div class ="form-group pl-3"> 
+              <label class ="inputText pt-3 pb-3" for="academyTime">Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi akademijai skirti tiek laiko?</label><br>
+              <input name="academyTime"  ng-control="options" name="academyTime" type="radio" [value]="true" formControlName="academyTime" (change)=onchange3($event)> Taip <br>
+              <input name="academyTime"  ng-control="options" name="academyTime" type="radio" [value]="false" formControlName="academyTime" (change)=onchange2($event)> Ne <br>
               <div
               [hidden]="applicationForm.controls.contractAgreement.untouched && academyTime.pristine"
               class="alert p-0">
@@ -82,8 +82,8 @@
 
           <div *ngIf="additional" class="form-group"> 
             
-              <label class ="inputText" for="timeReason">Komentaras dėl laiko</label>
-              <input type="text" name="timeReason" class="form-control" id="timeReason" placeholder="Parašyk komentarą" formControlName="timeReason"/>
+              <label class ="inputText p-3" for="timeReason">Komentaras dėl laiko</label>
+              <input type="text" name="timeReason" class="form-control p-3" id="timeReason" placeholder="Parašyk komentarą" formControlName="timeReason"/>
                 <div
                 [hidden]="(applicationForm.controls.timeReason.valid || timeReason.pristine) && contractAgreement.untouched"
                 class="alert p-0">
@@ -94,8 +94,8 @@
               </div>
 
            
-            <div class = "form-group" > 
-             <label class ="inputText" for="contractAgreement">Ar bus galimybė pasirašyti trišalę praktikos sutartį? Jei ne - pakomentuok plačiau</label><br>
+            <div class = "form-group pl-3" > 
+             <label class ="inputText pt-3 pb-3" for="contractAgreement">Ar bus galimybė pasirašyti trišalę praktikos sutartį? Jei ne - pakomentuok plačiau</label><br>
              <input  name="contractAgreement" ng-control="options" type="radio" [value]="true" value="true" formControlName="contractAgreement" (change)=onchange1($event) > Taip <br>
              <input name="contractAgreement" ng-control="options" type="radio" [value]="false" value="false" formControlName="contractAgreement" (change)=onchange($event)> Ne <br>
              <div
@@ -109,8 +109,8 @@
 
 
            <div *ngIf="answer" class="form-group"> 
-              <label class ="inputText" for="contractReason">Komentaras dėl sutarties</label>
-              <input type="text" name="contractReason" class="form-control" id="contractReason" placeholder="Parašyk komentarą" formControlName="contractReason"/>
+              <label class ="inputText p-3" for="contractReason">Komentaras dėl sutarties</label>
+              <input type="text" name="contractReason" class="form-control p-3" id="contractReason" placeholder="Parašyk komentarą" formControlName="contractReason"/>
                 <div
                 [hidden]="(applicationForm.controls.contractReason.valid || contractReason.pristine) && likedTechnologies.untouched"
                 class="alert p-0">
