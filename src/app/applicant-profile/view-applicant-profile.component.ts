@@ -70,6 +70,7 @@ export class ViewApplicantProfileComponent implements OnInit {
   print() {
     this.printedOption = this.selectedOption;
     console.log("My input: ", this.selectedOption);
+    
   }
 }
 

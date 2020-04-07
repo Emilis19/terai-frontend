@@ -2,8 +2,11 @@
     <div class="row">
       <div class="col-md-4">
         <div class="profile-img">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-          <!-- <img ng-src="{{ application.image }}" alt="no photo" /> -->
+          <!-- <img   class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt=""/> -->
+          <img class="card-img-top"  id="imgsize" src="{{ application.image }}" onerror="this.onerror=null;this.src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';" />
+
+
+          
         </div>
       </div>
       <div class="col-md-6">
