@@ -10,10 +10,10 @@ import { CopyrightComponent } from './copyright/copyright.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { ApplicantTableComponent } from './applicant-table/applicant-table.component';
+import { HrApplicationTableComponent } from './hr-application-table/hr-application-table.component';
 
-import { ProfilePageComponent } from './profile-page/profile-page.component';
-import { HrUsersComponent } from './hr-users/hr-users.component';
+import { HrApplicationReviewComponent } from './hr-application-review/hr-application-review.component';
+import { AdminAccountTableComponent } from './admin-account-table/admin-account-table.component';
 
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -23,11 +23,11 @@ import {RedirectInterceptor} from './shared/interceptors/redirect.interceptor';
 import { ComfirmationComponent } from './comfirmation/comfirmation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { ApplicationReviewComponent } from './application-review/application-review.component';
+import { ApplicantApplicationReviewComponent } from './applicant-application-review/applicant-application-review.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
-import { ViewApplicantProfileComponent } from './applicant-profile/view-applicant-profile.component';
+import { ApplicationInfoComponent } from './application-info/application-info.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { StatusComponent } from './status/status.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
@@ -41,15 +41,15 @@ import { CommentsComponent } from './comments/comments.component';
     RegistrationFormComponent,
     CopyrightComponent,
     ComfirmationComponent,
-    ApplicationReviewComponent,
+    ApplicantApplicationReviewComponent,
 
-    ApplicantTableComponent,
-    ProfilePageComponent,
-    HrUsersComponent,
+    HrApplicationTableComponent,
+    HrApplicationReviewComponent,
+    AdminAccountTableComponent,
     ComfirmationComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    ViewApplicantProfileComponent,
+    ApplicationInfoComponent,
     NavigationBarComponent,
     CommentsComponent,
     StatusComponent,

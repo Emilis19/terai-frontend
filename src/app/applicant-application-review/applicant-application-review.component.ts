@@ -8,11 +8,11 @@ import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-application-review',
-  templateUrl: './application-review.component.html',
-  styleUrls: ['./application-review.component.scss']
+  templateUrl: './applicant-application-review.component.html',
+  styleUrls: ['./applicant-application-review.component.scss']
 
 })
-export class ApplicationReviewComponent implements OnInit {
+export class ApplicantApplicationReviewComponent implements OnInit {
   public applicationReviewContent: ApplicationFullResponse;
   show = false;
 

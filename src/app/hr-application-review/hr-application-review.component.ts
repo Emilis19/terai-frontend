@@ -8,10 +8,10 @@ import {FormGroup, FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-profile-page',
-  templateUrl: './profile-page.component.html',
-  styleUrls: ['./profile-page.component.scss']
+  templateUrl: './hr-application-review.component.html',
+  styleUrls: ['./hr-application-review.component.scss']
 })
-export class ProfilePageComponent implements OnInit {
+export class HrApplicationReviewComponent implements OnInit {
 
   viewApplicantProfileContent:ApplicationFullResponse;
 
@@ -50,7 +50,7 @@ export class ProfilePageComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get("id");
     this.applicantService.getApplication(this.id).subscribe(data =>this.application=data);
   }
-  
+
   // editable(){
   //   if(this.application.status != "IT akademija gavo formą")
   //       return false;
@@ -61,7 +61,7 @@ export class ProfilePageComponent implements OnInit {
   // editApplicant(){
   //   this.router.navigate(['/registration', this.application.id]);
   // }
-  
+
   onSubmit() {
     this.statusRequest = { id: this.id, status: this.selectedOption};
    // console.log("Statusas atnaujinamas: "+ this.selectedOption);
