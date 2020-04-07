@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {ApplicationFullResponse} from '../shared/models/application';
 import {Status} from '../shared/models/status';
 
@@ -8,7 +8,7 @@ import {Status} from '../shared/models/status';
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.scss']
 })
-export class StatusComponent implements OnInit {
+export class StatusComponent implements OnInit, OnChanges {
   content: string;
   divClass: string;
   imageSrc: string;
@@ -20,8 +20,10 @@ export class StatusComponent implements OnInit {
 
   constructor() {
   }
-
-  ngOnInit(): void {
+  ngOnInit(){
+    
+  }
+  ngOnChanges() {
     switch (this.applicationReviewContent.status) {
       case this.statusEnum.Gavo:
         this.divClass = "col-sm-12 alert purple pt-4 pb-4 pl-5 pr-5";

@@ -67,6 +67,7 @@ export class HrApplicationReviewComponent implements OnInit {
    // console.log("Statusas atnaujinamas: "+ this.selectedOption);
        this.applicantService.updateStatus(this.statusRequest).subscribe(() => {
       this.serverErrorMessage = '';
+      this.applicantService.getApplication(this.id).subscribe(data =>this.application=data);
       },
      error => this.serverErrorMessage = error
      );
