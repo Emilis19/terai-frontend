@@ -28,6 +28,9 @@ import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
 import { ViewApplicantProfileComponent } from './applicant-profile/view-applicant-profile.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { StatusComponent } from './status/status.component';
+import { CreateAccountComponent } from './create-account/create-account.component';
 
 
 @NgModule({
@@ -45,7 +48,10 @@ import { ViewApplicantProfileComponent } from './applicant-profile/view-applican
     ComfirmationComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    ViewApplicantProfileComponent
+    ViewApplicantProfileComponent,
+    NavigationBarComponent,
+    StatusComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
