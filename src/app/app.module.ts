@@ -31,6 +31,7 @@ import { ViewApplicantProfileComponent } from './applicant-profile/view-applican
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { StatusComponent } from './status/status.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { CreateAccountComponent } from './create-account/create-account.componen
     ForgotPasswordComponent,
     ViewApplicantProfileComponent,
     NavigationBarComponent,
+    CommentsComponent,
     StatusComponent,
     CreateAccountComponent
   ],
