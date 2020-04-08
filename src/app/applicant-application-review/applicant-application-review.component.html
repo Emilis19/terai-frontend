@@ -10,6 +10,7 @@
   </div>
   <div>
     <div class="row d-flex p-5">
+
       <div class="col-sm-3 row">
         <div class="pr-2 inline"><i class=" fas fa-clock"></i></div>
         <div class=" pl-1"><p class="inline ">Atnaujinta :</p>  {{applicationReviewContent.dateCreated.toString().substr(0, 10)}} </div>
@@ -49,10 +50,6 @@
              <button type="button" class="btn btn-light" (click)="decline()" >Ne</button>
            </div>
          </ng-template>
-
-
-
-          
         </div>   
     </div>
     <app-view-applicant-profile

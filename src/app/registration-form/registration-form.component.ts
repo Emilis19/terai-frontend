@@ -84,7 +84,7 @@ export class RegistrationFormComponent implements OnInit {
   // Validators.pattern('[0-9]{1,8}')
     ]],
 
-    photo: ['', [
+    image: ['', [
 
     ]  ],
 
@@ -199,8 +199,9 @@ ngOnInit() {
       const id = parameterMap.get('id');
       if(id === '0'){
         this.registrationService.addRegistration(this.application).subscribe(() => {
+
           this.router.navigate(['/confirmation']);
-          this.application = null;
+         // this.application = null;
          this.serverErrorMessage = '';
          }, 
          error => this.serverErrorMessage = error
@@ -208,8 +209,9 @@ ngOnInit() {
       }
       else {
         this.registrationService.updateRegistation(id, this.application).subscribe(() => {
+
           this.router.navigate(['/application']);
-          this.application = null;
+     //    this.application = null;
          this.serverErrorMessage = '';
          },
          error => this.serverErrorMessage = error
@@ -239,4 +241,5 @@ ngOnInit() {
   get hobbies() {return this.applicationForm.get('hobbies'); }
   get referenceToIt() {return this.applicationForm.get('referenceToIt'); }
   get linkedinUrl() {return this.applicationForm.get('linkedinUrl'); }
+  get image() {return this.applicationForm.get('image'); }
 }

@@ -13,7 +13,7 @@
         <div class="profile-head">
           <h5>{{ viewApplicantProfileContent.firstName }} {{ viewApplicantProfileContent.lastName }}</h5>
           <h6>{{ viewApplicantProfileContent.email }} {{ viewApplicantProfileContent.mobileNumber }}</h6>
-          <p>{{ viewApplicantProfileContent.school }}, {{ viewApplicantProfileContent.degree }}</p>
+          <p>{{ viewApplicantProfileContent.school }} {{ viewApplicantProfileContent.degree }}</p>
         </div>
       </div>
     </div>
@@ -29,6 +29,15 @@
         </div>
       </div>
       <hr />
+      <div class="row">
+        <div class="col-md-6  ">
+          <th>Komentaras dėl laiko</th>
+        </div>
+        <div class="col-md-6">
+          <p>{{ viewApplicantProfileContent.academyTimeReason}}</p>
+        </div>
+      </div>
+      <hr/>
       <div class="row">
         <div class="col-md-6  ">
           <th>Ar bus galimybė pasirašyti trišalę sutartį?</th>
