@@ -42,13 +42,17 @@ export class CommentsComponent implements OnInit {
     return this.commentGroup.controls;
   }
 
+
   onSubmit() {
     this.submitted = true;
     if (this.commentGroup.invalid) {
+      this.ngOnInit();
       return;
     }
     this.commentRequest = {hrId: this.HRid, appId: this.appId, comment: this.commentGroup.controls.comment.value};
     this.applicationService.addComment(this.commentRequest).pipe(first())
       .subscribe();
+    this.commentGroup.controls.comment.setValue('');
+    this.comments$ = this.applicationService.getComments(this.appId);
   }
 }

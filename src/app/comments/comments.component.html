@@ -3,7 +3,7 @@
     <li class= comment-card *ngFor="let applicationComment of (comments$ | async).reverse()">
       <div class="comment-header">
         <h6 class="commentAuthor">{{applicationComment.hrName}}</h6>
-        <h6 class="comment-date">{{applicationComment.dateCreated.substr(0,10)}}</h6>
+        <h6 class="comment-date">{{applicationComment.dateCreated.substr(0,10)+' '+applicationComment.dateCreated.substr(11,5)}}</h6>
       </div>
       <p class="comment-content">{{applicationComment.comment}}</p>
     </li>
