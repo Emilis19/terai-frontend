@@ -1,7 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ApplicationComment} from "../shared/models/application";
+import {ApplicationComment, CommentRequest} from "../shared/models/application";
 import {AuthenticationService} from "../shared/services/authentication.service";
+import {ApplicationService} from "../shared/services/application.service";
+import {first} from "rxjs/operators";
+import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -12,23 +16,23 @@ import {AuthenticationService} from "../shared/services/authentication.service";
 export class CommentsComponent implements OnInit {
   commentGroup: FormGroup;
   submitted = false;
-  comments:ApplicationComment[] = [];
-
+  commentRequest: CommentRequest;
+  HRid: string;
+  error = '';
+  appId: string;
+  comments$:Observable<ApplicationComment[]>;
 
   constructor(private formBuilder: FormBuilder,
-              private authenticationService:AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private route: ActivatedRoute,
+              private applicationService: ApplicationService) {
   }
 
   ngOnInit(): void {
-    let com1:ApplicationComment = {'userId':'userId','userName':'Namae','dateCreated':new Date().toString(),
-      'comment':'comment aly rey realy realy rely realy realy realyrealy realy reaaly realyrealy realy realy realy long'};
-    this.comments.push(com1);
-    this.comments.push(com1);
-    this.comments.push(com1);
-    this.comments.push(com1);
-    this.comments.push(com1);
-    this.comments.push(com1);
-
+    this.appId = this.route.snapshot.paramMap.get("id");
+    this.comments$ = this.applicationService.getComments(this.appId);
+    this.comments$.subscribe();
+    this.HRid = this.authenticationService.currentUserValue.id;
     this.commentGroup = this.formBuilder.group({
       comment: ['', Validators.required]
     });
@@ -38,8 +42,15 @@ export class CommentsComponent implements OnInit {
     return this.commentGroup.controls;
   }
 
+
   onSubmit() {
     this.submitted = true;
-
+    this.commentRequest = {hrId: this.HRid, appId: this.appId, comment: this.commentGroup.controls.comment.value};
+    this.applicationService.addComment(this.commentRequest).pipe(first())
+      .subscribe();
+    this.commentGroup.controls.comment.setValue('');
+    this.comments$ = this.applicationService.getComments(this.appId);
+    this.comments$.subscribe();
+    this.submitted = false;
   }
 }
