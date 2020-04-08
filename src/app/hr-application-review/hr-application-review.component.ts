@@ -35,14 +35,14 @@ export class HrApplicationReviewComponent implements OnInit {
   });
 
 
-  selectedOption: string;
+  public selectedOption = "Two";
   printedOption: string;
 
   options = [
-    { name: "IT akademija gavo formą", value: 1 },
-    { name: "Registracijos forma yra peržiūrima", value: 2 },
-    { name: "Priėmimas į akademiją patvirtintas", value: 3 },
-    { name: "Neigiamas atsakymas dėl priėmimo į akademiją", value: 4 }
+    { name: "IT akademija gavo formą", value: 0 },
+    { name: "Registracijos forma yra peržiūrima", value: 1 },
+    { name: "Priėmimas į akademiją patvirtintas", value: 2 },
+    { name: "Neigiamas atsakymas dėl priėmimo į akademiją", value: 3 }
   ]
 
 
@@ -67,7 +67,6 @@ export class HrApplicationReviewComponent implements OnInit {
    // console.log("Statusas atnaujinamas: "+ this.selectedOption);
        this.applicantService.updateStatus(this.statusRequest).subscribe(() => {
       this.serverErrorMessage = '';
-      this.applicantService.getApplication(this.id).subscribe(data =>this.application=data);
       },
      error => this.serverErrorMessage = error
      );
