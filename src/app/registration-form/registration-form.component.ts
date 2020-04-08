@@ -20,7 +20,7 @@ import { ApplicationService } from '../shared/services/application.service';
 
 export class RegistrationFormComponent implements OnInit {
 
-
+  selectedFile: File = null;
   application: ApplicationRequest;
   copyrightList: Copyright[];
   serverErrorMessage: string;
@@ -84,7 +84,7 @@ export class RegistrationFormComponent implements OnInit {
   // Validators.pattern('[0-9]{1,8}')
     ]],
 
-    photo: ['', [
+    image: ['', [
 
     ]  ],
 
@@ -198,7 +198,7 @@ ngOnInit() {
       const id = parameterMap.get('id');
       if(id === '0'){
         this.registrationService.addRegistration(this.application).subscribe(() => {
-          this.application = null;
+      //    this.application = null;
          this.serverErrorMessage = '';
          },
          error => this.serverErrorMessage = error
@@ -207,7 +207,7 @@ ngOnInit() {
       }
       else {
         this.registrationService.updateRegistation(id, this.application).subscribe(() => {
-          this.application = null;
+     //    this.application = null;
          this.serverErrorMessage = '';
          },
          error => this.serverErrorMessage = error
@@ -221,6 +221,15 @@ ngOnInit() {
     window.location.reload();
   }
 
+  onFileSelected(event){
+    this.selectedFile = event.target.files[0] as File;
+    console.log(this.selectedFile);
+  }
+
+  onUpload(){
+    const fd = new FormData();
+    fd.append('image', this.selectedFile, this.selectedFile.name)
+  }
 
   get firstName() { return this.applicationForm.get('firstName'); }
   get lastName() { return this.applicationForm.get('lastName');}
@@ -237,4 +246,5 @@ ngOnInit() {
   get hobbies() {return this.applicationForm.get('hobbies'); }
   get referenceToIt() {return this.applicationForm.get('referenceToIt'); }
   get linkedinUrl() {return this.applicationForm.get('linkedinUrl'); }
+  get image() {return this.applicationForm.get('image'); }
 }

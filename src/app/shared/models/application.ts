@@ -13,10 +13,10 @@ export interface ApplicationRequest {
   degree?: string,
   mobileNumber?: string,
   linkedinUrl?: string,
-  photo?: string,
+  image?: string,
   hobbies?: string,
-  referenceToIt?: string
-  
+  referenceToIt?: string;
+
 }
 export interface ApplicationStatusRequest {
   id: string;
@@ -52,8 +52,13 @@ export interface ApplicationFullResponse {
   status: string;
 }
 export interface ApplicationComment {
-  userId: string;
-  userName: string;
+  hrId: string;
+  hrName: string;
   comment: string;
   dateCreated: string;
+}
+export interface CommentRequest {
+  hrId:string;
+  appId:string;
+  comment:string;
 }
