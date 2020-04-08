@@ -47,6 +47,14 @@ export class ApplicationService {
     //   return this.httpClient.get<Application>(`${this.Appurl}/applications/${id}`);
     // }
 
-
   }
+
+  delete(id: String): Observable<ApplicationFullResponse> {
+       return this.httpClient.delete<ApplicationFullResponse>(`${environment.apiUrl}/applications/${id}`, this.httpOptions).pipe(
+       );
+   }
+
+
+
+
 }

@@ -32,6 +32,10 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { StatusComponent } from './status/status.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { CommentsComponent } from './comments/comments.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BlankPageComponent } from './blank-page/blank-page.component';
+import { DeleteApplicationInterceptor } from './shared/interceptors/deleteapplication.interceptor';
 
 
 @NgModule({
@@ -53,7 +57,8 @@ import { CommentsComponent } from './comments/comments.component';
     NavigationBarComponent,
     CommentsComponent,
     StatusComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    BlankPageComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +66,7 @@ import { CommentsComponent } from './comments/comments.component';
     // FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-
+    ModalModule.forRoot(),
     CollapseModule.forRoot(),
     HttpClientModule,
     ToastrModule.forRoot(),
@@ -69,10 +74,16 @@ import { CommentsComponent } from './comments/comments.component';
     FormsModule
 
   ],
-  providers: [// {provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true},
+  providers: [//{provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: RedirectInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: DeleteApplicationInterceptor, multi: true}
+  ],
 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
+
