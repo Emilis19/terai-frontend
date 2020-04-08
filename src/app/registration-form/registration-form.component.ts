@@ -6,7 +6,7 @@ import { Copyright } from '../copyright';
 import { copyrigthList } from './listOfItems';
 import { RegistrationService } from '../shared/services/registration.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationService } from '../shared/services/application.service';
 
 
@@ -106,7 +106,8 @@ constructor(
     private registrationService: RegistrationService, 
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private applicantService: ApplicationService) { }
+    private applicantService: ApplicationService,
+    private router: Router,) { }
 
 
   additional = false; 
@@ -198,15 +199,18 @@ ngOnInit() {
       const id = parameterMap.get('id');
       if(id === '0'){
         this.registrationService.addRegistration(this.application).subscribe(() => {
-      //    this.application = null;
+
+          this.router.navigate(['/confirmation']);
+         // this.application = null;
          this.serverErrorMessage = '';
-         },
+         }, 
          error => this.serverErrorMessage = error
-      
         );
       }
       else {
         this.registrationService.updateRegistation(id, this.application).subscribe(() => {
+
+          this.router.navigate(['/application']);
      //    this.application = null;
          this.serverErrorMessage = '';
          },

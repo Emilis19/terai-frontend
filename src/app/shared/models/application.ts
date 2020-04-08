@@ -18,6 +18,7 @@ export interface ApplicationRequest {
   referenceToIt?: string
 
 }
+
 export interface ApplicationStatusRequest {
   id: string;
   status: string;

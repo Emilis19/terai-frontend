@@ -47,12 +47,18 @@ export class ApplicationService {
     //   return this.httpClient.get<Application>(`${this.Appurl}/applications/${id}`);
     // }
 
-
   }
+
+  delete(id: String): Observable<ApplicationFullResponse> {
+       return this.httpClient.delete<ApplicationFullResponse>(`${environment.apiUrl}/applications/${id}`, this.httpOptions).pipe(
+       );
+   }
+
   getComments(id:string): Observable<ApplicationComment[]>{
     return this.httpClient.get<ApplicationComment[]>(`${environment.apiUrl}/applications/getcomments/${id}`).pipe();
   }
   addComment(commentRequest:CommentRequest): Observable<CommentRequest>{
     return this.httpClient.put<CommentRequest>(`${environment.apiUrl}/applications/addcomment`, commentRequest, this.httpOptions).pipe();
   }
+
 }

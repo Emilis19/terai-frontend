@@ -1,6 +1,6 @@
 <div class="bg container-fluid">
   <div class="container headerBox ">
-    <h2 class="text-uppercase text-center">Registracija į 2021m. IT Akademiją</h2>
+    <h2 class="text-uppercase text-center">Registracija į 2021 m. IT Akademiją</h2>
   </div>
   <div class="d-flex justify-content-center">
     <!-- <div class="container text-center statusBox fontsStyle fontSize shadow"><i class="far fa-clock"></i>  {{applicationReviewContent.status}} </div> -->
@@ -10,20 +10,54 @@
   </div>
   <div>
     <div class="row d-flex p-5">
-      <div class="col-sm-4 fontsStyle"><i class="fas fa-clock"></i>
-        <p class="inline">Tavo registracijos data
-          :</p>  {{applicationReviewContent.dateCreated.toString().substr(0, 10)}}      </div>
-      <div class="col-sm-4 fontsStyle "><i class="fas fa-pencil-alt"></i>  <button class="btn btn-primary" (click)="editApplicant()"
-        [disabled]="!editable()">Keisti detales</button></div>
-      <div class="col-sm-4 fontsStyle "><i class="far fa-paper-plane"></i> <a href="mailto:name@mydomain.com">Parašyti
-        IT akademijai</a></div>
+
+      <div class="col-sm-3 row">
+        <div class="pr-2 inline"><i class=" fas fa-clock"></i></div>
+        <div class=" pl-1"><p class="inline ">Atnaujinta :</p>  {{applicationReviewContent.dateCreated.toString().substr(0, 10)}} </div>
+      </div>
+      <div class="col-sm-3 fontsStyle row">
+      <div class="pr-2 inline"><i class="fas fa-pencil-alt"></i></div>
+      <button type="button" class="btn btn-light" (click)="editApplicant()" [disabled]="!editable()"> Keisti detales</button>
+      <!-- onclick='changeStatus()' [disabled]="taken" [routerLink]="['/registration', id]" -->
+      </div>
+
+
+      <div class="col-sm-3 fontsStyle row">
+        <div class="pr-2 inline"><i class="far fa-paper-plane"></i> </div>
+     <!-- <div class=" pl-1"> <a href="mailto:info@itakademija.lt">Parašyti IT akademijai</a></div> -->
+     <button class="btn btn-light" onclick="location.href='mailto:info@itakademija.lt'">Parašyti IT akademijai</button>
+
+      </div>
+        <div class="col-sm-3 fontsStyle ">
+          <div class="pr-2 inline"><i class="fas fa-trash-alt"></i></div>
+         <!-- <div class="pl-1 inline"> <a href="#" data-toggle="modal" data-target="#myModal" click="delete()"> Ištrinti registracijos duomenis</a></div> -->
+         <button type="button" class="btn btn-light" (click)="openModal(template)">Ištrinti registracijos duomenis</button>
+
+         <div #alert class="alert alert-warning fade show" role="alert" *ngIf="serverErrorMessage">
+          <button type="button" class="close" aria-label="Close" >
+            <span aria-hidden="true" (click)="closeAlert()">&times;</span>
+          </button>
+         {{serverErrorMessage}}
+        </div>
+         
+         <!-- <div class="card card-header alert-danger" role="alert" *ngIf="serverErrorMessage" id="successTime">
+          {{ serverErrorMessage }}
+        </div> -->
+         <ng-template #template>
+           <div class="modal-body text-center">
+             <p>Ar tikrai norite ištrinti savo profilį? Visi Jūsų pateikti duomenys bus ištrinti !</p>
+             <button type="button" class="btn btn-danger" (click)="confirm()"  >Taip</button>
+             <button type="button" class="btn btn-light" (click)="decline()" >Ne</button>
+           </div>
+         </ng-template>
+        </div>   
     </div>
     <app-view-applicant-profile
     [viewApplicantProfileContent]="applicationReviewContent"
     >
     </app-view-applicant-profile>
   </div>
-  <div class="container-fluid d-flex flex-row-reverse">
+  <div class="container-fluid d-flex flex-row-reverse m-5">
     <!--   <div class="m-5 ">
        <button class="btn btn-success btn-lg" (click)="logout()" [routerLink]="'/home'">Atsijungti<br></button>
        </div> -->
