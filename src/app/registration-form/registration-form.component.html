@@ -173,6 +173,7 @@
             </div>
               <br>
               <p class="moreImportant"><strong> PAPILDOMA INFORMACIJA</strong></p>
+              <p><strong>Pildyti nebūtina, bet gali padėti išsiskirti iš minios</strong></p>
               <div class ="form-group">
               <label class ="" for="school">Mokymo įstaiga</label>
               <input  ngModel="{{application.school}}" type="text" name="school" class="form-control" id="school" placeholder="Mokymo įstaiga" formControlName="school">
@@ -222,6 +223,19 @@
             </div>
           </div>
 
+
+          <div class ="form-group">
+            <label class ="" for="projectInfo"> Informacija apie tavo projektą</label>
+            <input  ngModel="{{application.projectInfo}}" type="text"  name="projectInfo" class="form-control" id="projectInfo" placeholder="Jei teko dirbti prie konkretaus projekto, aprašyk jį arba pasidalink jo nuoroda." formControlName="projectInfo"/>
+            <div
+            [hidden]="applicationForm.controls.projectInfo.valid || projectInfo.pristine"
+            class="alert p-0">
+            <div class="text-danger" *ngIf = ".errors?.pattern">
+              Pateikite nuorodą iš interneto puslapio
+            </div>
+          </div>
+        </div>
+
          <div class ="form-group">
               <label class ="" for="image"> Tavo nuotrauka (image address)</label>
               <input  ngModel="{{application.image}}" type="text"  name="image" class="form-control" id="image" placeholder="(nuotraukos url)" formControlName="image"/>
@@ -239,7 +253,7 @@
               <label class ="" for="referenceToIt"> Iš kur sužinojai apie IT akademiją?</label>
               <textarea  ngModel="{{application.referenceToIt}}" name="referenceToIt" class="form-control" id="referenceToIt" placeholder="Informacija apie IT akademiją" rows="4"formControlName="referenceToIt" ></textarea>
           </div>
-          <div class ="pb-3, inputTextAdditional"><strong> * PILDYTI NĖRA PRIVALOMA</strong></div>
+        
 
       
     
@@ -262,9 +276,6 @@
               >
                 Pateikti 
               </button>
-            </div>
-            <div class="m-2">
-              <button type="reset" class="btn btn-light btn-lg" (click)="refreshPage()">Išvalyti<br></button>
             </div>
 
             
