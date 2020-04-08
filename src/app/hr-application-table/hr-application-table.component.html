@@ -12,9 +12,17 @@
   <tbody>
     <tr *ngFor="let applicant of applicants">
      
-      <td>{{ applicant.firstName }}</td>
+      <td>{{ applicant.firstName }} {{ applicant.lastName }}</td>
       <td>{{ applicant.dateCreated.toString().substr(0,10) }}</td>
-      <td>{{ applicant.status }}</td>
+      <td
+      [ngClass]="{
+        'is-purple': applicant.status === 'IT akademija gavo formą',
+        'is-orangle': applicant.status === 'Registracijos forma yra peržiūrima',
+        'is-green':applicant.status === 'Priėmimas į akademiją patvirtintas',
+        'is-redN': applicant.status === 'Neigiamas atsakymas dėl priėmimo į akademiją',
+        'is-white': applicant.status === 'Registracijos forma nebaigta pildyti'
+      }"
+      >{{ applicant.status }}</td>
       <td>
         <a [routerLink]="['/applicant', applicant.id]">Pežiūrėti profilį</a>
       </td>

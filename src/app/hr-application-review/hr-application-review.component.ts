@@ -42,7 +42,8 @@ export class HrApplicationReviewComponent implements OnInit {
     { name: "IT akademija gavo formą", value: 0 },
     { name: "Registracijos forma yra peržiūrima", value: 1 },
     { name: "Priėmimas į akademiją patvirtintas", value: 2 },
-    { name: "Neigiamas atsakymas dėl priėmimo į akademiją", value: 3 }
+    { name: "Neigiamas atsakymas dėl priėmimo į akademiją", value: 3 },
+    { name: "Registracijos forma nebaigta pildyti", value: 4 }
   ]
 
 
