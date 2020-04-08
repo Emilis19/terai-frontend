@@ -34,7 +34,6 @@ export class ApplicantApplicationReviewComponent implements OnInit,OnChanges {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private router: Router,
     private applicationService: ApplicationService,
     private authenticationService: AuthenticationService,
     private modalService: BsModalService
@@ -75,18 +74,6 @@ editable(){
     return false;
   } else{
     return true;
-  }
-
-  editable(){
-    if(this.applicationReviewContent.status != "IT akademija gavo formą"){
-      return false;
-    } else{
-      return true;
-    }
-  }
-
-  editApplicant(){
-    this.router.navigate(['/registration', this.applicationReviewContent.id]);
   }
 }
 
