@@ -32,6 +32,8 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { StatusComponent } from './status/status.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { CommentsComponent } from './comments/comments.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -66,7 +68,10 @@ import { CommentsComponent } from './comments/comments.component';
     HttpClientModule,
     ToastrModule.forRoot(),
     CollapseModule.forRoot(),
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatSortModule
+   
 
   ],
   providers: [// {provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true},
