@@ -8,8 +8,9 @@ import { RegistrationService } from '../shared/services/registration.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationService } from '../shared/services/application.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
-
+  // ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'});
 
 @Component({
   selector: 'app-registration-form',
@@ -20,13 +21,14 @@ import { ApplicationService } from '../shared/services/application.service';
 
 export class RegistrationFormComponent implements OnInit {
 
-
   application: ApplicationRequest;
   copyrightList: Copyright[];
   serverErrorMessage: string;
   numericNumberReg= '[\+[0-9]{0,11}]+';
   confirmationMessage='';
   title = "Registracija į 2021m. IT Akademiją";
+  id: string;
+
 
   applicationForm = this.fb.group({
     firstName: ['', [
@@ -148,9 +150,9 @@ constructor(
 ngOnInit() {
     this.copyrightList = copyrigthList;
     this.route.paramMap.subscribe(parameterMap => {
-      const id = parameterMap.get('id');
-      this.getApplicant(id);
-    });
+      this.id = parameterMap.get('id');
+    }); 
+    this.getApplicant(this.id);
   }
 
   private getApplicant(id: string){
@@ -195,9 +197,7 @@ ngOnInit() {
 
   onSubmit() {
     this.application = this.applicationForm.value;
-    this.route.paramMap.subscribe(parameterMap => {
-      const id = parameterMap.get('id');
-      if(id === '0'){
+      if(this.id === '0'){
         this.registrationService.addRegistration(this.application).subscribe(() => {
 
           this.router.navigate(['/confirmation']);
@@ -208,7 +208,7 @@ ngOnInit() {
         );
       }
       else {
-        this.registrationService.updateRegistation(id, this.application).subscribe(() => {
+        this.registrationService.updateRegistation(this.id, this.application).subscribe(() => {
 
           this.router.navigate(['/application']);
      //    this.application = null;
@@ -218,7 +218,6 @@ ngOnInit() {
       
         );
       }
-    });
   }
 
   refreshPage() {
