@@ -22,8 +22,17 @@
             class="container col-lg-6 pb-2 pt-2"
             id="home-page-text-box"
           >
-          <div class="center-text p-3" >
+          <div class="text-center p-3" >
             <h1 id="main-question">Nori startuoti IT srityje?</h1>
+            <div class="col text-center mt-5 mb-2 pb-2">
+              <button     type="button"
+                          class="btn btn-primary btn-lg"
+                          [routerLink]="'/registration/0'"
+                        >
+                          Registruokis čia
+                        </button>
+            </div>
+            
           </div>
             <h3>2021 m. „IT Akademija“ siūlo:</h3>
             <ul>
@@ -41,16 +50,7 @@
       </div>
     </div>
   </div>
-  <div class="col text-center mt-5 mb-2 pb-2">
-    <button
-      type="button"
-      class="btn btn-primary btn-lg"
-      [routerLink]="'/registration/0'"
-    >
-      Registruokis čia
-    </button>
-  </div>
-  <div class="col text-center pb-2 mb-5" id="moreinfo">
+  <div class="col text-center mt-2 mb-2 pb-2" id="moreinfo">
     <a
       class="btn btn-dark btn-lg text-white"
       (click)="scroll()"
@@ -63,7 +63,7 @@
 </div>
 
 <div
-  class="bg-img2 container-fluid justify-content-center mb-6"
+  class="container-fluid justify-content-center mb-6"
   [hidden]="!showOne"
   #nextElement
 >
@@ -71,28 +71,49 @@
     <div class="container-fluid col-lg-12">
       <div class="row d-flex justify-content-center">
         <div
+        class="col text-center"
+        id="home-page-text-box"
+        style="margin-top: 50px;"
+      >
+            <div class="center-text p-2">
+              <h2>D.U.K – dažniausiai užduodami klausimai</h2>
+            </div>
+          </div>
+      </div>
+     <div class="row d-flex justify-content-center">
+        <div
           class="col text-center"
           id="home-page-text-box"
           style="margin-top: 50px;"
         >
           <div class="center-text p-2">
-            <h2>D.U.K – dažniausiai užduodami klausimai</h2>
+            
             <h6>
               IT Akademija – mokymosi programa ir stažuotė skirta tiems, kurie
               sieja savo ateitį su IT sritimi ir nori pakylėti savo techninius
               gebėjimus į naują lygį.
             </h6>
-            <button
+
+          </div>
+        </div>
+                  
+      </div>    
+      <div class="row d-flex justify-content-center">      
+        <div class="col text-center pt-5">
+        <button
               type="button"
               class="btn btn-primary btn-lg"
               [routerLink]="'/registration/0'"
             >
               Registruokis čia
             </button>
-          </div>
-        </div>
+        </div> 
       </div>
-    </div>
+
+    </div> 
+
+
+     
     <div class="container-fluid pt-5" id="more-info">
         <div class="col-lg-12" id="accordion">
           <button

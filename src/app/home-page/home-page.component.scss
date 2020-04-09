@@ -38,9 +38,9 @@
   padding: 10%;
 }
 
-// #main-question{
-//   font-size: 250%;
-// }
+//  #main-question{
+//     align-items: center;
+//  }
 
 #accordion .accordionBtn:before,
 #accordion .accordionBtn.collapsed:before{
@@ -79,15 +79,15 @@
     }
   }
   .btn.btn-primary{
-    background: rgba(64, 153, 255, 0.85);
+    background: rgba(64, 153, 255, 1);
   }
 
-  .btn.btn-dark{
-    background: rgba(15, 21, 27, 0.85);
-  }
+  // .btn.btn-dark{
+  //   background: rgba(15, 21, 27, 1);
+  // }
 
   #registration{
-    background: rgba(105,105,105, 0.85);
+    background: rgba(105,105,105, 1);
   }
 
   .light {
