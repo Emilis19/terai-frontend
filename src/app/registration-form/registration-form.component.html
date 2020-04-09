@@ -4,7 +4,7 @@
     <h2 class="text-uppercase text-center" [innerHTML]="title">Registracija į 2021m. IT Akademiją</h2>
   </div>
   <div class="row p-1">
-    <div class="col-sm-8 offset-sm-2 form-box">
+    <div class="col-sm-8 offset-sm-2 form-box" id="formname>
       <form [formGroup]="applicationForm" (ngSubmit)="onSubmit(); applicationForm.reset()">
         <p class="moreImportant"><strong>PRIVALOMA INFORMACIJA </strong></p>
         <div class="form-group">

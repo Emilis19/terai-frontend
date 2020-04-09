@@ -1,113 +1,114 @@
 <div class="container emp-profile" *ngIf="viewApplicantProfileContent">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="profile-img">
-          <!-- <img   class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt=""/> -->
-          <img class="card-img-top"  id="imgsize" src="{{ viewApplicantProfileContent.image }}" onerror="this.onerror=null;this.src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';" />
-
-
-          
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="profile-head">
-          <h5>{{ viewApplicantProfileContent.firstName }} {{ viewApplicantProfileContent.lastName }}</h5>
-          <h6>{{ viewApplicantProfileContent.email }} {{ viewApplicantProfileContent.mobileNumber }}</h6>
-          <p>{{ viewApplicantProfileContent.school }} {{ viewApplicantProfileContent.degree }}</p>
-        </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile-img">
+        <!-- <img   class="card-img-top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt=""/> -->
+        <img
+          class="card-img-top"
+          id="imgsize"
+          src="{{ viewApplicantProfileContent.image }}"
+          onerror="this.onerror=null;this.src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';"
+        />
       </div>
     </div>
-    <br />
-  
-    <div class="tab-content profile-tab ">
-      <div class="row">
-        <div class="col-md-6  ">
-          <th>Ar galės skirti akademijai laiką darbo dienomis 14-18 val?</th>
-        </div>
-        <div class="col-md-6">
-          <p>{{ viewApplicantProfileContent.academyTime ? "Taip" : "Ne" }}</p>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        <div class="col-md-6  ">
-          <th>Komentaras dėl laiko</th>
-        </div>
-        <div class="col-md-6">
-          <p>{{ viewApplicantProfileContent.academyTimeReason}}</p>
-        </div>
-      </div>
-      <hr/>
-      <div class="row">
-        <div class="col-md-6  ">
-          <th>Ar bus galimybė pasirašyti trišalę sutartį?</th>
-        </div>
-        <div class="col-md-6">
-          <p>{{ viewApplicantProfileContent.contractAgreement ? "Taip" : "Ne" }}</p>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        <div class="col-md-6 ">
-          <th>Komentaras, kodėl negalės pasirašyti trišalės sutarties</th>
-        </div>
-        <div class="col-md-6">
-          <p>{{ viewApplicantProfileContent.contractReason }}</p>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        <div class="col-md-6 ">
-          <th>
-            Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
-            turi patirties?
-          </th>
-        </div>
-        <div class="col-md-6">
-          <p>{{ viewApplicantProfileContent.likedTechnologies }}</p>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        <div class="col-md-6">
-          <th>Kodėl nori dalyvauti IT akademijoje? Kokie tavo lūkesčiai?</th>
-        </div>
-        <div class="col-md-6">
-          <p>{{ viewApplicantProfileContent.reasonForApplying }}</p>
-        </div>
-      </div>
-      <hr />
-  
-      <div class="row">
-        <div class="col-md-6  ">
-          <th>Nuoroda į LinkedIN profilį arba į asmeninį puslapį</th>
-        </div>
-        <div class="col-md-6">
-          <p>
-            <a>{{ viewApplicantProfileContent.linkedinUrl }}</a>
-          </p>
-        </div>
-      </div>
-  
-      <hr />
-      <div class="row">
-        <div class="col-md-6  ">
-          <th>Pomėgiai</th>
-        </div>
-        <div class="col-md-6">
-          <p>{{ viewApplicantProfileContent.hobbies }}</p>
-        </div>
-      </div>
-      <hr />
-  
-      <div class="row">
-        <div class="col-md-6 ">
-          <th>Iš kur sužinojai apie IT akademiją?</th>
-        </div>
-        <div class="col-md-6">
-          <p>{{ viewApplicantProfileContent.referenceToIt }}</p>
-        </div>
+    <div class="col-md-6">
+      <div class="profile-head">
+        <h5>
+          {{ viewApplicantProfileContent.firstName }}
+          {{ viewApplicantProfileContent.lastName }}
+        </h5>
+        <h6>
+          {{ viewApplicantProfileContent.email }}
+          {{ viewApplicantProfileContent.mobileNumber }}
+        </h6>
+        <p>
+          {{ viewApplicantProfileContent.school }}
+          {{ viewApplicantProfileContent.degree }}
+        </p>
       </div>
     </div>
   </div>
+  <br />
+
+  <div class="tab-content profile-tab">
+    <div class="row">
+      <div class="col-md-6">
+        <th>Ar galės skirti akademijai laiką darbo dienomis 14-18 val?</th>
+      </div>
+      <div class="col-md-6">
+        <p>{{ viewApplicantProfileContent.academyTime ? "Taip" : "Ne" }}</p> 
+        <p *ngIf="viewApplicantProfileContent.academyTime == false">{{ viewApplicantProfileContent.academyTimeReason }}</p>
+      </div>
+      </div>
+    
   
+    <hr />
+    <div class="row">
+      <div class="col-md-6">
+        <th>Ar bus galimybė pasirašyti trišalę sutartį?</th>
+      </div>
+      <div class="col-md-6">
+        <p>
+          {{ viewApplicantProfileContent.contractAgreement ? "Taip" : "Ne" }}
+        </p>
+        <p *ngIf="viewApplicantProfileContent.contractAgreement == false">
+          {{ viewApplicantProfileContent.contractReason }}
+        </p>
+      </div>
+    </div>
+
+    <hr />
+    <div class="row">
+      <div class="col-md-6">
+        <th>
+          Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
+          turi patirties?
+        </th>
+      </div>
+      <div class="col-md-6">
+        <p>{{ viewApplicantProfileContent.likedTechnologies }}</p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-6">
+        <th>Kodėl nori dalyvauti IT akademijoje? Kokie tavo lūkesčiai?</th>
+      </div>
+      <div class="col-md-6">
+        <p>{{ viewApplicantProfileContent.reasonForApplying }}</p>
+      </div>
+    </div>
+    <hr />
+
+    <div class="row">
+      <div class="col-md-6">
+        <th>Nuoroda į LinkedIN profilį arba į asmeninį puslapį</th>
+      </div>
+      <div class="col-md-6">
+        <p>
+          <a>{{ viewApplicantProfileContent.linkedinUrl }}</a>
+        </p>
+      </div>
+    </div>
+
+    <hr />
+    <div class="row">
+      <div class="col-md-6">
+        <th>Pomėgiai</th>
+      </div>
+      <div class="col-md-6">
+        <p>{{ viewApplicantProfileContent.hobbies }}</p>
+      </div>
+    </div>
+    <hr />
+
+    <div class="row">
+      <div class="col-md-6">
+        <th>Iš kur sužinojai apie IT akademiją?</th>
+      </div>
+      <div class="col-md-6">
+        <p>{{ viewApplicantProfileContent.referenceToIt }}</p>
+      </div>
+    </div>
+  </div>
+</div>

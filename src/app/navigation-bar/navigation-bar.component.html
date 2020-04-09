@@ -1,10 +1,10 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
+<nav class="navbar navbar-expand-lg">
+ 
+   
       <a class="navbar-brand" href="">
         <img src="../assets/terai.png" width="50" height="50" alt="">
       </a>
-    </div>
+   
     <ul class="nav nav-tabs" *ngIf="this.authenticationService.currentUserValue">
       <li data-toggle="tab" *ngIf="this.authenticationService.currentUserValue.role === 'admin'" class="nav-item">
         <a *ngIf="router.url==='/admin'" href="/admin" class="nav-link active">HR NAUDOTOJAI</a>
@@ -25,13 +25,13 @@
         <a *ngIf="router.url!='/application'" href="/application" class="nav-link">APLIKACIJOS PERŽIŪRA</a>
       </li>
     </ul>
-    <ul class="nav nav-pills">
+    <ul class="nav ml-auto ">
       <li *ngIf="!this.authenticationService.currentUserValue">
-        <a href="/login" class="nav-link active">PRISIJUNGTI</a>
+        <a href="/login" class="btn btn-primary nav-link active">PRISIJUNGTI</a>
       </li>
       <li *ngIf="this.authenticationService.currentUserValue" on-click="this.authenticationService.logout()">
-        <a href="/home" class="nav-link active">ATSIJUNGTI</a>
+        <a  href="/home" class=" btn btn-primary nav-link active">ATSIJUNGTI</a>
       </li>
     </ul>
-  </div>
+ 
 </nav>
