@@ -10,6 +10,7 @@ import {ApplicantApplicationReviewComponent} from './applicant-application-revie
 import {LoginComponent} from "./login/login.component";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {CreateAccountComponent} from "./create-account/create-account.component";
+import { BlankPageComponent } from './blank-page/blank-page.component';
 
 
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'create-account', component: CreateAccountComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'blankpage', component : BlankPageComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
   { path: '**', redirectTo: '/home'}

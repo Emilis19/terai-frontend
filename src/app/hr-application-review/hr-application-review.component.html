@@ -6,7 +6,6 @@
         [applicationReviewContent]="application"
       ></app-status>
     </div>
-
     <div class="col-md-6">
       <form (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -31,5 +30,8 @@
   <h3>Aplikanto profilis</h3>
 </div>
 
+
 <app-view-applicant-profile [viewApplicantProfileContent]="application">
 </app-view-applicant-profile>
+<app-comments></app-comments>
+

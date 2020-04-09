@@ -37,6 +37,10 @@ import { MatSortModule } from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BlankPageComponent } from './blank-page/blank-page.component';
+import { DeleteApplicationInterceptor } from './shared/interceptors/deleteapplication.interceptor';
 
 @NgModule({
   declarations: [
@@ -57,7 +61,8 @@ import {MatInputModule} from '@angular/material/input';
     NavigationBarComponent,
     CommentsComponent,
     StatusComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    BlankPageComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,7 @@ import {MatInputModule} from '@angular/material/input';
     // FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-
+    ModalModule.forRoot(),
     CollapseModule.forRoot(),
     HttpClientModule,
     ToastrModule.forRoot(),
@@ -79,10 +84,16 @@ import {MatInputModule} from '@angular/material/input';
    
 
   ],
-  providers: [// {provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true},
+  providers: [//{provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: RedirectInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: DeleteApplicationInterceptor, multi: true}
+  ],
 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
+

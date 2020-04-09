@@ -1,4 +1,3 @@
-
 export interface ApplicationRequest {
   firstName: string,
   lastName: string,
@@ -15,9 +14,9 @@ export interface ApplicationRequest {
   linkedinUrl?: string,
   image?: string,
   hobbies?: string,
-  referenceToIt?: string;
-
+  referenceToIt?: string
 }
+
 export interface ApplicationStatusRequest {
   id: string;
   status: string;
@@ -52,14 +51,22 @@ export interface ApplicationFullResponse {
   dateCreated: Date;
   status: string;
 }
+
 export interface ApplicationComment {
   hrId: string;
   hrName: string;
   comment: string;
   dateCreated: string;
 }
+
+
 export interface CommentRequest {
-  hrId:string;
-  appId:string;
-  comment:string;
+  hrId: string;
+  appId: string;
+  comment: string;
+}
+
+export interface DraftRequest {
+  firstName?: string;
+  email: string;
 }

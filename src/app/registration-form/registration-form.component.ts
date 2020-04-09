@@ -1,15 +1,15 @@
 
-
-import { Component, OnInit} from '@angular/core';
-import { ApplicationFullResponse, ApplicationRequest } from '../shared/models/application';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ApplicationFullResponse, ApplicationRequest, DraftRequest} from '../shared/models/application';
 import { Copyright } from '../copyright';
 import { copyrigthList } from './listOfItems';
 import { RegistrationService } from '../shared/services/registration.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationService } from '../shared/services/application.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
-
+  // ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'});
 
 @Component({
   selector: 'app-registration-form',
@@ -18,26 +18,28 @@ import { ApplicationService } from '../shared/services/application.service';
   providers: [RegistrationService]
 })
 
-export class RegistrationFormComponent implements OnInit {
 
-  selectedFile: File = null;
+export class RegistrationFormComponent implements OnInit, OnDestroy {
+
   application: ApplicationRequest;
   copyrightList: Copyright[];
   serverErrorMessage: string;
-  numericNumberReg= '[\+[0-9]{0,11}]+';
-  confirmationMessage='';
+  numericNumberReg = '[\+[0-9]{0,11}]+';
+  confirmationMessage = '';
   title = "Registracija į 2021m. IT Akademiją";
+  id: string;
+
 
   applicationForm = this.fb.group({
     firstName: ['', [
       Validators.required,
       Validators.maxLength(32),
-     Validators.pattern('[a-zA-ZĀ-ſ]*')
+      Validators.pattern('[a-zA-ZĀ-ſ]*')
     ]],
     lastName: ['', [
       Validators.required,
       Validators.maxLength(32),
-     Validators.pattern('[a-zA-ZĀ-ſ]*')
+      Validators.pattern('[a-zA-ZĀ-ſ]*')
     ]],
     email: ['', [
       Validators.required,
@@ -45,20 +47,16 @@ export class RegistrationFormComponent implements OnInit {
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
     ]],
     academyTime: ['',
-    [Validators.required
-    ]],
+      [Validators.required
+      ]],
 
-    academyTimeReason: [" ", [
-
-    ]],
+    academyTimeReason: [" ", []],
 
     contractAgreement: ['',
-    [Validators.required
-    ]],
+      [Validators.required
+      ]],
 
-    contractReason: [" ", [
-
-    ]],
+    contractReason: [" ", []],
 
     likedTechnologies: ['', [
       Validators.required,
@@ -73,44 +71,41 @@ export class RegistrationFormComponent implements OnInit {
     ]],
 
     school: ['',
-  ],
+    ],
 
     degree: ['',
-],
+    ],
 
     mobileNumber: ['', [
-  //Validators.pattern(this.numericNumberReg),
-  //  Validators.pattern('[\+[0-9]{0,11}]+'),
-  // Validators.pattern('[0-9]{1,8}')
+      //Validators.pattern(this.numericNumberReg),
+      //  Validators.pattern('[\+[0-9]{0,11}]+'),
+      // Validators.pattern('[0-9]{1,8}')
     ]],
 
     image: ['', [
 
     ]  ],
 
-    hobbies: ['', [
+    hobbies: ['', []],
 
-  ]],
+    referenceToIt: ['', []],
 
-    referenceToIt:['', [
-
-    ]],
-
-    linkedinUrl:['', [
+    linkedinUrl: ['', [
       Validators.pattern("https?://.+"),
-     // this.urlDomainValidator
+      // this.urlDomainValidator
     ]],
   });
-  
-constructor(
-    private registrationService: RegistrationService, 
+
+  constructor(
+    private registrationService: RegistrationService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private applicantService: ApplicationService) { }
+    private applicantService: ApplicationService,
+    private router: Router) { }
 
 
-  additional = false; 
-     answer = false;
+  additional = false;
+  answer = false;
   // onload(args){
   //   if(!this.application.academyTime)
   //     {this.additional=true;
@@ -121,43 +116,43 @@ constructor(
   //       return this.answer;
   //     }
   // }
-  
 
-  onchange2(args){
+
+  onchange2(args) {
     this.additional = true;
     return this.additional;
   }
 
-  onchange3(args){
+  onchange3(args) {
     this.additional = false;
     return this.additional;
   }
 
 
-    onchange(args){
-      this.answer = true;
-        return this.answer;
-    }
-
-    onchange1(args){
-      this.answer = false;
-        return this.answer;
-    }
-
-ngOnInit() {
-    this.copyrightList = copyrigthList;
-    this.route.paramMap.subscribe(parameterMap => {
-      const id = parameterMap.get('id');
-      this.getApplicant(id);
-    });
+  onchange(args) {
+    this.answer = true;
+    return this.answer;
   }
 
-  private getApplicant(id: string){
-    if(id === '0'){
+  onchange1(args) {
+    this.answer = false;
+    return this.answer;
+  }
+
+  ngOnInit() {
+    this.copyrightList = copyrigthList;
+    this.route.paramMap.subscribe(parameterMap => {
+      this.id = parameterMap.get('id');
+    }); 
+    this.getApplicant(this.id);
+  }
+
+  private getApplicant(id: string) {
+    if (id === '0') {
       this.application = {
         firstName: null,
         lastName: null,
-        email:null,
+        email: null,
         academyTime: null,
         academyTimeReason: null,
         contractAgreement: null,
@@ -172,65 +167,63 @@ ngOnInit() {
         referenceToIt: null
       };
       // this.applicationForm.reset();
-   } else {
-     this.title = "Redagavimas";
-      this.applicantService.getApplication(id).subscribe(data =>this.application=data);
-   }
+    } else {
+      this.title = "Redagavimas";
+      this.applicantService.getApplication(id).subscribe(data => this.application = data);
+    }
   }
-    urlDomainValidator(control: FormControl){
-      let url = control.value;
-      if (url != -1) {
-        let domain = url.slice(0,20);
-        if (domain!="linkedin") {
-          return {
-            urlDomain : {
-              parsedDomain :domain
-            }
+
+  urlDomainValidator(control: FormControl) {
+    let url = control.value;
+    if (url != -1) {
+      let domain = url.slice(0, 20);
+      if (domain != "linkedin") {
+        return {
+          urlDomain: {
+            parsedDomain: domain
           }
         }
-        return null;
       }
+      return null;
     }
+  }
+
 
   onSubmit() {
     this.application = this.applicationForm.value;
-    this.route.paramMap.subscribe(parameterMap => {
-      const id = parameterMap.get('id');
-      if(id === '0'){
+      if(this.id === '0'){
         this.registrationService.addRegistration(this.application).subscribe(() => {
-      //    this.application = null;
+          this.router.navigate(['/confirmation']);
+         // this.application = null;
          this.serverErrorMessage = '';
-         },
+         }, 
          error => this.serverErrorMessage = error
-      
         );
       }
       else {
-        this.registrationService.updateRegistation(id, this.application).subscribe(() => {
+        this.registrationService.updateRegistation(this.id, this.application).subscribe(() => {
+
+          this.router.navigate(['/application']);
      //    this.application = null;
          this.serverErrorMessage = '';
          },
          error => this.serverErrorMessage = error
-      
         );
       }
-    });
   }
 
   refreshPage() {
     window.location.reload();
   }
-
-  onFileSelected(event){
-    this.selectedFile = event.target.files[0] as File;
-    console.log(this.selectedFile);
+  ngOnDestroy(): void {
+    console.log("destroyed");
+    if(this.applicationForm.controls.email.value && this.applicationForm.controls.email.valid) {
+      let request:DraftRequest ={email:this.applicationForm.controls.email.value,firstName:this.applicationForm.controls.firstName.value};
+      if(this.route.snapshot.paramMap.get("id") === '0')
+        console.log("sent");
+      this.registrationService.addDraft(request).subscribe();
+    }
   }
-
-  onUpload(){
-    const fd = new FormData();
-    fd.append('image', this.selectedFile, this.selectedFile.name)
-  }
-
   get firstName() { return this.applicationForm.get('firstName'); }
   get lastName() { return this.applicationForm.get('lastName');}
   get academyTime() {return this.applicationForm.get('academyTime'); }

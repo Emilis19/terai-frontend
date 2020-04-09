@@ -1,19 +1,19 @@
 <div class="commentWrapper">
+  <h3 class="section-title"> Komentarai ir pastabos apie aplikantą </h3>
+  <ul class="comment-list" >
+    <li class=comment-card *ngFor="let applicationComment of (comments$ | async)">
+      <div class="comment-header">
+        <h6 class="commentAuthor">{{applicationComment.hrName}}</h6>
+        <h6
+          class="comment-date">{{applicationComment.dateCreated.substr(0, 10) + ' ' + applicationComment.dateCreated.substr(11, 5)}}</h6>
+      </div>
+      <p class="comment-content">{{applicationComment.comment}}</p>
+    </li>
+  </ul>
+
   <form (ngSubmit)="onSubmit()" [formGroup]="commentGroup" class="commentForm">
     <h6 for="comment">Palikti komentarą</h6>
     <textarea formControlName="comment" id="comment" type="text"></textarea>
-    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-      <div *ngIf="f.name.errors.required">Komentaras negali būti tuščias</div>
-    </div>
-    <button type="submit" class="btn-primary">Išsaugoti</button>
+    <button type="submit" class="btn-primary" [disabled]="!commentGroup.valid">Išsaugoti</button>
   </form>
-  <ul class="comment-list">
-    <li class= comment-card *ngFor="let applicationComment of comments">
-      <div class="comment-header">
-        <h6 class="commentAuthor">{{applicationComment.userName}}</h6>
-        <h6 class="comment-date">{{applicationComment.dateCreated.substr(0,10)}}</h6>
-      </div>
-        <p class="comment-content">{{applicationComment.comment}}</p>
-    </li>
-  </ul>
 </div>

@@ -1,8 +1,13 @@
+.section-title{
+  width: 100%;
+  text-align: center;
+  margin: 2%
+}
 .commentWrapper {
-  border-style: solid;
-  border-color: lightsteelblue;
-  border-width: thin;
-  width: 90%;
+  //border-style: solid;
+  //border-color: lightsteelblue;
+  //border-width: thin;
+  width: 74%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -23,6 +28,7 @@
   border-color: lightsteelblue;
   border-width: thin;
   border-style: solid;
+  padding: 1%;
   height: 60%;
   width: 95%;
   margin: auto;
@@ -63,8 +69,12 @@
 
 .comment-date {
   color: blue;
+  width: 50%;
+  text-align: right;
+  float: right;
 }
 .commentAuthor{
+  width: 50%;
 }
 .comment-content{
   padding: 1%;

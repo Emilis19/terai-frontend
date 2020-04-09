@@ -2,10 +2,11 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {
+  ApplicationComment,
   ApplicationFullResponse,
   ApplicationHRResponse,
   ApplicationRequest,
-  ApplicationStatusRequest
+  ApplicationStatusRequest, CommentRequest
 } from '../models/application';
 import {environment} from '../../../environments/environment';
 
@@ -20,7 +21,7 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       // 'Authorization-bearer': localStorage.getItem('TOKEN')
     })
-  }
+  };
 
   constructor(private httpClient: HttpClient) {
   }
@@ -40,13 +41,24 @@ export class ApplicationService {
 // }
 
   updateStatus(applicationStatusRequest: ApplicationStatusRequest): Observable<ApplicationStatusRequest> {
-    return this.httpClient.put<ApplicationStatusRequest>(`${environment.apiUrl}/applications/changestatus`, applicationStatusRequest, this.httpOptions).pipe(
-    );
+    return this.httpClient.put<ApplicationStatusRequest>(`${environment.apiUrl}/applications/changestatus`, applicationStatusRequest, this.httpOptions).pipe();
 
     // getApplication(id : string): Observable<Application> {
     //   return this.httpClient.get<Application>(`${this.Appurl}/applications/${id}`);
     // }
 
-
   }
+
+  delete(id: String): Observable<ApplicationFullResponse> {
+       return this.httpClient.delete<ApplicationFullResponse>(`${environment.apiUrl}/applications/${id}`, this.httpOptions).pipe(
+       );
+   }
+
+  getComments(id:string): Observable<ApplicationComment[]>{
+    return this.httpClient.get<ApplicationComment[]>(`${environment.apiUrl}/applications/getcomments/${id}`).pipe();
+  }
+  addComment(commentRequest:CommentRequest): Observable<CommentRequest>{
+    return this.httpClient.put<CommentRequest>(`${environment.apiUrl}/applications/addcomment`, commentRequest, this.httpOptions).pipe();
+  }
+
 }

@@ -1,4 +1,4 @@
-<div class="bg-img1 container-fluid">
+<div class="bg-img1 container-fluid" *ngIf="application">
     <div class="col-sm-8 offset-sm-2 form-box">
         <h2 class="text-uppercase text-center" [innerHTML]="title">Registracija į 2021m. IT Akademiją</h2>
     </div>
@@ -223,8 +223,8 @@
           </div>
 
          <div class ="form-group">
-              <label class ="" for="photo"> Tavo nuotrauka</label>
-              <!-- <input  ngModel="{{application.photo}}" type="url"  name="photo" class="form-control" id="photo" placeholder="(photo upload)" formControlName="photo"/> -->
+              <label class ="" for="image"> Tavo nuotrauka (image address)</label>
+              <input  ngModel="{{application.image}}" type="text"  name="image" class="form-control" id="image" placeholder="(nuotraukos url)" formControlName="image"/>
           </div>
 
 
