@@ -34,11 +34,13 @@
   background: rgba(238, 237, 237, 0.85);
  
 }
-#more-info{
- 
-  padding-bottom: 50px;
-  padding-top: 200px;
+#main-info{
+  padding: 10%;
 }
+
+// #main-question{
+//   font-size: 250%;
+// }
 
 #accordion .accordionBtn:before,
 #accordion .accordionBtn.collapsed:before{
