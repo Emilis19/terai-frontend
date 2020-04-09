@@ -1,7 +1,6 @@
 
-
-import { Component, OnInit} from '@angular/core';
-import { ApplicationFullResponse, ApplicationRequest } from '../shared/models/application';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ApplicationFullResponse, ApplicationRequest, DraftRequest} from '../shared/models/application';
 import { Copyright } from '../copyright';
 import { copyrigthList } from './listOfItems';
 import { RegistrationService } from '../shared/services/registration.service';
@@ -19,13 +18,13 @@ import { ReactiveFormsModule } from '@angular/forms';
   providers: [RegistrationService]
 })
 
-export class RegistrationFormComponent implements OnInit {
+export class RegistrationFormComponent implements OnInit, OnDestroy {
 
   application: ApplicationRequest;
   copyrightList: Copyright[];
   serverErrorMessage: string;
-  numericNumberReg= '[\+[0-9]{0,11}]+';
-  confirmationMessage='';
+  numericNumberReg = '[\+[0-9]{0,11}]+';
+  confirmationMessage = '';
   title = "Registracija į 2021m. IT Akademiją";
   id: string;
 
@@ -34,12 +33,12 @@ export class RegistrationFormComponent implements OnInit {
     firstName: ['', [
       Validators.required,
       Validators.maxLength(32),
-     Validators.pattern('[a-zA-ZĀ-ſ]*')
+      Validators.pattern('[a-zA-ZĀ-ſ]*')
     ]],
     lastName: ['', [
       Validators.required,
       Validators.maxLength(32),
-     Validators.pattern('[a-zA-ZĀ-ſ]*')
+      Validators.pattern('[a-zA-ZĀ-ſ]*')
     ]],
     email: ['', [
       Validators.required,
@@ -47,20 +46,16 @@ export class RegistrationFormComponent implements OnInit {
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
     ]],
     academyTime: ['',
-    [Validators.required
-    ]],
+      [Validators.required
+      ]],
 
-    academyTimeReason: [" ", [
-
-    ]],
+    academyTimeReason: [" ", []],
 
     contractAgreement: ['',
-    [Validators.required
-    ]],
+      [Validators.required
+      ]],
 
-    contractReason: [" ", [
-
-    ]],
+    contractReason: [" ", []],
 
     likedTechnologies: ['', [
       Validators.required,
@@ -75,45 +70,40 @@ export class RegistrationFormComponent implements OnInit {
     ]],
 
     school: ['',
-  ],
+    ],
 
     degree: ['',
-],
+    ],
 
     mobileNumber: ['', [
-  //Validators.pattern(this.numericNumberReg),
-  //  Validators.pattern('[\+[0-9]{0,11}]+'),
-  // Validators.pattern('[0-9]{1,8}')
+      //Validators.pattern(this.numericNumberReg),
+      //  Validators.pattern('[\+[0-9]{0,11}]+'),
+      // Validators.pattern('[0-9]{1,8}')
     ]],
-
     image: ['', [
 
     ]  ],
 
-    hobbies: ['', [
+    hobbies: ['', []],
 
-  ]],
+    referenceToIt: ['', []],
 
-    referenceToIt:['', [
-
-    ]],
-
-    linkedinUrl:['', [
+    linkedinUrl: ['', [
       Validators.pattern("https?://.+"),
-     // this.urlDomainValidator
+      // this.urlDomainValidator
     ]],
   });
-  
-constructor(
-    private registrationService: RegistrationService, 
+
+  constructor(
+    private registrationService: RegistrationService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private applicantService: ApplicationService,
-    private router: Router,) { }
+    private router: Router) { }
 
 
-  additional = false; 
-     answer = false;
+  additional = false;
+  answer = false;
   // onload(args){
   //   if(!this.application.academyTime)
   //     {this.additional=true;
@@ -124,30 +114,30 @@ constructor(
   //       return this.answer;
   //     }
   // }
-  
 
-  onchange2(args){
+
+  onchange2(args) {
     this.additional = true;
     return this.additional;
   }
 
-  onchange3(args){
+  onchange3(args) {
     this.additional = false;
     return this.additional;
   }
 
 
-    onchange(args){
-      this.answer = true;
-        return this.answer;
-    }
+  onchange(args) {
+    this.answer = true;
+    return this.answer;
+  }
 
-    onchange1(args){
-      this.answer = false;
-        return this.answer;
-    }
+  onchange1(args) {
+    this.answer = false;
+    return this.answer;
+  }
 
-ngOnInit() {
+  ngOnInit() {
     this.copyrightList = copyrigthList;
     this.route.paramMap.subscribe(parameterMap => {
       this.id = parameterMap.get('id');
@@ -155,12 +145,12 @@ ngOnInit() {
     this.getApplicant(this.id);
   }
 
-  private getApplicant(id: string){
-    if(id === '0'){
+  private getApplicant(id: string) {
+    if (id === '0') {
       this.application = {
         firstName: null,
         lastName: null,
-        email:null,
+        email: null,
         academyTime: null,
         academyTimeReason: null,
         contractAgreement: null,
@@ -175,25 +165,27 @@ ngOnInit() {
         referenceToIt: null
       };
       // this.applicationForm.reset();
-   } else {
-     this.title = "Redagavimas";
-      this.applicantService.getApplication(id).subscribe(data =>this.application=data);
-   }
+    } else {
+      this.title = "Redagavimas";
+      this.applicantService.getApplication(id).subscribe(data => this.application = data);
+    }
   }
-    urlDomainValidator(control: FormControl){
-      let url = control.value;
-      if (url != -1) {
-        let domain = url.slice(0,20);
-        if (domain!="linkedin") {
-          return {
-            urlDomain : {
-              parsedDomain :domain
-            }
+
+  urlDomainValidator(control: FormControl) {
+    let url = control.value;
+    if (url != -1) {
+      let domain = url.slice(0, 20);
+      if (domain != "linkedin") {
+        return {
+          urlDomain: {
+            parsedDomain: domain
           }
         }
-        return null;
       }
+      return null;
     }
+  }
+
 
   onSubmit() {
     this.application = this.applicationForm.value;
@@ -215,7 +207,6 @@ ngOnInit() {
          this.serverErrorMessage = '';
          },
          error => this.serverErrorMessage = error
-      
         );
       }
   }
@@ -224,7 +215,15 @@ ngOnInit() {
     window.location.reload();
   }
 
-
+  ngOnDestroy(): void {
+    console.log("destroyed");
+    if(this.applicationForm.controls.email.value && this.applicationForm.controls.email.valid) {
+      let request:DraftRequest ={email:this.applicationForm.controls.email.value,firstName:this.applicationForm.controls.firstName.value};
+      if(this.route.snapshot.paramMap.get("id") === '0')
+        console.log("sent");
+      this.registrationService.addDraft(request).subscribe();
+    }
+  }
   get firstName() { return this.applicationForm.get('firstName'); }
   get lastName() { return this.applicationForm.get('lastName');}
   get academyTime() {return this.applicationForm.get('academyTime'); }

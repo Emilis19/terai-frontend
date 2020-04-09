@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApplicationRequest } from '../models/application';
+import {ApplicationRequest, DraftRequest} from '../models/application';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -43,6 +43,9 @@ export class RegistrationService {
  //    );
  // }
 
+  addDraft(request: DraftRequest):Observable<DraftRequest> {
+    return this.http.post<ApplicationRequest>(`${environment.apiUrl}/drafts`, request, this.httpOptions).pipe();
+  }
 }
 
 
