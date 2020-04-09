@@ -1,7 +1,7 @@
 <div class="commentWrapper">
   <h3 class="section-title"> Komentarai ir pastabos apie aplikantą </h3>
   <ul class="comment-list" >
-    <li class=comment-card *ngFor="let applicationComment of (comments$ | async).reverse()">
+    <li class=comment-card *ngFor="let applicationComment of (comments$ | async)">
       <div class="comment-header">
         <h6 class="commentAuthor">{{applicationComment.hrName}}</h6>
         <h6

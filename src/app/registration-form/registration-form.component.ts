@@ -1,12 +1,15 @@
+
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ApplicationFullResponse, ApplicationRequest, DraftRequest} from '../shared/models/application';
-import {Copyright} from '../copyright';
-import {copyrigthList} from './listOfItems';
-import {RegistrationService} from '../shared/services/registration.service';
-import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
-import {ApplicationService} from '../shared/services/application.service';
+import { Copyright } from '../copyright';
+import { copyrigthList } from './listOfItems';
+import { RegistrationService } from '../shared/services/registration.service';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApplicationService } from '../shared/services/application.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
+  // ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'});
 
 @Component({
   selector: 'app-registration-form',
@@ -17,13 +20,14 @@ import {ApplicationService} from '../shared/services/application.service';
 
 export class RegistrationFormComponent implements OnInit, OnDestroy {
 
-
   application: ApplicationRequest;
   copyrightList: Copyright[];
   serverErrorMessage: string;
   numericNumberReg = '[\+[0-9]{0,11}]+';
   confirmationMessage = '';
   title = "Registracija į 2021m. IT Akademiją";
+  id: string;
+
 
   applicationForm = this.fb.group({
     firstName: ['', [
@@ -76,8 +80,9 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
       //  Validators.pattern('[\+[0-9]{0,11}]+'),
       // Validators.pattern('[0-9]{1,8}')
     ]],
+    image: ['', [
 
-    photo: ['', []],
+    ]  ],
 
     hobbies: ['', []],
 
@@ -93,8 +98,8 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
     private registrationService: RegistrationService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private applicantService: ApplicationService) {
-  }
+    private applicantService: ApplicationService,
+    private router: Router) { }
 
 
   additional = false;
@@ -135,9 +140,9 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.copyrightList = copyrigthList;
     this.route.paramMap.subscribe(parameterMap => {
-      const id = parameterMap.get('id');
-      this.getApplicant(id);
-    });
+      this.id = parameterMap.get('id');
+    }); 
+    this.getApplicant(this.id);
   }
 
   private getApplicant(id: string) {
@@ -184,89 +189,30 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.application = this.applicationForm.value;
-    this.route.paramMap.subscribe(parameterMap => {
-      const id = parameterMap.get('id');
-      if (id === '0') {
+      if(this.id === '0'){
         this.registrationService.addRegistration(this.application).subscribe(() => {
-            this.application = null;
-            this.serverErrorMessage = '';
-          },
-          error => this.serverErrorMessage = error
-        );
-      } else {
-        this.registrationService.updateRegistation(id, this.application).subscribe(() => {
-            this.application = null;
-            this.serverErrorMessage = '';
-          },
-          error => this.serverErrorMessage = error
+
+          this.router.navigate(['/confirmation']);
+         // this.application = null;
+         this.serverErrorMessage = '';
+         }, 
+         error => this.serverErrorMessage = error
         );
       }
-    });
+      else {
+        this.registrationService.updateRegistation(this.id, this.application).subscribe(() => {
+
+          this.router.navigate(['/application']);
+     //    this.application = null;
+         this.serverErrorMessage = '';
+         },
+         error => this.serverErrorMessage = error
+        );
+      }
   }
 
   refreshPage() {
     window.location.reload();
-  }
-
-
-  get firstName() {
-    return this.applicationForm.get('firstName');
-  }
-
-  get lastName() {
-    return this.applicationForm.get('lastName');
-  }
-
-  get academyTime() {
-    return this.applicationForm.get('academyTime');
-  }
-
-  get academyTimeReason() {
-    return this.applicationForm.get('academyTimeReason');
-  }
-
-  get email() {
-    return this.applicationForm.get('email');
-  }
-
-  get contractAgreement() {
-    return this.applicationForm.get('contractAgreement');
-  }
-
-  get contractReason() {
-    return this.applicationForm.get('contractReason');
-  }
-
-  get likedTechnologies() {
-    return this.applicationForm.get('likedTechnologies');
-  }
-
-  get reasonForApplying() {
-    return this.applicationForm.get('reasonForApplying');
-  }
-
-  get school() {
-    return this.applicationForm.get('school');
-  }
-
-  get degree() {
-    return this.applicationForm.get('degree');
-  }
-
-  get mobileNumber() {
-    return this.applicationForm.get('mobileNumber');
-  }
-
-  get hobbies() {
-    return this.applicationForm.get('hobbies');
-  }
-
-  get referenceToIt() {
-    return this.applicationForm.get('referenceToIt');
-  }
-
-  get linkedinUrl() {
-    return this.applicationForm.get('linkedinUrl');
   }
 
   ngOnDestroy(): void {
@@ -278,4 +224,20 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
       this.registrationService.addDraft(request).subscribe();
     }
   }
+  get firstName() { return this.applicationForm.get('firstName'); }
+  get lastName() { return this.applicationForm.get('lastName');}
+  get academyTime() {return this.applicationForm.get('academyTime'); }
+  get academyTimeReason() {return this.applicationForm.get('academyTimeReason'); }
+  get email() {return this.applicationForm.get('email'); }
+  get contractAgreement() {return this.applicationForm.get('contractAgreement'); }
+  get contractReason() {return this.applicationForm.get('contractReason'); }
+  get likedTechnologies() {return this.applicationForm.get('likedTechnologies'); }
+  get reasonForApplying() {return this.applicationForm.get('reasonForApplying'); }
+  get school() {return this.applicationForm.get('school'); }
+  get degree() {return this.applicationForm.get('degree'); }
+  get mobileNumber() {return this.applicationForm.get('mobileNumber'); }
+  get hobbies() {return this.applicationForm.get('hobbies'); }
+  get referenceToIt() {return this.applicationForm.get('referenceToIt'); }
+  get linkedinUrl() {return this.applicationForm.get('linkedinUrl'); }
+  get image() {return this.applicationForm.get('image'); }
 }

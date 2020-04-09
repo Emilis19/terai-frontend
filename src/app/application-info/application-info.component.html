@@ -1,4 +1,4 @@
-<div class="container emp-profile">
+<div class="container emp-profile" *ngIf="viewApplicantProfileContent">
     <div class="row">
       <div class="col-md-4">
         <div class="profile-img">
@@ -13,7 +13,7 @@
         <div class="profile-head">
           <h5>{{ viewApplicantProfileContent.firstName }} {{ viewApplicantProfileContent.lastName }}</h5>
           <h6>{{ viewApplicantProfileContent.email }} {{ viewApplicantProfileContent.mobileNumber }}</h6>
-          <p>{{ viewApplicantProfileContent.school }}, {{ viewApplicantProfileContent.degree }}</p>
+          <p>{{ viewApplicantProfileContent.school }} {{ viewApplicantProfileContent.degree }}</p>
         </div>
       </div>
     </div>
