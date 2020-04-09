@@ -21,6 +21,9 @@ export class ApplicantApplicationReviewComponent implements OnInit,OnChanges {
   show = false;
   serverErrorMessage : string;
  modalRef: BsModalRef;
+ config = {
+  backdrop: false
+};
  message: string;
  private currentUserSubject: BehaviorSubject<LoggedInUser>;
   public currentUser: Observable<LoggedInUser>;
@@ -28,7 +31,7 @@ export class ApplicantApplicationReviewComponent implements OnInit,OnChanges {
   statusEnum = Status;
   status : string;
  //taken = false;
- @ViewChild('alert', { static: true }) alert: ElementRef;
+ @ViewChild('alert') private alert: ElementRef;
 
 
   constructor(
@@ -93,7 +96,7 @@ delete() {
 }
 
 openModal(template: TemplateRef<any>) {
-  this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  this.modalRef = this.modalService.show(template, this.config);
 }
 
 confirm(): void {
@@ -108,7 +111,7 @@ decline(): void {
 
 
 closeAlert() {
-  this.alert.nativeElement.classList.remove('show');
+  this.alert.nativeElement.remove();
 }
 
 
