@@ -21,13 +21,13 @@ export class StatusComponent implements OnInit, OnChanges {
   constructor() {
   }
   ngOnInit(){
-    
+
   }
   ngOnChanges() {
     switch (this.applicationReviewContent.status) {
       case this.statusEnum.Gavo:
         this.divClass = "col-sm-12 alert purple pt-4 pb-4 pl-5 pr-5";
-        this.imageSrc = "assets/img/receive-mail.svg";
+        this.imageSrc = "assets/img/tick-inside-circle.svg";
         this.answer = 1;
         break;
       case this.statusEnum.Priimtas:

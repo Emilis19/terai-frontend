@@ -12,6 +12,7 @@ export interface ApplicationRequest {
   degree?: string,
   mobileNumber?: string,
   linkedinUrl?: string,
+  projectUrl?: string;
   image?: string,
   hobbies?: string,
   referenceToIt?: string
