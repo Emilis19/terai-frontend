@@ -8,8 +8,8 @@
             [formGroup]="applicationForm"
             (ngSubmit)="onSubmit(); applicationForm.reset()" >
             <p class="moreImportant"><strong>PRIVALOMA INFORMACIJA </strong></p>
+            
             <div class="form-group pt-4 ml-1 mr-1">
-
               <label class ="inputText required pb-3" for="firstName">Vardas </label>
               <input type="text" name="firstName" ngModel="{{application.firstName}}" class="form-control" id="firstName" aria-describedby="fnameHelp" placeholder="Vardas"  formControlName="firstName"/>
               <div
@@ -29,11 +29,10 @@
           
           <div class="form-group pt-4 ml-1 mr-1">
               <label class ="inputText required pb-3" for="lastName">Pavardė </label>
-              <input ngModel="{{application.lastName}}" type="text" name="lastName" class="form-controlgit " id="lastName" aria-describedby="lnameHelp" placeholder="Pavardė" formControlName="lastName"/> 
+              <input ngModel="{{application.lastName}}" type="text" name="lastName" class="form-control " id="lastName" aria-describedby="lnameHelp" placeholder="Pavardė" formControlName="lastName"/> 
               <div
               [hidden]="(applicationForm.controls.lastName.valid || lastName.pristine) && email.untouched"
-              class="alert p-0"
-            >
+              class="alert p-0">
               <div class="text-danger " *ngIf="lastName.errors?.required">
                 Turi būti nurodyta pavardė
               </div>
