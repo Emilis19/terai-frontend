@@ -40,7 +40,6 @@ import {MatInputModule} from '@angular/material/input';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BlankPageComponent } from './blank-page/blank-page.component';
-import { DeleteApplicationInterceptor } from './shared/interceptors/deleteapplication.interceptor';
 
 @NgModule({
   declarations: [
@@ -81,13 +80,12 @@ import { DeleteApplicationInterceptor } from './shared/interceptors/deleteapplic
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule
-   
+
 
   ],
   providers: [//{provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: RedirectInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: DeleteApplicationInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
 
   bootstrap: [AppComponent]

@@ -29,21 +29,18 @@ export class RedirectInterceptor implements HttpInterceptor {
     return next.handle(request)
       .pipe(
         tap((event: HttpEvent<any>) => {
-          if (event instanceof HttpResponse && event.status === 200 && this.router.url == 'registration/:id') {
-            this.router.navigate(['/confirmation'])
-          }
         }),
         //this.toastr.success("Object created."),
         retry(1),
         catchError((error: HttpErrorResponse) => {
           let errorMessage = '';
-          if (error.status === 400) {
-            errorMessage = `Klaida ! ${error.error.message}`;
+          if (error.status === 500) {
+            errorMessage = "Klaida! bandyk veliau";
           } else if (error.status === 403 && !(this.router.url == '/login'||this.router.url == '/forgot-password')) {
             this.authenticationService.logout();
             this.router.navigate(['/login']);
           } else {
-            errorMessage = " Klaida - bandykite vėliau";
+            errorMessage = `Klaida! ${error.error.message}`;
           }
           console.log(errorMessage);
           return throwError(errorMessage);
