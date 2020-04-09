@@ -6,6 +6,7 @@
     background-color: #ffffff;
     color: #595959;
     text-align: center;
+
 }
 
 
@@ -14,9 +15,10 @@
     border: #595959;
     border-style: ridge;
     border-width: thin;
-    background-color:  #f2e6ff;
+    background-color:#f2e6ff;
     color: #595959;
     text-align: center;
+  
 }
 
 
@@ -58,12 +60,17 @@
 .inline {
     display: inline;
     text-align: center;
-    font-size: 25px;
+    font-size: 23px;
 }
 
 #imgresponsive {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     display: inline;
     box-sizing: border-box;
+}
+
+.box{
+    box-sizing: border-box;
+    padding: 10px;
 }
