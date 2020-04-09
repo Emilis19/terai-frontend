@@ -56,7 +56,7 @@ export class RegistrationFormComponent implements OnInit {
     [Validators.required
     ]],
 
-    contractReason: [, 
+    contractReason: [" ", 
     []],
 
     likedTechnologies: ['', [
