@@ -6,6 +6,7 @@ import {ApplicationService} from '../shared/services/application.service';
 import {switchMap, tap} from "rxjs/operators";
 import {FormGroup, FormBuilder} from "@angular/forms";
 
+
 @Component({
   selector: 'app-profile-page',
   templateUrl: './hr-application-review.component.html',
@@ -34,7 +35,6 @@ export class HrApplicationReviewComponent implements OnInit {
     comment: ['', []]
   });
 
-
   selectedOption: string;
   printedOption: string;
 
@@ -43,8 +43,8 @@ export class HrApplicationReviewComponent implements OnInit {
     { name: "Registracijos forma yra peržiūrima", value: 2 },
     { name: "Priėmimas į akademiją patvirtintas", value: 3 },
     { name: "Neigiamas atsakymas dėl priėmimo į akademiją", value: 4 }
-  ]
 
+  ]
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");

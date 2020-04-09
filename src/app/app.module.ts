@@ -32,11 +32,15 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { StatusComponent } from './status/status.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { CommentsComponent } from './comments/comments.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BlankPageComponent } from './blank-page/blank-page.component';
 import { DeleteApplicationInterceptor } from './shared/interceptors/deleteapplication.interceptor';
-
 
 @NgModule({
   declarations: [
@@ -71,7 +75,13 @@ import { DeleteApplicationInterceptor } from './shared/interceptors/deleteapplic
     HttpClientModule,
     ToastrModule.forRoot(),
     CollapseModule.forRoot(),
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatSortModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule
+   
 
   ],
   providers: [//{provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true},

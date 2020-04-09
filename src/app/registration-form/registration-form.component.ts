@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   providers: [RegistrationService]
 })
 
+
 export class RegistrationFormComponent implements OnInit, OnDestroy {
 
   application: ApplicationRequest;
@@ -80,6 +81,7 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
       //  Validators.pattern('[\+[0-9]{0,11}]+'),
       // Validators.pattern('[0-9]{1,8}')
     ]],
+
     image: ['', [
 
     ]  ],
@@ -191,7 +193,6 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
     this.application = this.applicationForm.value;
       if(this.id === '0'){
         this.registrationService.addRegistration(this.application).subscribe(() => {
-
           this.router.navigate(['/confirmation']);
          // this.application = null;
          this.serverErrorMessage = '';
@@ -214,7 +215,6 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   refreshPage() {
     window.location.reload();
   }
-
   ngOnDestroy(): void {
     console.log("destroyed");
     if(this.applicationForm.controls.email.value && this.applicationForm.controls.email.valid) {

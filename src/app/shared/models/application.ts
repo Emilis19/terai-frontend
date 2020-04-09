@@ -15,7 +15,6 @@ export interface ApplicationRequest {
   image?: string,
   hobbies?: string,
   referenceToIt?: string
-
 }
 
 export interface ApplicationStatusRequest {
@@ -26,6 +25,7 @@ export interface ApplicationStatusRequest {
 export interface ApplicationHRResponse {
   id: string;
   firstName: string;
+  lastName: string;
   dateCreated: string;
   status: string;
 }
@@ -58,6 +58,7 @@ export interface ApplicationComment {
   comment: string;
   dateCreated: string;
 }
+
 
 export interface CommentRequest {
   hrId: string;

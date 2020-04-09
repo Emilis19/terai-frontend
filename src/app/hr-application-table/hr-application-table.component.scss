@@ -1,5 +1,23 @@
 table { 
-    width: 80%; 
+    width:90%; 
     border-collapse: collapse; 
   }
  
+  td.is-purple {
+    background-color:  #f2e6ff;
+}
+td.is-green {
+  background-color: #c6ecc6;
+}
+
+td.is-redN {
+  background-color:  #ffcccc;
+}
+td.is-orangle {
+  background-color: #ffe6b3; 
+}
+
+td.is-white {
+  background-color: #ffffff;
+}
+

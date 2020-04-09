@@ -1,24 +1,36 @@
 <div class="container justify-content-center">
-<table class="table">
-  <thead>
-    <tr>
-    
-      <th scope="col">Vardas</th>
-      <th scope="col">Pateikimo data</th>
-      <th scope="col">Aplikanto statusas</th>
-      <th scope="col">Nuoroda į profilį</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let applicant of applicants">
-     
-      <td>{{ applicant.firstName }}</td>
-      <td>{{ applicant.dateCreated.toString().substr(0,10) }}</td>
-      <td>{{ applicant.status }}</td>
-      <td>
-        <a [routerLink]="['/applicant', applicant.id]">Pežiūrėti profilį</a>
-      </td>
-    </tr>
-  </tbody>
+<table mat-table [dataSource]="dataSource" matSort  class="table">
+
+ 
+  <ng-container matColumnDef="firstName" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header > Vardas Pavardė</th>
+    <td *matCellDef="let applicant">{{ applicant.firstName }} {{ applicant.lastName }} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="dateCreated">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Pateikimo data</th>
+    <td  *matCellDef="let applicant">{{ applicant.dateCreated.toString().substr(0,10) }}</td>
+  </ng-container>
+
+   <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Aplikanto statusas </th>
+    <td [ngClass]="{
+      'is-purple': applicant.status === 'IT akademija gavo formą',
+      'is-orangle': applicant.status === 'Registracijos forma yra peržiūrima',
+      'is-green':applicant.status === 'Priėmimas į akademiją patvirtintas',
+      'is-redN': applicant.status === 'Neigiamas atsakymas dėl priėmimo į akademiją',
+      'is-white': applicant.status === 'Registracijos forma nebaigta pildyti'
+    }" 
+     *matCellDef="let applicant"> {{ applicant.status }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="link">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Nuoroda į profilį</th>
+    <td  *matCellDef="let applicant">  <a [routerLink]="['/applicant', applicant.id]">Pežiūrėti profilį</a> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 </div>

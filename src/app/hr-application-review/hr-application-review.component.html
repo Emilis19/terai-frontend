@@ -1,40 +1,37 @@
 <div class="container" *ngIf="application">
-  <div class="row-col-md-5 justify-content-left">
-
-    <div class="form-group ">
+  <div class="row">
+    <div class="col-md-6">
+      <app-status
+        *ngIf="application"
+        [applicationReviewContent]="application"
+      ></app-status>
+    </div>
+    <div class="col-md-6">
       <form (ngSubmit)="onSubmit()">
-        <div class="form-group col-md-5">
-          <label for="FormControlSelect">Statuso pakeitimas</label>
-          <select
-            class="form-control col-md-10"
-            [(ngModel)]="selectedOption"
-            name="first"
-          >
-            <option *ngFor="let o of options">
-              {{ o.name }}
-            </option>
-          </select>
+        <div class="form-group">
+          <h4>Statuso pakeitimas</h4>
+          <mat-form-field>
+            <mat-label>pasirinkti keisti statusą</mat-label>
+            <mat-select [(ngModel)]="selectedOption" name="first">
+              <mat-option *ngFor="let o of options" [value]="o.name">
+                {{ o.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-        <div class="col-sm-10">
-          <button type="submit" (click)="print()" class="btn btn-primary">
-            Išsaugoti
-          </button>
-        </div>
+
+        <button type="submit" (click)="print()" class="btn btn-primary">
+          Išsaugoti
+        </button>
       </form>
     </div>
-   <div class="d-flex justify-content-center">
-      <app-status *ngIf="application"
-      [applicationReviewContent]="application"
-    ></app-status>
   </div>
-  </div>
+  <div class="row-col-md-5 justify-content-left"></div>
   <h3>Aplikanto profilis</h3>
 </div>
 
 
-<app-view-applicant-profile
-[viewApplicantProfileContent]="application"
->
-
+<app-view-applicant-profile [viewApplicantProfileContent]="application">
 </app-view-applicant-profile>
 <app-comments></app-comments>
+
