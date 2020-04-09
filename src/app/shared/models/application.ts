@@ -15,7 +15,8 @@ export interface ApplicationRequest {
   linkedinUrl?: string,
   image?: string,
   hobbies?: string,
-  referenceToIt?: string
+  referenceToIt?: string,
+  projectInfo?: string
 
 }
 export interface ApplicationStatusRequest {
@@ -50,6 +51,7 @@ export interface ApplicationFullResponse {
   referenceToIt: string;
   dateCreated: Date;
   status: string;
+  projectInfo?: string
 }
 export interface ApplicationComment {
   hrId: string;

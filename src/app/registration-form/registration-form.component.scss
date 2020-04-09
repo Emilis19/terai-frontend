@@ -18,7 +18,8 @@
   }
 
   .moreImportant {
-    font-size: 20px;
+    font-size: 25px;
+    padding-left: 15px;
   }
 
   .inputText {
@@ -35,6 +36,19 @@
     color: red;
   }
 
+  .this {
+    padding-left: 15px;
+  }
+
+  .titleText{
+    font-size: 30px;
+  }
+
+//  input[type="radio"] {
+//    -ms-transform: scale(1.5); /* IE 9 */
+//    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+ //   transform: scale(1.5);
+//}
   
 
   

@@ -56,9 +56,8 @@ export class RegistrationFormComponent implements OnInit {
     [Validators.required
     ]],
 
-    contractReason: [" ", [
-
-    ]],
+    contractReason: [, 
+    []],
 
     likedTechnologies: ['', [
       Validators.required,
@@ -100,7 +99,12 @@ export class RegistrationFormComponent implements OnInit {
       Validators.pattern("https?://.+"),
      // this.urlDomainValidator
     ]],
-  });
+
+    projectInfo:['', [
+    ]]
+  },
+  { updateOn: "blur" }
+  );
   
 constructor(
     private registrationService: RegistrationService, 
@@ -152,6 +156,10 @@ ngOnInit() {
     });
   }
 
+
+
+
+
   private getApplicant(id: string){
     if(id === '0'){
       this.application = {
@@ -169,7 +177,8 @@ ngOnInit() {
         mobileNumber: null,
         linkedinUrl: null,
         hobbies: null,
-        referenceToIt: null
+        referenceToIt: null,
+        projectInfo: null
       };
       // this.applicationForm.reset();
    } else {
@@ -238,4 +247,5 @@ ngOnInit() {
   get referenceToIt() {return this.applicationForm.get('referenceToIt'); }
   get linkedinUrl() {return this.applicationForm.get('linkedinUrl'); }
   get image() {return this.applicationForm.get('image'); }
+  get projectInfo() {return this.applicationForm.get('projectInfo');}
 }
