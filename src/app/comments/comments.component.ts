@@ -20,18 +20,18 @@ export class CommentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let com1:ApplicationComment = {'userId':'userId','userName':'Namae','dateCreated':new Date().toString(),
-      'comment':'comment aly rey realy realy rely realy realy realyrealy realy reaaly realyrealy realy realy realy long'};
-    this.comments.push(com1);
-    this.comments.push(com1);
-    this.comments.push(com1);
-    this.comments.push(com1);
-    this.comments.push(com1);
-    this.comments.push(com1);
+    // let com1:ApplicationComment = {'userId':'userId','userName':'Namae','dateCreated':new Date().toString(),
+    //   'comment':'comment aly rey realy realy rely realy realy realyrealy realy reaaly realyrealy realy realy realy long'};
+    // this.comments.push(com1);
+    // this.comments.push(com1);
+    // this.comments.push(com1);
+    // this.comments.push(com1);
+    // this.comments.push(com1);
+    // this.comments.push(com1);
 
-    this.commentGroup = this.formBuilder.group({
-      comment: ['', Validators.required]
-    });
+    // this.commentGroup = this.formBuilder.group({
+    //   comment: ['', Validators.required]
+    // });
   }
 
   get f() {

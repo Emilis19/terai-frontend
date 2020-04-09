@@ -34,7 +34,9 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { CommentsComponent } from './comments/comments.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,10 @@ import { MatSortModule } from '@angular/material/sort';
     CollapseModule.forRoot(),
     FormsModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule
    
 
   ],

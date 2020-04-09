@@ -1,47 +1,14 @@
 <div class="container justify-content-center">
-<table class="table" >
-  <thead>
-    <tr>
-    
-      <th scope="col">Vardas</th>
-      <th scope="col">Pateikimo data</th>
-      <th scope="col">Aplikanto statusas</th>
-      <th scope="col">Nuoroda į profilį</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let applicant of applicants">
-     
-      <td>{{ applicant.firstName }} {{ applicant.lastName }}</td>
-      <td>{{ applicant.dateCreated.toString().substr(0,10) }}</td>
-      <td
-      [ngClass]="{
-        'is-purple': applicant.status === 'IT akademija gavo formą',
-        'is-orangle': applicant.status === 'Registracijos forma yra peržiūrima',
-        'is-green':applicant.status === 'Priėmimas į akademiją patvirtintas',
-        'is-redN': applicant.status === 'Neigiamas atsakymas dėl priėmimo į akademiją',
-        'is-white': applicant.status === 'Registracijos forma nebaigta pildyti'
-      }"
-      >{{ applicant.status }}</td>
-      <td>
-       
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-<div class="container justify-content-center">
 <table mat-table [dataSource]="dataSource" matSort  class="table">
 
  
-  <ng-container matColumnDef="name" >
-    <th mat-header-cell *matHeaderCellDef mat-sort-header > Vardas</th>
-    <td *matCellDef="let applicant">{{ applicant.firstName }} </td>
+  <ng-container matColumnDef="firstName" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header > Vardas Pavardė</th>
+    <td *matCellDef="let applicant">{{ applicant.firstName }} {{ applicant.lastName }} </td>
   </ng-container>
 
 
-  <ng-container matColumnDef="data">
+  <ng-container matColumnDef="dateCreated">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Pateikimo data</th>
     <td  *matCellDef="let applicant">{{ applicant.dateCreated.toString().substr(0,10) }}</td>
   </ng-container>

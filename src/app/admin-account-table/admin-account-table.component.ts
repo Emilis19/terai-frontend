@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AccountService } from '../shared/services/account.service';
+import { MatSort } from '@angular/material/sort';
+import {Account } from '../shared/models/account';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-hr-users',
@@ -7,13 +10,20 @@ import { AccountService } from '../shared/services/account.service';
   styleUrls: ['./admin-account-table.component.scss']
 })
 export class AdminAccountTableComponent implements OnInit {
-
-  public users=[ ];
+  displayedColumns: string[] = ['name', 'lastName', 'lastLoggedIn', 'reviewedApplications'];
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  
+  public users: Account[ ];
+  public dataSource;
   constructor(private userService: AccountService) { }
 
   ngOnInit(): void {
     this. userService. getUsers()
-    .subscribe(data =>this.users=data);
+    .subscribe(data =>{
+      this.users=data;
+      this.dataSource = new MatTableDataSource(this.users);
+      this.dataSource.sort = this.sort;
+    });
   }
 
 }

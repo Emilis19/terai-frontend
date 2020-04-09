@@ -12,7 +12,7 @@ import { ApplicationHRResponse } from '../shared/models/application';
   styleUrls: ['./hr-application-table.component.scss']
 })
 export class HrApplicationTableComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'data', 'status', 'link'];
+  displayedColumns: string[] = ['firstName', 'dateCreated', 'status', 'link'];
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   public applicants: ApplicationHRResponse[];
   public dataSource;

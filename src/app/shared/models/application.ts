@@ -26,6 +26,7 @@ export interface ApplicationStatusRequest {
 export interface ApplicationHRResponse {
   id: string;
   firstName: string;
+  lastName: string;
   dateCreated: string;
   status: string;
 }

@@ -6,20 +6,19 @@
         [applicationReviewContent]="application"
       ></app-status>
     </div>
+
     <div class="col-md-6">
       <form (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="FormControlSelect"><strong>Statuso pakeitimas</strong>  </label>
-          <select
-            class="form-control col-md-10 "
-            [(ngModel)]="selectedOption"
-            name="first"
-          >
-          
-            <option *ngFor="let o of options">
-              {{ o.name }}
-            </option>
-          </select>
+          <h4>Statuso pakeitimas</h4>
+          <mat-form-field>
+            <mat-label>pasirinkti keisti statusą</mat-label>
+            <mat-select [(ngModel)]="selectedOption" name="first">
+              <mat-option *ngFor="let o of options" [value]="o.name">
+                {{ o.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
 
         <button type="submit" (click)="print()" class="btn btn-primary">

@@ -6,6 +6,7 @@ import {ApplicationService} from '../shared/services/application.service';
 import {switchMap, tap} from "rxjs/operators";
 import {FormGroup, FormBuilder} from "@angular/forms";
 
+
 @Component({
   selector: 'app-profile-page',
   templateUrl: './hr-application-review.component.html',
@@ -41,8 +42,7 @@ export class HrApplicationReviewComponent implements OnInit {
     { name: "IT akademija gavo formą", value: 1 },
     { name: "Registracijos forma yra peržiūrima", value: 2 },
     { name: "Priėmimas į akademiją patvirtintas", value: 3 },
-    { name: "Neigiamas atsakymas dėl priėmimo į akademiją", value: 4 },
-    { name: "Registracijos forma nebaigta pildyti", value: 5 }
+    { name: "Neigiamas atsakymas dėl priėmimo į akademiją", value: 4 }
 
   ]
 
