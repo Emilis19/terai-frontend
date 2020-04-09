@@ -1,3 +1,7 @@
+#duk{
+  background-color: #f5f5f5;
+}
+
 #title{
   background: rgba(255, 255, 255, 0.85);
   padding: 20px;
@@ -31,14 +35,16 @@
   transform: translate(-50%, -50%);
 }
 .card-block{
-  background: rgba(238, 237, 237, 0.85);
+  background: rgba(255, 255, 255);
  
 }
-#more-info{
- 
-  padding-bottom: 50px;
-  padding-top: 200px;
+#main-info{
+  padding: 10%;
 }
+
+//  #main-question{
+//     align-items: center;
+//  }
 
 #accordion .accordionBtn:before,
 #accordion .accordionBtn.collapsed:before{
@@ -63,11 +69,11 @@
 }
 
   #home-page-text-box{
-    background: rgba(105,105,105, 0.85);
+    background-color: #f5f5f5;
     font-size: 120%;
   }
   #registration-page-text-box{
-    background: rgba(105,105,105, 0.80);
+    background: rgb(235, 235, 235);
     font-size: 80%;
   }
 
@@ -77,15 +83,15 @@
     }
   }
   .btn.btn-primary{
-    background: rgba(64, 153, 255, 0.85);
+    background: rgba(64, 153, 255, 1);
   }
 
-  .btn.btn-dark{
-    background: rgba(15, 21, 27, 0.85);
-  }
+  // .btn.btn-dark{
+  //   background: rgba(15, 21, 27, 1);
+  // }
 
   #registration{
-    background: rgba(105,105,105, 0.85);
+    background: rgba(105,105,105, 1);
   }
 
   .light {
@@ -98,17 +104,6 @@
 }
 
 
-.center-textduk {
-  background: rgba(105,105,105, 0.85);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.card-block{
-  background: rgba(238, 237, 237, 0.85);
- 
-}
 #more-info{
  
   padding-bottom: 50px;
