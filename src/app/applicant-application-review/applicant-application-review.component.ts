@@ -9,7 +9,6 @@ import {LoggedInUser} from "../shared/models/loggedInUser";
 import {Status} from '../shared/models/status';
 
 
-
 @Component({
   selector: 'app-application-review',
   templateUrl: './applicant-application-review.component.html',
@@ -30,7 +29,9 @@ export class ApplicantApplicationReviewComponent implements OnInit,OnChanges {
   id = '';
   statusEnum = Status;
   status : string;
- //taken = false;
+ 
+  mySubscription: any;
+
  @ViewChild('alert') private alert: ElementRef;
 
 
@@ -52,25 +53,9 @@ export class ApplicantApplicationReviewComponent implements OnInit,OnChanges {
     this.applicationService.getApplication(this.authenticationService.currentUserValue.id).subscribe(data => this.applicationReviewContent = data); 
   }
 
-//changeStatus() {
- // switch (this.applicationReviewContent.status) {
- //   case this.statusEnum.Gavo:
- //     this.taken = false;
- //     break;
-  //  case this.statusEnum.Priimtas:
- //     this.taken = true;
- //     break;
- //   case this.statusEnum.Nepriime:
- //     this.taken = true;
- //     break;
- //   case this.statusEnum.Nebaigta:
- //     this.taken = false;
-  //    break;
- //   case this.statusEnum.Vykdoma:
- //     this.taken = false;
-  //    break;
-//  }
-//}
+
+
+  
 
 editable(){
   if(this.applicationReviewContent.status == "Priėmimas į akademiją patvirtintas" || this.applicationReviewContent.status == "Neigiamas atsakymas dėl priėmimo į akademiją"){
@@ -112,6 +97,7 @@ decline(): void {
 
 closeAlert() {
   this.alert.nativeElement.remove();
+  location.reload();
 }
 
 

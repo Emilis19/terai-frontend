@@ -34,13 +34,7 @@
          <!-- <div class="pl-1 inline"> <a href="#" data-toggle="modal" data-target="#myModal" click="delete()"> Ištrinti registracijos duomenis</a></div> -->
          <button class="btn btn-light " (click)="openModal(template)">Ištrinti registracijos duomenis</button>
 
-         <div #alert class="alert alert-danger fade show" role="alert" *ngIf="serverErrorMessage">
-          <button type="button" class="close" aria-label="Close" >
-            <span aria-hidden="true" (click)="closeAlert()">&times;</span>
-          </button>
-         {{serverErrorMessage}}
-        </div>
-         
+        
          <!-- <div class="card card-header alert-danger" role="alert" *ngIf="serverErrorMessage" id="successTime">
           {{ serverErrorMessage }}
         </div> -->
@@ -57,8 +51,20 @@
            </div>
            </div>
          </ng-template>
-        </div>   
+        </div>  
+        
+        
+
     </div>
+<div class="container d-flex flex-row-reverse">
+    <div #alert class="alert alert-danger fade show" role="alert" *ngIf="serverErrorMessage">
+      <button type="button" class="close" aria-label="Close" >
+        <span aria-hidden="true" (click)="closeAlert()">&times;</span>
+      </button>
+     {{serverErrorMessage}}
+    </div>
+</div>
+
     <app-view-applicant-profile
     [viewApplicantProfileContent]="applicationReviewContent"
     >

@@ -1,12 +1,16 @@
 <div class="container-fluid d-flex justified-content-center">
-  <div class="row">
+  <div class="row justified-content-center">
 
     <div [className]="divClass" role="alert">
-      <div class=" inline ml-auto pr-5">
+<div class="row d-fex flex-row">
+      <div class="col-3 ml-auto paddings inlineBlock">
         <img [src]="imageSrc" class="img-fluid" id="imgresponsive"/></div>
-      <div class="inline mr-auto">
-        <h5 class="inline"> {{ applicationReviewContent.status }}</h5>
+
+      <div class="col-9 inline mr-auto paddings">
+        <p class="inline2"> {{ applicationReviewContent.status }}</p>
       </div>
     </div>
   </div>
 </div>
+</div>
+

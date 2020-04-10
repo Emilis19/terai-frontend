@@ -51,7 +51,7 @@
           <input name="academyTime" id="academyTime" ng-control="options" name="academyTime" type="radio" [value]="true"
                  formControlName="academyTime"
                  (change)=onchange3($event)> Taip <br>
-          <input name="academyTime" ng-control="options" name="academyTime" type="radio" [value]="false"
+          <input name="academyTime" ng-control="options" name="academyTime" type="radio" [value]="false" 
                  formControlName="academyTime"
                  (change)=onchange2($event)>Ne<br>
           <div [hidden]="(f.academyTime.pristine)" class="alert p-0">
@@ -70,11 +70,11 @@
         <div class="form-group">
           <label class="inputText required" for="contractAgreement">Ar bus galimybė pasirašyti trišalę praktikos
             sutartį?</label><br>
-          <input name="contractAgreement" id="contractAgreement" ng-control="options" type="radio" [value]="true"
+          <input name="contractAgreement" id="contractAgreement" ng-control="options" type="radio" [value]="true" 
                  value="true"
                  formControlName="contractAgreement"
                  (change)=onchange1($event)> Taip <br>
-          <input name="contractAgreement" ng-control="options" type="radio" [value]="false" value="false"
+          <input name="contractAgreement" ng-control="options" type="radio" [value]="false" value="false" 
                  formControlName="contractAgreement" (change)=onchange($event)
           > Ne <br>
           <div
@@ -221,13 +221,21 @@
         <div class="alert alert-danger p-4 m-2" role="alert" *ngIf="serverErrorMessage">
           {{ serverErrorMessage }}
         </div>
-        <div class="alert alert-danger p-4 m-2" role="alert" *ngIf="applicationForm.invalid&&!submitted">
+        <div class="alert alert-danger p-4 m-2" role="alert" *ngIf="applicationForm.invalid&&!submitted&&!serverErrorMessage">
           Neužpildyti privalomi laukai
         </div>
         <div class="container d-flex flex-row p-3">
-          <div class="ml-auto m-2">
+          
+          <div class="ml-auto m-2" *ngIf="editStuff">
+            <button type="button" class="btn-lg btn btn-light" [routerLink]="'/application'"> Grįžti</button>
+          </div>
+
+          <div class="ml-auto m-2" *ngIf="anyStuff">
             <button type="button" class="btn-lg btn btn-light" [routerLink]="'/home'"> Grįžti</button>
           </div>
+
+
+          
           <div class="container d-flex flex-row-reverse">
             <div class="m-2">
               <button type="submit" class="btn btn-success btn-lg" [disabled]="applicationForm.invalid">Pateikti</button>
