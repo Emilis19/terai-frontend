@@ -27,6 +27,8 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   answer = false;
   submitted = false;
   applicationForm: FormGroup;
+  anyStuff = false;
+  editStuff = false;
 
   constructor(
     private registrationService: RegistrationService,
@@ -89,6 +91,8 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
       ]],
     });
     this.getApplicant(this.id);
+    this.changeButtton(this.id);
+    this.changeButton2(this.id);
   }
 
   get f() {
@@ -115,35 +119,84 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
     return this.answer;
   }
 
+  changeButtton(id : string) {
+if (id === '0') {
+  this.anyStuff = true;
+}
+  }
+
+changeButton2(id : string) {
+  if (id !== '0') {
+    this.editStuff = true;
+  }
+}
+
+
   private getApplicant(id: string) {
     if (id === '0') {
     } else {
-      this.title = "Redagavimas";
-      this.applicantService.getApplication(id).subscribe(data => this.application = data);
+      this.title = "REDAGAVIMAS";
+      this.applicantService.getApplication(id).subscribe(data => this.application = data, error => this.serverErrorMessage = error);
     }
   }
 
+ // validateAllFormFields(formGroup: FormGroup) {         
+ // Object.keys(formGroup.controls).forEach(field => {  
+ //   const control = formGroup.get(field);            
+ //   if (control instanceof FormControl) {             
+  //    control.markAsTouched({ onlySelf: true });
+  //  } else if (control instanceof FormGroup) {        
+  //    this.validateAllFormFields(control);            
+  //  }
+ // });
+//}
+
   onSubmit() {
     this.submitted = true;
-    this.application = this.applicationForm.value;
-      if (this.id === '0') {
-        this.registrationService.addRegistration(this.application).subscribe(() => {
-            this.router.navigate(['/confirmation']);
-            // this.application = null;
-          },
-          error => this.serverErrorMessage = error
-        );
+      if (this.applicationForm.valid) {
+        this.application = this.applicationForm.value;
+        if (this.id === '0') {
+          this.registrationService.addRegistration(this.application).subscribe(() => {
+              this.router.navigate(['/confirmation']);
+              // this.application = null;
+            },
+            error => this.serverErrorMessage = error
+          );
+        } else {
+          this.registrationService.updateRegistation(this.id, this.application).subscribe(() => {
+  
+              this.router.navigate(['/application']);
+              //    this.application = null;
+              this.serverErrorMessage = '';
+            },
+            error => this.serverErrorMessage = error
+          );
+        }
       } else {
-        this.registrationService.updateRegistation(this.id, this.application).subscribe(() => {
-
-            this.router.navigate(['/application']);
-            //    this.application = null;
-            this.serverErrorMessage = '';
-          },
-          error => this.serverErrorMessage = error
-        );
+    //    this.validateAllFormFields(this.applicationForm);
+        return;
       }
-  }
+    }
+   
+   // this.application = this.applicationForm.value;
+   //   if (this.id === '0') {
+    //    this.registrationService.addRegistration(this.application).subscribe(() => {
+    //        this.router.navigate(['/confirmation']);
+   //         // this.application = null;
+    //      },
+   //       error => this.serverErrorMessage = error
+  //      );
+   //   } else {
+   //     this.registrationService.updateRegistation(this.id, this.application).subscribe(() => {
+
+   //         this.router.navigate(['/application']);
+    //        //    this.application = null;
+    //        this.serverErrorMessage = '';
+    //      },
+    //      error => this.serverErrorMessage = error
+    //    );
+    //  }
+  //}
 
   ngOnDestroy(): void {
     if (this.applicationForm.controls.email.value && this.applicationForm.controls.email.valid) {

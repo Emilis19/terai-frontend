@@ -34,13 +34,17 @@ export class RedirectInterceptor implements HttpInterceptor {
         retry(1),
         catchError((error: HttpErrorResponse) => {
           let errorMessage = '';
-          if (error.status === 500) {
-            errorMessage = "Klaida! bandyk veliau";
-          } else if (error.status === 403 && !(this.router.url == '/login'||this.router.url == '/forgot-password')) {
+          if (error.status === 400) {
+            errorMessage = `Klaida! ${error.error.message}`;
+          } 
+          else if (error.status === 500) {
+            errorMessage = "Atsiprašome, serverio klaida"
+          }
+          else if (error.status === 403 && !(this.router.url == '/login'||this.router.url == '/forgot-password')) {
             this.authenticationService.logout();
             this.router.navigate(['/login']);
           } else {
-            errorMessage = `Klaida! ${error.error.message}`;
+            errorMessage = "Klaida! bandyk veliau"
           }
           console.log(errorMessage);
           return throwError(errorMessage);
