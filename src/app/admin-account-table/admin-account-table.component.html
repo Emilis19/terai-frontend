@@ -1,0 +1,29 @@
+<div class="container justify-content-center">
+  <table mat-table [dataSource]="dataSource" matSort  class="table">
+  
+   
+    <ng-container matColumnDef="name" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header > Vardas</th>
+      <td *matCellDef="let user">{{ user.name }} </td>
+    </ng-container>
+  
+  
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Pavardė</th>
+      <td  *matCellDef="let user">{{ user.lastName }}</td>
+    </ng-container>
+  
+     <ng-container matColumnDef="lastLoggedIn">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Paskutinio prisijungimo data </th>
+      <td *matCellDef="let user">{{ user.lastLoggedIn.toString().substr(0,10)}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="reviewedApplications">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Peržiūrėtų paraiškų skaičius</th>
+      <td  *matCellDef="let user"> {{ user.reviewedApplications}}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  </div>

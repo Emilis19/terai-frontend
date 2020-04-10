@@ -1,0 +1,245 @@
+<!--<div class="bg-img1 container-fluid" *ngIf="application">-->
+<div class="bg-img1 container-fluid">
+  <div class="col-sm-8 offset-sm-2 form-box">
+    <h2 class="text-uppercase text-center" [innerHTML]="title">Registracija į 2021m. IT Akademiją</h2>
+  </div>
+  <div class="row p-1">
+    <div class="col-sm-8 offset-sm-2 form-box" id="formname">
+      <form [formGroup]="applicationForm" (ngSubmit)="onSubmit(); applicationForm.reset()">
+        <p class="moreImportant"><strong>PRIVALOMA INFORMACIJA </strong></p>
+        <div class="form-group">
+          <label class="inputText required" for="firstName">Vardas </label>
+          <input type="text" name="firstName" ngModel="{{application?.firstName}}" class="form-control" id="firstName"
+                 aria-describedby="fnameHelp" placeholder="Vardas" formControlName="firstName"/>
+          <div [hidden]="(f.firstName.valid || f.firstName.pristine && f.firstName.untouched)"
+               class="alert p-0">
+            <div class="text-danger" *ngIf="f.firstName.errors?.required">Turi būti nurodytas vardas</div>
+            <div class="text-danger" *ngIf="f.firstName.errors?.pattern">Prašome įvesti raides</div>
+            <div class="text-danger" *ngIf="f.firstName.errors?.maxlength">Per daug teksto</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="inputText required" for="lastName">Pavardė </label>
+          <input ngModel="{{application?.lastName}}" type="text" name="lastName" class="form-control" id="lastName"
+                 aria-describedby="lnameHelp" placeholder="Pavardė" formControlName="lastName"/>
+          <div [hidden]="(applicationForm.controls.lastName.pristine && f.lastName.untouched)"
+               class="alert p-0">
+            <div class="text-danger" *ngIf="f.lastName.errors?.required">Turi būti nurodyta pavardė</div>
+            <div class="text-danger" *ngIf="f.lastName.errors?.maxlength">Per daug teksto</div>
+            <div class="text-danger" *ngIf="f.lastName.errors?.pattern">Prašome įvesti raides</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="inputText required" for="email">El. paštas</label>
+          <input ngModel="{{application?.email}}" type="email" name="email" class="form-control" id="email"
+                 aria-describedby="emailHelp"
+                 placeholder="Įveskite savo el. paštą" formControlName="email"/>
+          <div [hidden]="(f.email.valid || f.email.pristine && f.email.untouched)"
+               class="alert p-0">
+            <div class="text-danger" *ngIf="f.email.errors?.required">Turi būti nurodytas elektroninis paštas</div>
+            <div class="text-danger" *ngIf="f.email.errors?.maxlength">Per daug teksto</div>
+            <div class="text-danger" *ngIf="f.email.errors?.pattern">Netinkamai nurodytas elektroninis paštas</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="inputText required" for="academyTime">Numatytas praktikos laikas darbo dienomis 14-18 val. Ar
+            galėsi akademijai skirti tiek laiko?</label>
+          <br>
+          <input name="academyTime" id="academyTime" ng-control="options" name="academyTime" type="radio" [value]="true"
+                 formControlName="academyTime"
+                 (change)=onchange3($event)> Taip <br>
+          <input name="academyTime" ng-control="options" name="academyTime" type="radio" [value]="false"
+                 formControlName="academyTime"
+                 (change)=onchange2($event)>Ne<br>
+          <div [hidden]="(f.academyTime.pristine)" class="alert p-0">
+            <div class="text-danger" *ngIf="f.academyTime.errors?.required">Privalomas pasirinkimas</div>
+          </div>
+        </div>
+
+        <div *ngIf="additional" class="form-group">
+
+          <label class="inputText" for="academyTimeReason">Komentaras dėl laiko</label>
+          <input type="text" name="academyTimeReason" class="form-control" id="academyTimeReason"
+                 placeholder="Parašyk komentarą" formControlName="academyTimeReason"/>
+        </div>
+
+
+        <div class="form-group">
+          <label class="inputText required" for="contractAgreement">Ar bus galimybė pasirašyti trišalę praktikos
+            sutartį?</label><br>
+          <input name="contractAgreement" id="contractAgreement" ng-control="options" type="radio" [value]="true"
+                 value="true"
+                 formControlName="contractAgreement"
+                 (change)=onchange1($event)> Taip <br>
+          <input name="contractAgreement" ng-control="options" type="radio" [value]="false" value="false"
+                 formControlName="contractAgreement" (change)=onchange($event)
+          > Ne <br>
+          <div
+            [hidden]="applicationForm.controls.contractAgreement.pristine"
+            class="alert p-0">
+            <div class="text-danger" *ngIf="f.contractAgreement.errors?.required">Privalomas pasirinkimas</div>
+          </div>
+        </div>
+
+
+        <div *ngIf="answer" class="form-group">
+          <label class="inputText" for="contractReason">Kodėl negali pasirašyti sutarties?</label>
+          <input type="text" name="contractReason" class="form-control" id="contractReason"
+                 placeholder="Parašyk komentarą" formControlName="contractReason"/>
+        </div>
+
+
+        <div class="form-group">
+          <label class="inputText required" for="likedTechnologies">Kokios technologijos tau labiausiai patinka ir su
+            kokiomis iš jų jau turi patirties?</label>
+          <textarea ngModel="{{application?.likedTechnologies}}" name="likedTechnologies" class="form-control"
+                    id="likedTechnologies" aria-describedby="techHelp" rows="4" placeholder="Technologijos"
+                    formControlName="likedTechnologies"></textarea>
+          <div
+            [hidden]="(f.likedTechnologies.valid || f.likedTechnologies.pristine && f.reasonForApplying.untouched)"
+            class="alert p-0">
+            <div class="text-danger" *ngIf="f.likedTechnologies.errors?.required">Nurodyk, kurios technologijos tau
+              labiausiai patinka
+            </div>
+            <div class="text-danger" *ngIf="f.likedTechnologies.errors?.minlength">Turi būti bent 10 simbolių</div>
+            <div class="text-danger" *ngIf="f.likedTechnologies.errors?.maxlength">Turi būti nedaugiau kaip 300
+              simbolių
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="inputText required" for="reasonForApplying">Kodėl nori dalyvauti IT akademijoje? Kokie tavo
+            lūkesčiai?</label>
+          <textarea ngModel="{{application?.reasonForApplying}}" name="reasonForApplying" class="form-control"
+                    id="reasonForApplying" rows="4" placeholder="Lūkesčiai"
+                    formControlName="reasonForApplying">
+          </textarea>
+          <div
+            [hidden]="(applicationForm.controls.reasonForApplying.valid || f.reasonForApplying.pristine && f.reasonForApplying.untouched)"
+            class="alert p-0">
+            <div class="text-danger" *ngIf="f.reasonForApplying.errors?.required">Nurodyk savo lūkesčius</div>
+            <div class="text-danger" *ngIf="f.reasonForApplying.errors?.minlength">Turi būti bent 10 simbolių</div>
+            <div class="text-danger" *ngIf="f.reasonForApplying.errors?.maxlength">Turi būti nedaugiau kaip 300
+              simbolių
+            </div>
+          </div>
+        </div>
+        <br>
+        <p class="moreImportant"><strong> PAPILDOMA INFORMACIJA</strong></p>
+        <div class="form-group">
+          <label class="" for="school">Mokymo įstaiga</label>
+          <input ngModel="{{application?.school}}" type="text" name="school" class="form-control" id="school"
+                 placeholder="Mokymo įstaiga" formControlName="school">
+          <div
+            [hidden]="(applicationForm.controls.school.valid || f.school.pristine)"
+            class="alert p-0">
+            <div class="text-danger" *ngIf="f.school.errors?.pattern">
+              Nurodyti netinkami simboliai
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="" for="degree">Studijų kryptis</label>
+          <input ngModel="{{application?.degree}}" type="text" name="degree" class="form-control" id="degree"
+                 placeholder="Studijų kryptis" formControlName="degree">
+          <div
+            [hidden]="f.degree.valid || f.degree.pristine"
+            class="alert p-0">
+            <div class="text-danger" *ngIf="f.degree.errors?.pattern">
+              Nurodyti netinkami simboliai
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="" for="mobileNumber">Tel. numeris </label>
+          <input ngModel="{{application?.mobileNumber}}" type="tel" name="phone" id="mobileNumber" class="form-control"
+                 placeholder="Tel. numeris" formControlName="mobileNumber"/>
+          <div
+            [hidden]="f.mobileNumber.valid || f.mobileNumber.pristine"
+            class="alert p-0">
+            <div class="text-danger" *ngIf="f.mobileNumber.errors?.pattern">
+              Netinkamas numerio formatas
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="" for="linkedinUrl"> Nuoroda į tavo LinkedIN profilį arba į savo asmeninį puslapį</label>
+          <input ngModel="{{application?.linkedinUrl}}" type="url" name="linkedinUrl" class="form-control"
+                 id="linkedinUrl" placeholder="LinkedIN / asmeninis puslapis" formControlName="linkedinUrl"/>
+          <div
+            [hidden]="f.linkedinUrl.valid || f.linkedinUrl.pristine"
+            class="alert p-0">
+            <div class="text-danger" *ngIf="f.linkedinUrl.errors?.pattern">
+              Pateikite nuorodą iš interneto puslapio
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="" for="projectUrl"> Nuoroda į tavo projektą</label>
+          <input ngModel="{{application?.projectUrl}}" type="url" name="projectUrl" class="form-control"
+                 id="projectUrl" placeholder="https://github.com/example/example/" formControlName="projectUrl"/>
+          <div
+            [hidden]="f.projectUrl.valid || f.projectUrl.pristine"
+            class="alert p-0">
+            <div class="text-danger" *ngIf="f.projectUrl.errors?.pattern">
+              Pateikite nuorodą iš interneto puslapio
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="" for="image"> Tavo nuotrauka (image address)</label>
+          <input ngModel="{{application?.image}}" type="text" name="image" class="form-control" id="image"
+                 placeholder="(nuotraukos url)" formControlName="image"/>
+        </div>
+
+
+        <div class="form-group">
+          <label class="" for="hobbies"> Kokie tavo pomėgiai?</label>
+          <textarea ngModel="{{application?.hobbies}}" name="hobbies" class="form-control" id="hobbies"
+                    placeholder="Pomėgiai" rows="4" formControlName="hobbies"></textarea>
+        </div>
+
+
+        <div class="form-group">
+          <label class="" for="referenceToIt"> Iš kur sužinojai apie IT akademiją?</label>
+          <textarea ngModel="{{application?.referenceToIt}}" name="referenceToIt" class="form-control"
+                    id="referenceToIt"
+                    placeholder="Informacija apie IT akademiją" rows="4" formControlName="referenceToIt"></textarea>
+        </div>
+
+
+        <div class="alert alert-danger p-4 m-2" role="alert" *ngIf="serverErrorMessage">
+          {{ serverErrorMessage }}
+        </div>
+        <div class="alert alert-danger p-4 m-2" role="alert" *ngIf="applicationForm.invalid&&!submitted">
+          Neužpildyti privalomi laukai
+        </div>
+        <div class="container d-flex flex-row p-3">
+          <div class="ml-auto m-2">
+            <button type="button" class="btn-lg btn btn-light" [routerLink]="'/home'"> Grįžti</button>
+          </div>
+          <div class="container d-flex flex-row-reverse">
+            <div class="m-2">
+              <button type="submit" class="btn btn-success btn-lg" [disabled]="applicationForm.invalid">Pateikti</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="bg-light">
+  <app-copyright *ngFor="let copyright of copyrightList"
+                 [copyright]="copyright">
+  </app-copyright>
+</div>
